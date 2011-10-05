@@ -1,0 +1,5 @@
+1. Grafiku antrastese nerodo LT raidziu (ryt pataisysiu)
+2. Padariau pradzioj file.choose(), tada pasirinkus ta interpoliuota faila, kuri atsiunciau
+viska automatiskai sutvarko.
+3. Ipushinu pas save, nes pas tave failai tokiu paciu pavadinimu, kad neissitrintu
+whatever.
