@@ -57,28 +57,28 @@ capm = read.csv("TBILLS daily.csv")
 @
 
 \section{Įvadas}
+\newpage
 \section{CAPM}
+\newpage
 \section{Duomenys}
-\subsection{JAV 30-ies dienu izdo vekseliai}
+\subsection{JAV 30-ies dienų iždo vekseliai}
 
-JAV vieno menesio izdo vekselius laikysime nerizikinga investicija. Nagrinejami dieniniai duomenys nuo 2001 rugpjucio 1 dienos iki 2011 metu liepos pabaigos.
-Kadangi JAV izdo vekseliu duomenys pateikti kaip dienine diskonto norma antrineje rinkoje, vekseliu pelninguma
- galima rasti naudojant dvi patogias formules:
-
+JAV vieno mėnesio iždo vekselius laikysime nerizikinga investicija. Nagrinėjami dieniniai duomenys nuo 2001 rugpjučio 1 dienos iki 2011 metų liepos pabaigos.
+Kadangi JAV iždo vekselių duomenys pateikti kaip dieninė diskonto norma antrinėje rinkoje, vekselių pelningumą galima apskaičiuojant naudojant dvi patogias formules:
 
 
 $$P = 100 - (100 \times \frac{d \times t}{360})$$ \\
 
-Pirma, is diskonto normos isreiskiame kaina - is nominalo atimta nuolaida. 
-Cia nominalas = 100, P - izdo vekselio kaina, d - izdo vekselio diskonto norma,
-t - periodo dienu skaicius (musu atveju, menesis = 30 dienu). 
-Turedami kaina, galime rasti izdo vekselio pelninguma:
+Pirma, iš diskonto normos isreiskiame kainą - iš nominalo atimtą nuolaidą. 
+Čia nominalas = 100, P - iždo vekselio kaina, d - iždo vekselio diskonto norma,
+t - periodo dienų skaičius (mūsų atveju, 30 dienų). 
+Turėdami kainą, galime rasti iždo vekselio pelningumą:
 
 $$Y = \frac{100 - P}{P} \times \frac{365}{t}$$ \\
 
-Cia  Y - izdo vekselio pelningumas, t.y. graza ir t = 30.
+Čia  Y - iždo vekselio pelningumas, t.y. grąža ir t = 30.
 
-Taigi, 1 pav. vaizduojamos JAV izdo vekseliu dienines grazos
+Taigi, 1 pav. vaizduojamos JAV iždo vekselių dieninės grąžos
    
 <<echo=FALSE>>=
 vekselis= ts(capm$pelningumas[2:2501], start=2001, frequency=246)
@@ -88,25 +88,24 @@ vekselis= ts(capm$pelningumas[2:2501], start=2001, frequency=246)
 <<fig=TRUE,width=12,height=6,results=hide,echo=false>>=
 print(plot(vekselis, main="Izdo vekseliu dienines grazos", xlab="Metai", ylab="Grazos"))
 @
-  \caption{JAV 30-ies dienu izdo vekseliu pelningumas}
+  \caption{JAV 30-ies dienų iždo vekselių pelningumas}
   \label{fig:1}
 \end{figure}
 
-Grafikas gan israiskingai atspindi nuo 2004 metu prasidejusi ekonomikos pakilima, isaugusi vartojima ir analogiskas
-JAV vyriausybes pastangas pritraukti investuotojus didelemis palukanu normomis - izdo vekseliu pelningumu.
-Vekseliu pelningumas pasieke maksimuma 2006 metais, iki 2007 metu islaike gan auksta lygi, taciau nuo 2007 metu
-palaipsniui mazejo, kol galiausiai 2008 metais izdo vekseliu pelningumas nukrito iki zemiausio lygio nuo 2001 metu.
+Grafikas gan išraiškingai atspindi nuo 2004 metų prasidėjusį ekonomikos pakilimą, išaugusį vartojimą ir analogiškas
+JAV vyriausybės pastangas pritraukti investuotojus didelėmis palūkanų normomis - iždo vekselių pelningumu.
+Vekselių pelningumas pasiekė maksimumą 2006 metais, iki 2007 metų išlaikė gan aukštą lygį, taciau nuo 2007 metu
+palaipsniui mažėjo, kol galiausiai 2008 metais iždo vekselių pelningumas nukrito iki žemiausio lygio nuo 2001 metų.
 
 
-\subsection{Indekso Standard \& Poor's 500 akciju dienines kainos ir grazos}
+\subsection{Indekso Standard \& Poor's 500 akcijų dieninės kainos ir grąžos}
 
-JAV imoniu indeksas Standard \& Poor's 500 atstovaus visa ar bent didziaja dali Jungtiniu Amerikos valstiju
-rinkos. Indeksa sudaro 500 imoniu, gaunanciu virs penkiu milijardu doleriu pelna; tarp ju - Adobe Systems Inc,
-Amazon.com Inc, Apple Inc, Coca Cola Co. ir kitos. Indekso dieniniu akciju grazu grafikas neblogai atspindi
- rinkos bukle Jungtinese Amerikos valstjose per pastaruosius desimt metu. Nuo 2002 vidurio stebimas
-stabilus rinkos akciju pelningumo didejimas, o nuo 2007 metu stabilus, bet kiek staigesnis pelningumo mazejimas.
-Taip pat gan ryskiai pastebima ir 2008-2009 metu rinkos krize bei po jos prasidejes imoniu akciju pelningumo
-augimas.
+JAV įmonių indeksas Standard \& Poor's 500 atstovaus visą ar bent didžiąją dalį Jungtinių Amerikos valstijų
+rinkos. Indeksą sudaro 500 įmonių, gaunančių daugiau nei {dolco zenklas}5 mlrd.  pelną; tarp jų - Adobe Systems Inc,
+Amazon.com Inc, Apple Inc, Coca Cola Co. ir kitos. Indekso dieninių akcijų grąžų grafikas neblogai atspindi
+ rinkos būklę Jungtinėse Amerikos valstijose per pastaruosius dešimt metų. Nuo 2002 metų vidurio stebimas
+stabilus rinkos akcijų pelningumo didėjimas, o nuo 2007 metų - stabilus, bet kiek staigesnis pelningumo mažėjimas.
+Taip pat gan ryškiai pastebima ir 2008-2009 metų rinkos krizė bei po jos prasidėjęs įmonių akcijų pelningumo augimas.
 
 <<echo=false>>=
 SP500_price_ts = ts(capm$SP500, start=2001, frequency=246)
@@ -117,7 +116,7 @@ SP500_return_ts = ts(diff(capm$SP500)[1:2500]/capm$SP500[1:2500], start=2001, fr
 <<fig=TRUE,width=12,height=6,results=hide,echo=false>>=
 print(plot(SP500_price_ts, main="Dienines S&P 500 indekso kainos", xlab="Metai", ylab="Kaina"))
 @
-  \caption{S \& P 500 dienines akciju kainos 2001-2011}
+  \caption{S \& P 500 dieninės akcijų kainos 2001-2011 m.}
   \label{fig:2}
 \end{figure}
 
@@ -127,19 +126,19 @@ print(plot(SP500_price_ts, main="Dienines S&P 500 indekso kainos", xlab="Metai",
 <<fig=TRUE,width=12,height=6,results=hide,echo=false>>=
 print(plot(SP500_return_ts, main="S&P 500 indekso dienines grazos", xlab="Metai", ylab="Kaina"))
 @
-  \caption{S \& P 500 dienines akciju grazos}
+  \caption{S \& P 500 dieninės akcijų grąžos}
   \label{fig:3}
 \end{figure}
 
-Siame grafike vaizduojamos rinkos dienines akciju grazos. Didesnis nei vidutinis grazu dispersijos padidejimas
-taip pat sutampa su 2008-2009 metu krizes laikotarpiu. Dienines grazos stabiliausios 2003-2007 metu periodu,
+Šiame grafike vaizduojamos rinkos dieninės akcijų grąžos. Didesnis nei vidutinis gražų dispersijos padidėjimas
+taip pat sutampa su 2008-2009 metų krizės laikotarpiu. Dieninės grąžos stabiliausios 2003-2007 metų periodu,
 o tai irgi sutampa su stabilumo laikotapiu JAV ekonomikoje.           
 
 \subsection{Microsoft Corp.}
 
-Viena is CAP modelio tyrimui pasirinktu imoniu - Microsoft Corp. Tai viena didziausiu programine iranga
- gaminanciu kompaniju, turinti savo atstovybe ir Lietuvoje. Zemiau pateiktos sios imones dieniniu akciju kainos
- bei dieniniu akciju grazos.
+Viena is CAPM modelio tyrimui pasirinktų įmonių - Microsoft Corp. Tai viena didziausių programinę įrangą
+ gaminančių kompanijų, turinti savo atstovybę ir Lietuvoje. Žemiau pateiktos šios įmonės dieninių akcijų kainos
+ bei dieninių akcijų grąžos.
  
 <<echo=false>>=
 Microsoft_price_ts = ts(capm$Microsoft, start=2001, frequency=246)
@@ -150,7 +149,7 @@ Microsoft_return_ts = ts(diff(capm$Microsoft)[1:2500]/capm$Microsoft[1:2500], st
 <<fig=TRUE,width=12,height=6,results=hide,echo=false>>=
 print(plot(Microsoft_price_ts, main="Microsoft Corp. dienines akciju kainos", xlab="Metai", ylab="Kaina"))
 @
-  \caption{Microsoft Corp. dienines akciju kainos 2001-2011}
+  \caption{Microsoft Corp. dieninės akcijų kainos 2001-2011 m.}
   \label{fig:4}
 \end{figure}
 
@@ -164,19 +163,19 @@ akciju kainu kilima iki 2011 vasaros.
 <<fig=TRUE,width=12,height=6,results=hide,echo=false>>=
 print(plot(Microsoft_return_ts, main="Microsoft Corp. dienines akciju grazos", xlab="Metai", ylab="Kaina"))
 @
-  \caption{Microsoft Corp. dienines akciju grazos 2001-2011}
+  \caption{Microsoft Corp. dieninės akcijų grąžos 2001-2011 m. }
   \label{fig:5}
 \end{figure}
              
-Microsoft Corp. dienines akciju grazos, taip pat kaip ir Standard \& Poor's, neblogai atspindi stabilumo ir
-krizes laikotarpius, o kelios isskirtys susijusios su kitomis/atskiromis/individualiomis imones charakteristikomis.
+Microsoft Corp. dieninės akcijų grąžos, taip pat kaip ir Standard \& Poor's, neblogai atspindi stabilumo ir
+krizės laikotarpius, o kelios išskirtys susijusios su kitomis/atskiromis/individualiomis imonės charakteristikomis.
 
 
 \subsection{Apple Inc.}
 
-Kita imone, pasirinkta CAP modelio tyrimui - Apple Inc. Tai kompanija, siulanti plataus vartojimo elektronikos
-ir programines irangos produktus (pazodziui is wikipedia). Zemiau pateikti Apple Inc. dieniniu akciju
-kainu bei dieniniu akciju grazu grafikai.
+Kita įmonė, pasirinkta CAPM modelio tyrimui - Apple Inc. Tai kompanija, siūlanti plataus vartojimo elektronikos
+ir programinės įrangos produktus. Žemiau pateikti Apple Inc. dieninių akcijų
+kainų bei dieninių akcijų grąžų grafikai.
 
 <<echo=false>>=
 Apple_price_ts = ts(capm$Apple, start=2001, frequency=246)
@@ -188,36 +187,34 @@ Apple_return_ts = ts(Apple_return_split[-891], start=2001, frequency=246)
 <<fig=TRUE,width=12,height=6,results=hide,echo=false>>=
 print(plot(Apple_price_ts, main="Apple akciju dienines kainos", xlab="Metai", ylab="Kaina"))
 @
-  \caption{Apple Inc. dienines akcijus kainos 2001-2011}
+  \caption{Apple Inc. dieninės akcijų kainos 2001-2011 m.}
   \label{fig:6}
 \end{figure}
 
-Apple Inc. dieniniu akciju kainu svyravimai kiek skiriasi nuo S\&P 500 ar Microsoft akciju kainu. Pastaruosius
-keleta metu sios kompanijos akciju kainos stabiliai kilo ir net krizes laikotarpiu nepasieke zemiausios
-kainos per desimties metu laikotarpi. Svarbi data duomenu tyrimui - 2005 vasario 5 d. Sia diena Apple Inc.
-padvigubino akciju kieki uz ta pacia kaina, t.y. jei iki padalijimo viena akcija kainavo 88 dolerius, tai po padalijimo
-uz ta pacia kaina investuotojas jau galejo isigyti dvi akcijas (po 44 dolerius uz viena). Spejama, jog Apple Inc.
-tokiu veiksmu norejo pritraukti nauju investuotoju.
+Apple Inc. dieninių akcijų kainų svyravimai kiek skiriasi nuo S\&P 500 ar Microsoft akcijų kainų. Pastaruosius
+keletą metų šios kompanijos akcijų kainos stabiliai kilo ir net krizės laikotarpiu nepasiekė žemiausios
+kainos per dešimties metų laikotarpį. Svarbi data duomenų tyrimui - 2005 vasario 5 d. Šią dieną Apple Inc.
+padvigubino akcijų kiekį už tą pačią kainą, t.y. jei iki padalijimo viena akcija kainavo {dolcas}88, tai po padalijimo
+už tą pačią kainą investuotojas jau galėjo įsigyti dvi akcijas (po {dolcas}44 už vieną). Spėjama, jog Apple Inc.
+tokiu veiksmu norėjo pritraukti naujų investuotojų.
 
 \begin{figure}[H]
   \centering
 <<fig=TRUE,width=12,height=6,results=hide,echo=false>>=
-print(plot(Apple_return_ts, main="Apple dienines akciju grazos�kaina", xlab="Metai", ylab="Kaina"))
+print(plot(Apple_return_ts, main="Apple dienines akciju grazos kaina", xlab="Metai", ylab="Kaina"))
 @
-  \caption{Apple Inc. dienines akciju grazos 2001-2011}
+  \caption{Apple Inc. dieninės akcijų grąžos 2001-2011 m.}
   \label{fig:7}
 \end{figure}
              
-Siame grafike pateikiamos dienines akciju grazos, be 891-ojo duomens (pasalinta isskirtis, atsiradusi del akciju
-kiekio padvigubinimo). Galima pastebeti gan stabilia, nors santykinai nemaza, 
-duomenu dispersija, o kelios isskirtys turbut susijusios su atskirais/pavieniais imones sprendimais, ivykiais
-arba rezonavo su krize.
+Šiame grafike pateikiamos dieninės akcijų grąžos, be 891-ojo duomens (pašalinta išskirtis, atsiradusi dėl akcijų kiekio padvigubinimo). Galima pastebėti gan stabilią, nors santykinai nemažą, 
+duomenų dispersiją, o kelios išskirtys turbūt susijusios su atskirais/pavieniais įmonės sprendimais, ivykiais arba rezonavo su krize.
 
 \subsection{Auksas}
 
-Idomu tyrineti ne tik svarbiu imoniu rizikos premiju priklausomybe nuo rinkos rizikos premijos, bet ir
-aukso pelninguma. Aukso kaina per desimt metu stabiliai kyla be jokiu ryskesniu nuosmukiu. 2011 vasara
-kaina pasieke auksciausia kada nors buvusi lygi.
+Įdomu tyrinėti ne tik svarbių įmonių rizikos premijų priklausomybę nuo rinkos rizikos premijos, bet ir
+aukso pelningumą. Aukso kaina per dešimt metų stabiliai kyla be jokių ryškesnių nuosmukių. 2011 m. vasarą
+kaina pasiekė auksčiausią kada nors buvusį lygį.
 
 <<echo=false>>=
 Gold_price_ts = ts(capm$Gold, start=2001, frequency=246)
@@ -228,7 +225,7 @@ Gold_return_ts = ts(diff(capm$Gold)[1:2500]/capm$Gold[1:2500], start=2001, frequ
 <<fig=TRUE,width=12,height=6,results=hide,echo=false>>=
 print(plot(Gold_price_ts, main="Aukso kaina", xlab="Metai", ylab="Kaina"))
 @
-  \caption{Aukso dienines kainos}
+  \caption{Aukso dieninės kainos}
   \label{fig:8}
 \end{figure}
 
@@ -238,20 +235,21 @@ print(plot(Gold_price_ts, main="Aukso kaina", xlab="Metai", ylab="Kaina"))
 <<fig=TRUE,width=12,height=6,results=hide,echo=false>>=
 print(plot(Gold_return_ts, main="Aukso dienines grazos kaina", xlab="Metai", ylab="Kaina"))
 @
-  \caption{Aukso dienines grazos}
+  \caption{Aukso dieninės grąžos}
   \label{fig:9}
 \end{figure}
              
-Aukso dieniniu grazu grafikas turi gan maza dispersija, kurios padidejimas 2008 metais 
-sutampa su krizes laikotapiu. Taciau net ir per krize diziausios aukso grazu vertes nepasiekia 0.1 ar -0.1.
+Aukso dieninių grąžų grafikas turi gana mažą dispersiją, kurios padidėjimas 2008 metais 
+sutampa su krizės laikotapiu. Tačiau net ir per krizę didžiausios aukso grąžų vertės nepasiekia 0.1 ar -0.1.
 
+\newpage
 \section{Aprašomoji duomenų statistika}
 
 Rizikos premija - skirtumas tarp įmonės akcijos grąžos ir iždo vekselio pelningumo. Tai premija investuotojui,
 pasirinkusiam rizikingesnės įmonės akcijas vietoje nerizikingo iždo vekselio. Kuo ji didesnė, tuo labiau
 traukia investicijas, bet dažnai (pagal CAPM teoriją) didesnė premija taip pat reiškia ir didesnę riziką 
 investuojant į tam tikrą imonę. Žemiau pateiktoje lentelėje paskaiciuosime aktyvų vidutines grązas,
-standartinius nuokrypius, dispersijas bei jų vidutines rizikos premijas ir standartinius nuokrypius.
+standartinius nuokrypius, dispersijas bei jų vidutines rizikos premijas ir standartinius nuokrypius. 
 
 <<echo=false>>=
 
@@ -264,7 +262,366 @@ microsoftrp = microsoft - rkfree
 applerp = apple - rkfree[-891]
 goldrp = gold - rkfree
 mrp = market - rkfree
+microsoftmod = lm(microsoftrp~mrp)
+applemod = lm(applerp~mrp[-891])
+goldmod = lm(goldrp~mrp)
 
+@
+
+<<echo=false,results=hide>>=
+
+
+sdevs4=c(0.02524072,
+0.02268442,
+0.0202029,
+0.01782743,
+0.0156065,
+0.01361595,
+0.01197126,
+0.01083114,
+0.01036349,
+0.01065719,
+0.01165484,
+0.0236353,
+0.02108367,
+0.01861453,
+0.01626548,
+0.01409668,
+0.01220462,
+0.01073661,
+0.009883438,
+0.009806917,
+0.01052400,
+0.01189198,
+0.02216724,
+0.01963887,
+0.01720667,
+0.01491777,
+0.01284895,
+0.01112371,
+0.009922897,
+0.009448627,
+0.009806878,
+0.01091599,
+0.01257889,
+0.02086554,
+0.01838681,
+0.01602698,
+0.01384699,
+0.01194571,
+0.01047599,
+0.00963735,
+0.009596677,
+0.01036338,
+0.01178086,
+0.01364783,
+0.01976311,
+0.01736921,
+0.01512891,
+0.01312114,
+0.01146865,
+0.01034319,
+0.009925653,
+0.01030249,
+0.01139516,
+0.01302474,
+0.01501744,
+0.01889486,
+0.01662919,
+0.01456466,
+0.01279901,
+0.01147107,
+0.01074439,
+0.01074170,
+0.01146351,
+0.01278770,
+0.01455076,
+0.01661352,
+0.01829417,
+0.01620480,
+0.01437360,
+0.01291087,
+0.01195268,
+0.01162446,
+0.01197811,
+0.01295793,
+0.01443698,
+0.01627976,
+0.01837717,
+0.01798786,
+0.01612101,
+0.01457040,
+0.01344589,
+0.01285974,
+0.01288563,
+0.01352005,
+0.01468433,
+0.01626509,
+0.01815385,
+0.02026468,
+0.01799096,
+0.01638303,
+0.01513996,
+0.01435684,
+0.01411045,
+0.01442832,
+0.01527526,
+0.01657035,
+0.01821827,
+0.02013255,
+0.02224453,
+0.01830333,
+0.01697486,
+0.01604262,
+0.01557791,
+0.01562249,
+0.01617216,
+0.01717851,
+0.01856742,
+0.02026037,
+0.02218788,
+0.02429417,
+0.01890964,
+0.01786375,
+0.0172261,
+0.01704256,
+0.01732758,
+0.01805898,
+0.01918578,
+0.02064333,
+0.02236707,
+0.02430041,
+0.02639735)
+
+means4=c(0.001807715,
+0.001706179,
+0.001604642,
+0.001503106,
+0.001401570,
+0.001300034,
+0.001198498,
+0.001096962,
+0.0009954257,
+0.0008938896,
+0.0007923535,
+0.001646778,
+0.001545242,
+0.001443705,
+0.001342169,
+0.001240633,
+0.001139097,
+0.001037561,
+0.0009360248,
+0.0008344887,
+0.0007329526,
+0.0006314164,
+0.001485841,
+0.001384305,
+0.001282768,
+0.001181232,
+0.001079696,
+0.00097816,
+0.0008766239,
+0.0007750878,
+0.0006735516,
+0.0005720155,
+0.0004704794,
+0.001324904,
+0.001223368,
+0.001121831,
+0.001020295,
+0.0009187591,
+0.000817223,
+0.0007156869,
+0.0006141507,
+0.0005126146,
+0.0004110785,
+0.0003095424,
+0.001163967,
+0.001062430,
+0.0009608944,
+0.0008593582,
+0.0007578221,
+0.000656286,
+0.0005547498,
+0.0004532137,
+0.0003516776,
+0.0002501414,
+0.0001486053,
+0.001003030,
+0.0009014934,
+0.0007999573,
+0.0006984212,
+0.000596885,
+0.0004953489,
+0.0003938128,
+0.0002922767,
+0.0001907405,
+8.92044e-05,
+-1.233172e-05,
+0.0008420925,
+0.0007405564,
+0.0006390203,
+0.0005374841,
+0.000435948,
+0.0003344119,
+0.0002328758,
+0.0001313396,
+2.98035e-05,
+-7.173263e-05,
+-0.0001732688,
+0.0006811555,
+0.0005796194,
+0.0004780832,
+0.0003765471,
+0.000275011,
+0.0001734749,
+7.193872e-05,
+-2.959741e-05,
+-0.0001311335,
+-0.0002326697,
+-0.0003342058,
+0.0005202185,
+0.0004186823,
+0.0003171462,
+0.0002156101,
+0.0001140739,
+1.253782e-05,
+-8.899831e-05,
+-0.0001905344,
+-0.0002920706,
+-0.0003936067,
+-0.0004951428,
+0.0003592814,
+0.0002577453,
+0.0001562092,
+5.467304e-05,
+-4.686309e-05,
+-0.0001483992,
+-0.0002499354,
+-0.0003514715,
+-0.0004530076,
+-0.0005545437,
+-0.0006560799,
+0.0001983444,
+9.680826e-05,
+-4.727868e-06,
+-0.000106264,
+-0.0002078001,
+-0.0003093363,
+-0.0004108724,
+-0.0005124085,
+-0.0006139446,
+-0.0007154808,
+-0.0008170169)
+
+sdevs3=c(0.01165484,
+0.01065719,
+0.01036349,
+0.01083114,
+0.01197124,
+0.01361595,
+0.0156065,
+0.01782743,
+0.0202029,
+0.02268442,
+0.02524072)
+
+means3=c(0.0007923535,
+0.0008938896,
+0.0009954257,
+0.001096962,
+0.001198498,
+0.001300034,
+0.001401570,
+0.001503106,
+0.001604642,
+0.001706179,
+0.001807715)
+
+sdevs2=c(0.01890964,
+0.01830333,
+0.01799096,
+0.01798786,
+0.01829417,
+0.01889486,
+0.01976311,
+0.02086554,
+0.02216724,
+0.0236353,
+0.02524072)
+
+means2=c(0.0001983444,
+0.0003592814,
+0.0005202185,
+0.0006811555,
+0.0008420925,
+0.001003030,
+0.001163967,
+0.001324904,
+0.001485841,
+0.001646778,
+0.001807715)
+
+sdevs=c(0.01890601,
+0.01697159,
+0.01513702,
+0.01344326,
+0.01195032,
+0.01074226,
+0.00992367,
+0.009594758,
+0.00980493,
+0.01052193,
+0.01165257)
+
+means=c(0.0001968397,
+0.0002564699,
+0.0003161001,
+0.0003757303,
+0.0004353605,
+0.0004949908,
+0.000554621,
+0.0006142512,
+0.0006738814,
+0.0007335117,
+0.0007931419)
+
+beta1=c(1.004716,
+ 0.9003805,
+0.7960454,
+0.6917102,
+0.5873751,
+0.48304,
+0.3787048,
+0.2743697,
+0.1700346,
+0.06569942,
+-0.03863572)
+
+beta2=c(1.029104,
+ 0.9223311,
+ 0.8155584,
+0.7087857,
+0.6020131,
+ 0.4952404,
+ 0.3884677,
+ 0.2816950,
+ 0.1749224,
+ 0.06814969,
+ -0.03862299)
+ 
+ beta3=c(1.029104,
+1.026700,
+1.024296,
+1.021892,
+1.019488,
+1.017084,
+1.01468,
+1.012276,
+1.009872,
+1.007468,
+1.005064)
 @
 \begin{center}
     \begin{tabular}{ | l | l | l | l |}
@@ -284,6 +641,12 @@ mrp = market - rkfree
     \end{tabular}
 \end{center}
 
+
+
+Didžiausią grąžų vidurkį turi Apple Inc. (0.001807715), šis aktyvas galėtų būti investuotojams patraukliausias.
+Didžiausia grąžų dispersija(0.0006370941)/standartinis nuokrypis(0.02524072) taip pat priklauso Apple Inc., taigi, nors šios akcijos žada ir didžiausią pelną, tai yra rizikingiausias aktyvas.
+Mažiausia dispersija (0.0001357824)/standartinis nuokrypis (0.01165257) priklauso aukso kainų grąžoms xxx, šis aktyvas turi mažiausius svyravimus, todėl atrodo patikimai.
+
 Koreliacijos:
 \begin{center}
     \begin{tabular}{ | l | l | l | }
@@ -299,20 +662,624 @@ Koreliacijos:
 \end{center}
 
 
-Didžiausias grazų vidurkis: xxx{nzn ka rashyt: varda ar skaiciu}, šis aktyvas galetų būti investuotojams patraukliausias.
 
-Didžiausia dispersija/standartinis nuokrypis: xxx, tai rizikingiausias aktyvas.
+Labiausiai su rinka koreliuoja Microsoft Corp. (koreliacijos koeficientas lygus 0.7184425), t.y. labiausiai priklauso nuo rinkos būklės.
 
-Mažiausia dispersija/standartinis nuokrypis: xxx, šis aktyvas turi mažiausius svyravimus, todėl atrodo patikimai.
+Mažiausiai su rinkos kainomis koreliuoja aukso kainos (-0.04482454). Šis koreliacijos koeficientas yra neigiamas, taigi tikėtina, kad rinkos akcijų vertei kintant, aukso grąžos kis priešinga kryptimi, tačiau dėl nedidelės koeficiento reikšmės aktyvo kainos tuo pačiu greičiu gali ir nesikeisti. Tai ypač aktualu krizės laikotarpiu.
 
-Labiausiai su rinka koreliuoja: xxx, t.y. labiausiai priklauso nuo rinkos būklės.
 
-Mažiausiai koreliuoja su rinka: xxx. Tikėtina, kad rinkos akcijų vertei kintant, aktyvo kainos nesikeis
-tuo pačiu greičiu ir/arba ta pačia kryptimi. Tai ypač aktualu krizės laikotarpiu.
 
+\newpage
+\section{Kapitalo aktyvų įvertinimo modelis}
+
+Viena iš kapitalo aktyvų įvertinimo modelio (\textit{Capital aset pricing model} - CAPM) išraiškų - paprasta vieno kintamojo regresija. Pasinaudojus ja, tirsime imonių akcijų ir aukso rizikos premijų priklausomybę nuo rinkos rizikos premijų.
+Modeliuose pateiktas laisvasis narys $ \alpha $   ir koeficientas  $ \beta $ .
+
+
+
+\begin{center}
+    \begin{tabular}{ | l | l | l | l | }
+    \hline
+    $ \alpha $ & $ \beta $ & $ R^2 $ & $ p-value $  \\
+    \hline
+	0.0000863 & 1.0038977 &  0.5197 & < 2.2e-16\\
+	\hline
+    \end{tabular}
+\end{center}
+
+Gautas $\beta$ koeficientas lygus 1.004 ir yra reikšmingas. Tai reiskia, jog rinkos rizikos premijai pakilus ar nukritus 1\%, Microsoft Corp. rizikos premijos taip pat pakils 1\%. Laisvasis narys beveik lygus nuliui ir nereikšmingas,
+tai neprieštarauja CAPM teorijai ir logikai - jei rinkos rizikos premija lygi nuliui, tai investuotojo i Microsoft Corp. šansai gauti rizikos premiją yra labai maži.
+$R^2$= 0.5197, tai reiškia, kad 51,97\% rinkos duomenų paaiškina Microsoft Corp. rizikos premijų svyravimus, t.y. sudaro sisteminę (rinkos) riziką. Likusi specifinė rizika priklauso nuo kitų įmonės charakteristikų.
+
+
+\begin{center}
+    \begin{tabular}{ | l | l | l | l | }
+    \hline
+    $ \alpha $ & $ \beta $ & $ R^2 $ & $ p-value $  \\
+    \hline
+	0.0017347 & 1.0269695 & 0.3064 & < 2.2e-16\\
+	\hline
+    \end{tabular}
+\end{center}
+
+Koeficientas $\beta$, kaip ir Microsoft Corp. imonės, lygus 1.027 ir yra reikšmingas (0<0.005). Taigi rinkos akcijų vertei susvyravus 1\%, Apple
+Inc. irgi gali patirti panašų akcijų kainos pokytį. Laisvasis narys labai arti nulio ir nereikšmingas,
+taigi investuotojas pasirinkęs Apple Inc. akcijas negali tikėtis jokios rizikos premijos, kai rinkos akcijų vertės
+pokytis lygus nuliui.
+Visgi  $R^2$ nėra labai didelis - tik 30\% rinkos duomenų paaiškina Apple Inc. akcijų vertės svyravimus.
+
+
+\begin{center}
+    \begin{tabular}{ | l | l | l | l | }
+    \hline
+    $ \alpha $ & $ \beta $ & $ R^2 $ & $ p-value $  \\
+    \hline
+	-0.0011070 & -0.0230014 & 0.01176 &  0.183\\
+	\hline
+    \end{tabular}
+\end{center}
+
+Visai kitoks rezultatas gaunamas sudarius aukso rizikos premijų priklausomybės nuo rinkos rizikos premijų modelį.
+Šįkart $\beta=-0.023$ ir tai reikštų, kad aukso kainos ne tik mažai priklauso nuo rinkos akcijų vertės svyravimų,
+bet netgi juda priešinga linkme. Tai gali pasirodyti kaip itin patraukli investicija nuosmukio laikotarpiu.
+Tačiau koeficiento p-reiksmė = 0.183 > 0.05, taigi negalima atmesti $ H_0 $ hipotezės, kad $\beta=0 $. Bet ir
+priėmus šią hipotezę, galima tarti, kad aukso kainos mažai priklauso nuo rinkos svyravimų.
+Laisvasis narys šįkart -0.011 ir p-reiksmė rodo, kad jis reikšmingas. Toks rezultatas kiek prieštarauja CAPM logikai - rinkos akcijų vertėms nesikeičiant, aukso rizikos premija neigiama. Galbūt tai galetų reikšti,
+kad dieninis aukso pelningumas itin nedidelis.
+$ R^2 $= 0.0007 - itin maža reiksmė, patvirtinanti, kad rinka beveik nepaaiškina aukso kainų pokyčių, taigi 
+visa aukso pelningumo rizika sisteminė - priklauso nuo kitų desnių/charakteristikų.
+
+\subsection{Sudarytų modelių liekanų tikrinimas}
+
+Liekanos turi buti homoskedastiškos, ne autokoreliuotos ir pasiskirsčiusios pagal normalųjį skirstinį.
+
+\begin{figure}[H]
+  \centering
+<<fig=TRUE,width=12,height=6,results=hide,echo=false>>=
+print(plot(goldmod$res, main="Aukso modelio liekanos", ylab="Liekanos"))
+@
+  \caption{Aukso modelio liekanos nėra heteroskedastiskos}
+  \label{fig:10}
+\end{figure}
+
+
+Patikrinsime, ar liekanos turi slenkantį vidurki.
+
+
+\begin{center}
+    \begin{tabular}{ | l | l | l | }
+    \hline
+    aktyvas  &  koef. prieš ankstinį  & $ p-value $  \\
+    \hline
+	Microsoft Corp. & -2.293e-02 & 0.252\\
+	Apple Inc. & 0.0337889 &  0.155\\
+	Gold & 0.0360663 &  0.0716\\
+	\hline
+    \end{tabular}
+\end{center}
+
+Visuose modeliuose pirmos eilės liekanų ankstiniai nereikšmingi.\\
+
+Autokoreliacijai patikrinti naudosime Durbin-Watson testą:
+
+
+
+
+\begin{center}
+    \begin{tabular}{ | l | l | l | }
+    \hline
+    $ aktyvas $ & $ D-W statistika $ & $ -value $  \\
+    \hline
+	Microsoft Corp. & 2.04577 &  0.24\\
+	Apple Inc. & 1.97393 &  0.54\\
+	Gold & 1.927601 &  0.076\\
+	\hline
+    \end{tabular}
+\end{center}
+
+Liekanos nėra autokoreliuotos su savo pirmos eilės ankstiniais.\\
+
+Normalumui tikrinti naudosime Jarque-Bera arba Kolmogorov-Smirnov testą.
+
+
+
+
+\begin{center}
+    \begin{tabular}{ | l | l | l | }
+    \hline
+    $ aktyvas $ &  $ X^2 $  & $ p-value $  \\
+    \hline
+	Microsoft Corp. & 8683.798 & < 2.2e-16\\
+	Apple Inc. & 3384.751 & < 2.2e-16\\
+	Gold & 1593.331 & < 2.2e-16\\
+	\hline
+    \end{tabular}
+\end{center}
+
+P-reikšmės testuose rodo, kad liekanos nėra pasiskirsčiusios pagal normalųjį skirstinį. Galbūt liekanų pasiskirstymas
+reiškia, kad rinkos akcijų kainų pokyčiai mažai sutampa su įmonių akcijų vertės pakitimais.
+\newpage
+\section{Optimalaus portfelio paieška}   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Portfeliai iš dviejų aktyvų}
+
+Iš pradžių ieškosime optimalių portfelių tarp dviejų aktyvų. Formulė ~\cite{cope} $$a^{\ast}= \frac{\sigma_y^2 - r_{xy}\sigma_x \sigma_y}{\sigma^2_x + \sigma^2_y - 2r_{xy}\sigma_x \sigma_y}$$
+randa optimaliausią įmonės $x$ akcijų  procentą portfelyje. Dar pakombinuosime aktyvus ir nerizikingus iždo vekselius - kokią dalį portfelyje turėtų sudaryti aktyvas ir iždo vekselis. Skaičiavimai su R programa pateikti priede (1-oje skiltyje). \\
+
+Žymėjimai:
+
+P \#1 - Apple Inc. akcijų ir aukso portfelis
+
+P \#2 - Apple Inc. ir Microsoft Corp. akcijų portfelis
+
+P \#3 - Microsoft Corp. ir auksas
+
+P \#4 - Apple Inc. ir nerizikingas aktyvas (iždo vekselis)
+
+P \#5 - Microsoft Corp. ir nerizikingas aktyvas
+
+P \#6 - Auksas ir nerizikingas aktyvas
+
+\begin{table}[ht]
+\begin{center}
+\begin{tabular}{ccccccc}
+  \hline
+ & P \#1 & P \#2 & P \#3 & P \#4 & P \#5 & P \#6 \\ 
+  \hline
+Apple Inc. & 18,83 \% & 25,08 \% &  & 0,041 \%  & & &\\
+\hline
+ Microsoft Corp. &  & 74,92 \% & 28,88 \% & & 0,076 \% & & \\ 
+   \hline
+   Auksas & 81,17 \% & & 71,12 \% & & & 1,96 \% & \\
+   \hline
+   Vekselis & & & & 99,59 \% & 99,24 \% & 98,04 \% & \\
+   \hline
+   Grąžos & 0.00099 & 0.00060 & 0.00062 & 0.00186 & 0.00185 & 0.00184 &\\
+   \hline
+   Rizika (s.d.) & 0.0104 & 0.0180 & 0.0096 & 0.0017 & 0.0017 & 0.0017 &\\
+   \hline
+\end{tabular}
+\end{center}
+\caption{Portfelius sudarančių aktyvų procentai, jų grąžos ir rizika}
+\end{table}
+
+Aukso ir Apple Inc. portfelyje - 81,17 \% aukso ir 18,83 \% Apple akcijų
+
+Microsoft Corp. ir Apple Inc. portfelyje - 74,92 \% Microsoft Corp. akcijų  25,08 \% Apple Inc. akcijų
+
+Aukso ir Microsoft Corp. portfelyje - 71,12 \% aukso ir 28,88 \% Microsoft akcijų
+
+Visoms trims kombinacijoms su nerizikingu aktyvu tiek rizika, tiek grąža yra vienodos, o iždo vekselis sudaro beveik visą portfelį. \\
+
+
+
+Pataisymas: šiaip jau JAV iždo vekselių diskonto norma ilgą laiką buvo gan aukšta ir viršijo 1\%. Tačiau
+po 2008-ųjų metų rugsėjo 15 d. vekselių diskonto norma nukrito nuo 1.35 iki 0.28 ir vėliau tiek nebepakilo iki 2011-ųjų
+vasaros. Todėl būtų naudinga patikrinti optimalias vekselių ir aktyvų kombinacijas, kai vekselių pelningumas
+nėra toks didelis.
+
+\begin{table}[ht]
+\begin{center}
+\begin{tabular}{cccc}
+  \hline
+ & P \# 4 & P \# 5 & P \# 6 \\ 
+  \hline
+Apple Inc. & 0,04 \% &  &  &  \\
+\hline
+ Microsoft Corp. &  & 0,00 \% &  &  \\ 
+   \hline
+   Auksas & & & 0,04 \% &\\
+   \hline
+   Vekselis & 99,96 \% & 100 \% & 99,96 \% &\\
+   \hline
+   Grąžos & 0.001860 & 0.001860 & 0.001860 & \\
+   \hline
+   Rizika (stand. nuokrypis) & 0.00167 & 0.00167 & 0.001669 & \\
+   \hline
+\end{tabular}
+\end{center}
+\caption{Portfelių iš nerizikingo ir rizikingo aktyvo grąžos ir rizika}
+\end{table}
+
+Deja, iždo vekselių procentai portfeliuose nepakito labai smarkiai, grąžos ir standartiniai nuokrypiai liko beveik tokie patys, todėl liksime prie pradinių kombinacijų. Galbūt rezultatai nepasikeitė dėl nuo 2008 m. sumažėjusio vekselio ir padidėjusio įmonių standartinio nuokrypio.
+
+
+
+
+\begin{figure}[H]
+  \centering
+<<fig=TRUE,width=18,height=12,results=hide,echo=false>>=
+print(plot(sdevs,means, xlim=c(0.008,0.025), ylim=c(0, 0.002), ylab="Portfeliu grazu vidurkiai",xlab="Standartiniai nuokrypiai", lwd=3, col=7, type="l"))
+add=TRUE
+print(lines(sdevs2,means2, lwd=3, col=2))
+print(lines(sdevs3,means3, lwd=3, col=3))
+text(0.009,0.0006,"Auksas - Microsoft")
+text(0.012,0.001,"Auksas - Apple")
+text(0.018,0.0005,"Microsoft - Apple")
+@
+  \caption{Iliustracija: dviejų aktyvų kombinacijų rizika ir grąžos}
+  %\label{fig:11}
+\end{figure}  
+
+Iš šių kreivių galima matyti, jog net optimalus portfelis, sudarytas iš Apple Inc. ir Microsoft Corp. akcijų turi daug
+didesnę riziką ir tokią pat grąžą, kaip ir iš aukso bei Microsoft Corp. akcijų sudarytas portfelis. O vos padidinus riziką,
+iš Apple Inc. ir aukso akcijų sudaryto portfelio, galima gauti didesnę grąžą. Todėl optimaliausias pasirinkimas
+tarp portfelių, sudarytų iš dviejų aktyvų, yra Apple Inc. ir aukso akcijų kombinacija.
+
+           
+\subsection{Trijų aktyvų portfelis}
+ 
+\begin{figure}[H]
+  \centering
+<<fig=TRUE,width=16,height=10,results=hide,echo=false>>=
+print(plot(sdevs4,means4, lwd=2, xlab="Standartiniai nuokrypiai", ylab="Grazu vidurkiai"))
+text(0.00975, 0.0007, "i=3, j=8")
+@
+  \caption{Portfelio, sudaryto iš Apple, Microsoft ir aukso rizikos ir grąžos kombinacijos}
+  %\label{fig:10}
+\end{figure}
+
+Pav.: norint turėti portfelį su mažiausia rizika, reikėtų rinktis portfelio kombinaciją~\cite{cope}, grafike esančią kairiausiai. Kiti portfelio pasirinkimai priklauso nuo vartotojo rizikos preferencijos. \\
+
+Apytiksliai aktyvų svoriai optimaliame portfelyje, kai i=8 ir j=3:
+
+$ 0.1 \times (i-1) \times Microsoft + 0.1 \times (j-1) \times Auksas + (1 - (i-1) - (j-1)) \times  0.1 \times Apple$ \\
+
+% sd(0.7*gold[-891] + 0.2*apple + 0.1*microsoft[-891])
+
+
+Portfelio aktyvų svorius, kai aktyvų yra $n$ (šiuo atveju $n=3$) nėra lengva rasti, todėl pabandykime pritaikyti dviejų aktyvų optimalaus portfelio formulę: iš ankstesnio poskyrio turime optimalius svorius tarp dviejų aktyvų, dabar ieškome optimalios proporcijos tarp portfelio ir trečio aktyvo. \\
+
+
+Portfelių žymėjimai:
+
+P \# 7 = optimalus aukso ir Apple Inc. akcijų portfelis ir Microsoft Corp. akcijos
+
+P \#8 = optimalus Microsoft Corp. ir Apple Inc. akcijų portfelis ir auksas
+
+P \#9 = optimalus Microsoft Corp. akcijų ir aukso portfelis ir Apple Inc. akcijos.
+
+\begin{table}[ht]
+\begin{center}
+\begin{tabular}{cccccc}
+  \hline
+  & Apple Inc. & Microsoft Corp. & Auksas & Grąžos & Rizika (s.d.) \\ 
+  \hline
+P \# 7 & 15.18 \% & 19.41 \% & 65.41 \% & 0.0008311881 & 0.009586881 &\\
+\hline
+ P \# 8 & 7.764768 \% & 23.19523 \% & 69.04 \% & 0.0007334121 & 0.009427794 &\\ 
+\hline
+P \# 9 & 6.478507 \% & 27.00901 \% & 66.51249 \% & 0.0006976978 & 0.009455108 &\\
+\hline
+
+\end{tabular}
+\end{center}
+\caption{Portfeliai iš trijų aktyvų}
+\end{table}
+
+
+ Mažiausią standartinį nuokrypį, t.y. riziką turi aštuntas portfelis. Jį ir pasirinksime.
+ Portfelių konstravimo kodas su R paketu pateiktas priede (Nr. 4).\\
+
+
+Kombinacija su iždo vekseliais ir II portfeliu:
+
+P \# 10 = 97,04 \% * izdo-vekselis + 2,96 \% * portfelis2
+
+<<>>=
+portfolio=0.232*microsoft[-891] + 0.0776*apple + 0.6904*gold[-891] 
+
+(var(portfolio) - cor(portfolio, rkfree[-891]) * sd(rkfree) * sd(portfolio))/(var(rkfree) +  var(portfolio) - 2 * cor(portfolio, rkfree[-891]) * sd(rkfree) * sd(portfolio))
+@
+
+\pagebreak
+
+\begin{table}[ht]
+\begin{center}
+\begin{tabular}{ccc}
+  \hline
+ & \beta & Grąžos  \\ 
+  \hline
+Apple Inc. & 1.0291 & 0.0018077 &   \\
+\hline
+ Microsoft Corp. & 1.0047 &  0.000197 &  \\ 
+   \hline
+   Auksas & -0.03864 & 0.0007931 & \\
+   \hline
+   Vekselis & -0.0004271 & 0.00186 & \\
+   \hline
+   P 1 & 0.16243 & 0.000984 & \\
+   \hline
+   P 2 & 1.0111 & 0.00060198 & \\
+   \hline
+   P 3 & 0.26268 & 0.00062093 &  \\
+   \hline
+   P 4 & 0.2864 &  0.000733 & \\
+\end{tabular}
+\end{center}
+\caption{Aktyvų ir portfelių priklausomybė nuo rinkos svyravimų ($\beta$) ir jų pelningumas}
+\end{table}
+
+
+$\beta$ parodo, kaip įmonės akcijų ar portfelio rizikos premijos reaguoja į rinkos svyravimus:  kuo didesnė $\beta$, tuo aktyvas nestabilesnis ir rizikingesnis. \\
+
+Pateikta lentelė su įmonių, aukso bei portfelių $\beta$ koeficientais ir jų pelningumais.
+
+\begin{figure}[H]
+  \centering
+<<fig=TRUE,width=6,height=6,results=hide,echo=FALSE>>=
+plot(0,0, xlim=c(-0.0386358,1.05), ylim=c(0, 0.0018701), xlab="Betos", ylab="Grazu vidurkiai", type="l")
+text(cov(gold,market)/var(market), mean(gold),"Gold", col=7)
+text(cov(market,market)/var(market), mean(market),"Market", col=4)
+text(cov(microsoft,market)/var(market), mean(microsoft),"Microsoft", col=3)
+text(cov(apple,market[-891])/var(market), mean(apple),"Apple", col=2)
+
+text(cov(rkfree,market)/var(market), mean(rkfree),"Vekselis", col=5)
+text(cov(0.8117*gold[-891] + 0.1883*apple,market[-891])/var(market), mean(0.8117*gold[-891] + 0.1883*apple),"Portfelis 1", col=6)
+text(cov(0.7492* microsoft[-891]  +  0.2508*apple,market[-891])/var(market), mean(0.7492* microsoft[-891]  +  0.2508*apple),"Portfelis 2", col=8)
+text(cov(0.7112*gold + 0.2888*microsoft,market)/var(market), mean(0.7112*gold + 0.2888*microsoft),"Portfelis 3", col=9)
+text(cov(0.232*microsoft[-891] + 0.0776*apple + 0.6904*gold[-891],market[-891])/var(market), mean(0.232*microsoft[-891] + 0.0776*apple + 0.6904*gold[-891]),"Portfelis 4", col=11)
+@
+
+\caption{Rinkos, iždo vekselių ir įmoniu $\beta$ ir ją atitinkantis grąžų vidurkis}
+ % \label{fig:11}
+\end{figure}
+
+Iš lentelės investuotojas gali pasirinkti sau patraukliausią investavimo būdą: jei investuotojas nori gauti itin dideles grąžas, ir visiškai nekreipia dėmesio į įmonės priklausomybę nuo rinkos svyravimų, jis rinktųsi investiciją į Apple Inc. akcijas. Kita vertus, turimi empiriniai duomenys rodo, jog JAV iždo vekselio grąža yra itin didelė, o rizika ir priklausomybė nuo rinkos itin mažos, todėl vienareikšmiškai galima tarti, kad protingiausia ir naudingiausia investuoti į JAV trisdešimties dienų iždo vekselius.
+
+\pagebreak
+
+\subsection{Optimaliausių portfelių modeliai}
+
+
+Kandangi jau sudarėme optimaliausias kombinacijas tarp dviejų aktyvų ir
+pasirinkome trijų aktyvų portfelio svorius, galime sudaryti CAPM regresinius modelius ir pažiūrėti, kaip portfelių pelningumas priklauso nuo rinkos svyravimų. R kodas pateiktas priede. \\
+
+Regresiniai modeliai: \\
+
+Modelis 1: Portfelis-1$= \alpha + \beta \times \text{Rinkos rizikos premija}$
+
+Modelis 2: Portfelis-2$= \alpha + \beta \times \text{Rinkos rizikos premija}$
+
+Modelis 3: Portfelis-3$= \alpha + \beta \times \text{Rinkos rizikos premija}$
+
+Modelis 4: Portfelis-4$= \alpha + \beta \times \text{Rinkos rizikos premija}$ \\
+
+Čia:\\
+
+Portfelis-1 = 81,17 \% aukso + 18,83 \% Apple Inc. akciju
+
+Portfelis-2 = 74,92 \% Microsoft Corp. + 25,08 \% Apple Inc. akciju
+
+Portfelis-3 = 71,12 \% aukso + 28,88 \% Microsoft Corp. akciju
+
+Portfelis-4 = 7.764768 \% Apple Inc. + 23.19523 \% Microsoft Corp. + 69.04 \% aukso.\\
+
+
+
+<<echo=false, results=hide>>=
+goldapple = 0.8117*gold[-891] + 0.1883*apple 
+microapple = 0.7492* microsoft[-891]  +  0.2508*apple 
+goldmicro = 0.7112*gold + 0.2888*microsoft 
+goldmicroapple=0.232*microsoft[-891] + 0.0776*apple + 0.6904*gold[-891]
+
+goldapplerp = goldapple - rkfree[-891]
+microapplerp = microapple - rkfree[-891]
+goldmicrorp = goldmicro - rkfree
+goldmicroapplerp = goldmicroapple - rkfree[-891]
+
+
+goldapplemod = lm(goldapplerp~mrp[-891] )
+microapplemod = lm(microapplerp~mrp[-891] )
+goldmicromod = lm(goldmicrorp~mrp )
+goldmicroapplemod = lm(goldmicroapplerp~mrp[-891])
+
+
+microapple.table=xtable(microapplemod)
+goldapple.table=xtable(goldapplemod)
+goldmicro.table=xtable(goldmicromod)
+goldmicroapple.table=xtable(goldmicroapplemod)
+@
+
+
+\begin{table}[ht]
+\begin{center}
+\begin{tabular}{ccccc}
+  \hline
+ &   \alpha & \beta &  $R^2$ \\ 
+  \hline
+Modelis 1  & -0.0005723 & 0.1747229 & 0.05161 &  \\
+\hline
+(p-reiksmes) & (0.00549) & (0) & \\
+\hline
+ Modelis 2  & 0.0004989 & 1.0097165 & 0.5831 &  \\
+ \hline
+(p-reiksmes) & (0.0336) & (0) & \\
+   \hline
+   Modelis 3   & -0.0007624 & 0.2735671 & 0.1469 & \\
+   \hline
+(p-reiksmes) & (0) & (0)& \\
+   \hline
+   Modelis 4  & -0.0006102 & 0.2967395 & 0.1787 & \\
+   \hline
+  (p-reiksmes) & (0.00004) & (0) & \\
+   \hline
+   
+   
+\end{tabular}
+\end{center}
+\caption{Visų modelių laisvieji nariai, $\beta$ ir $R^2$}
+\end{table}
+
+<<echo=FALSE, results=hide>>=
+print(goldapple.table)
+@
+
+\begin{table}[ht]
+\begin{center}
+\begin{tabular}{rrrrr}
+\hline
+& Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\
+\hline
+(Intercept) & -0.0006 & 0.0002 & -2.78 & 0.0055 \\
+mrp[-891] & 0.1747 & 0.0150 & 11.66 & 0.0000 \\
+\hline
+\end{tabular}
+\end{center}
+\caption{Pirmojo regresinio modelio įvertiniai}
+\end{table}
+
+Pirmojo modelio koeficientas $\beta$=0.17, tai reiškia, kad portfelio aktyvų svyravimai mažai priklauso nuo rinkos
+akcijų kainų svyravimų, taigi portfelis gan patikimas. Laisvasis narys nereikųmingas, todėl galime jį prilyginti nuliui,
+kaip ir ankstesnėse interpretacijose, tai reiškia, kad portfelio rizikos premija lygi nuliui, jei rinkos rizikos premija
+nekinta. Mažas $R^2$ rodo, jog tik 5\% rinkos duomenų paaiškina portfelio akcijų kainų pokyčius, taigi portfelis
+turi didelį procentą nesisteminės rizikos.
+
+<<echo=FALSE, results=hide>>=
+print(microapple.table)
+@
+
+\begin{table}[ht]
+\begin{center}
+\begin{tabular}{rrrrr}
+\hline
+& Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\
+\hline
+(Intercept) & 0.0005 & 0.0002 & 2.13 & 0.0336 \\
+mrp[-891] & 1.0097 & 0.0171 & 59.09 & 0.0000 \\
+\hline
+\end{tabular}
+\end{center}
+\caption{Antrojo regresinio modelio įvertiniai}
+\end{table}
+
+Antrojo modelio $\beta$ = 1, todėl portfelio aktyvų svyravimai judės proporcingai su rinkos akcijų kainų svyravimais.
+Pakankamai didelis $R^2$=58\% reiškia, kad tiek procentų rinkos duomenų paaiškina šio portfelio aktyvų pelningumo
+svyravimus. Nuosmukio laikotarpiu tai ne pats geriausias portfelis, bet pakilimo metu gali būti gan pelningas.
+
+<<echo=FALSE, results=hide>>=
+print(goldmicro.table)
+@
+
+\begin{table}[ht]
+\begin{center}
+\begin{tabular}{rrrrr}
+\hline
+& Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\
+\hline
+(Intercept) & -0.0008 & 0.0002 & -4.21 & 0.0000 \\
+mrp & 0.2736 & 0.0132 & 20.74 & 0.0000 \\
+\hline
+\end{tabular}
+\end{center}
+\caption{Trečiojo regresinio modelio įvertiniai}
+\end{table}
+
+Trečiame modelyje $\beta$=0.27, taigi rinkos akcijų kainoms pakilus arba nukritus 1\%, portfelio aktyvų rizikos premijos
+proporcingai pakis daugiau nei ketvirčiu. P-reikšme prie laisvojo nario rodo, kad jis reikšmingas ir yra 
+neigiamas. Taigi rinkos akcijų rizikos premijoms nekintant, investuotojas iš portfelio gauna
+nuostolingą rizikos premiją (dėl didesnės iždo vekselio grąžos). Tad rinkos akcijų kainoms nekintant,
+pelningiau investuoti į iždo vekselius, ne tik į šį portfelį.
+
+<<echo=false, results=hide>>=
+print(goldmicroapple.table)
+@
+
+\begin{table}[ht]
+\begin{center}
+\begin{tabular}{rrrrr}
+\hline
+& Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\
+\hline
+(Intercept) & -0.0006 & 0.0002 & -3.49 & 0.0005 \\
+mrp[-891] & 0.2967 & 0.0127 & 23.31 & 0.0000 \\
+\hline
+\end{tabular}
+\end{center}
+\caption{Ketvirtojo regresinio modelio įvertiniai}
+\end{table}
+
+Trijų aktyvų kombinacijos portfelis panašus į aukso ir Microsoft Corp. portfelį. Čia $\beta$=0.29, taigi rinkai susvyravus 1\%,
+portfelio akcijos pakils arba nukris trečdaliu procento. Laisvasis narys vėl neigiamas ir reikšmingas, taigi
+rinkos akcijų pelningumui nekintant, investuotojo rizikos premija neigiama. $R^2$=0.17, taigi 17\% rinkos duomenų
+paaiškina portfelio rizikos premijų svyravimus.\\
+
+Apžvelgus rezultatus, galima daryti išvadą, jog krizės laikotapiu, kai rinkos akcijų kainos ir pelningumas krenta,
+saugiau investuoti į pirmą portfelį iš Apple Inc. akcijų ir aukso. Tačiau rinkos pakilimo laikotarpiu, antras portfelis
+iš Microsoft Corp. ir Apple Inc. akcijų gali būti pelningesnis už pirmąjį.
+
+
+\pagebreak
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage      
+\section{Rezultatai ir išvados}
+\newpage
+\section{Naudota literatūra ir kiti šaltiniai}
+
+\begin{thebibliography}{99}
+
+\bibitem{cope} Thomas E. Copeland, J. Fred Weston:
+\emph{Financial theory and corporate policy},
+Addison-Wesley Publishing Company,(2004)
+
+\bibitem{capm} Ernst R. Berndt:
+\emph{The Practice of Econometrics: Classic and Contemporary},
+Prentice Hall, (1991)
+
+\bibitem{aster} Dimitrios Asteriou:
+\emph{Applied econometrics},
+Palgrave macmillian, (2006)
+
+\bibitem{wiki} \href{http://en.wikipedia.org/wiki/Discount_rate}{http://en.wikipedia.org/wiki/Discount_rate}
+
+\bibitem{wikiposit} \href{http://wikiposit.org/w?filter=Finance}{http://wikiposit.org/w?filter=Finance}
+
+\end{thebibliography}
+
+\newpage
+
+
+\appendix
+
+\section{Pirmas priedas}
+Aprašomoji statistika:
 
 @
-<<results=hide, echo=false>>=
+<<>>=
 
 mean(rkfree)
 mean(market)
@@ -356,100 +1323,190 @@ cor(mrp[-891], applerp)
 cor(mrp, goldrp)
 @
 
-
-
-
-\section{Kapitalo aktyvų įvertinimo modelis}
-
-Viena iš kapitalo aktyvu įvertinimo modelio (\textit{Capital aset pricing model} - CAPM) israiskų - paprasta vieno kintamojo regresija. Pasinaudojus ja, tirsime imonių akcijų ir aukso rizikos premijų priklausomybę nuo rinkos rizikos premijų.
-Modeliuose pateiktas laisvasis narys $\alpha$   ir koeficientas  $\beta$ .
-
-
+\section{Antras priedas}
+Modeliai:
 <<>>=
+
 microsoftmod = lm(microsoftrp~mrp)
 applemod = lm(applerp~mrp[-891])
 goldmod = lm(goldrp~mrp)
-@
 
-<<>>=
 summary(microsoftmod)
-@
-Gautas $\beta$ koeficientas lygus 1.004 ir yra reikšmingas. Tai reiskia, jog rinkos rizikos premijai pakilus ar nukritus 1\%, Microsoft Corp. rizikos premijos taip pat pakils 1\%. Laisvasis narys beveik lygus nuliui ir nereikšmingas,
-tai neprieštarauja CAPM teorijai ir logikai - jei rinkos rizikos premija lygi nuliui, tai investuotojo i Microsoft Corp. šansai gauti rizikos premiją yra labai maži.
-$R^2$= 0.5197, tai reiškia, kad 51,97\% rinkos duomenų paaiškina Microsoft Corp. rizikos premijų svyravimus, t.y. sudaro sisteminę (rinkos) riziką. Likusi specifinė rizika priklauso nuo kitų įmonės charakteristikų.
-<<>>=
 summary(applemod)
-@
-Koeficientas $\beta$, kaip ir Microsoft Corp. imonės, lygus 1.027 ir yra reikšmingas (0<0.005). Taigi rinkos akcijų vertei susvyravus 1\%, Apple
-Inc. irgi gali patirti panašų akcijų kainos pokytį. Laisvasis narys labai arti nulio ir nereikšmingas,
-taigi investuotojas pasirinkęs Apple Inc. akcijas negali tikėtis jokios rizikos premijos, kai rinkos akcijų vertės
-pokytis lygus nuliui.
-Visgi  $R^2$ nėra labai didelis - tik 30\% rinkos duomenų paaiškina Apple Inc. akcijų vertės svyravimus.
-<<>>=
 summary(goldmod)
-@
-Visai kitoks rezultatas gaunamas sudarius aukso rizikos premijų priklausomybės nuo rinkos rizikos premijų modelį.
-Šįkart $\beta=-0.023$ ir tai reikštų, kad aukso kainos ne tik mažai priklauso nuo rinkos akcijų vertės svyravimų,
-bet netgi juda priešinga linkme. Tai gali pasirodyti kaip itin patraukli investicija nuosmukio laikotarpiu.
-Tačiau koeficiento p-reiksmė = 0.183 > 0.05, taigi negalima atmesti $H_0$ hipotezės, kad $\beta=0$. Bet ir
-priėmus šią hipotezę, galima tarti, kad aukso kainos mažai priklauso nuo rinkos svyravimų.
-Laisvasis narys šįkart -0.011 ir p-reiksmė rodo, kad jis reikšmingas. Toks rezultatas kiek prieštarauja CAPM logikai - rinkos akcijų vertėms nesikeičiant, aukso rizikos premija neigiama. Galbūt tai galetų reikšti,
-kad dieninis aukso pelningumas itin nedidelis.
-$R^2$= 0.0007 - itin maža reiksmė, patvirtinanti, kad rinka beveik nepaaiškina aukso kainų pokyčių, taigi 
-visa aukso pelningumo rizika sisteminė - priklauso nuo kitų desnių/charakteristikų.
 
-\subsection{Sudarytų modelių liekanų tikrinimas}
-
-Liekanos turi buti homoskedastiškos, ne autokoreliuotos ir pasiskirsčiusios pagal normalųjį skirstinį.
-
-\begin{figure}[H]
-  \centering
-<<fig=TRUE,width=12,height=6,results=hide,echo=false>>=
-print(plot(goldmod$res, main="Aukso modelio liekanos", ylab="Liekanos"))
-@
-  \caption{Aukso modelio liekanos nera heteroskedastiskos}
-  \label{fig:10}
-\end{figure}
-
-
-Ar liekanos turi slenkanti vidurki:
-kodus i prieda, pateikti tik koef reiksmes prie L ankstiniu. krc nesupranku ka cia pridirbai, tai pati sukelk.
-
-<<>>=
  summary(dynlm(ts(applerp)~ts(mrp)+L(ts(applemod$res),1)))
  summary(dynlm(ts(microsoftrp)~ts(mrp)+L(ts(microsoftmod$res),1)))
  summary(dynlm(goldrp~mrp+L(ts(goldmod$res),1)))
-@
-
-Visuose modeliuose pirmos eilės liekanų ankstiniai nereikšmingi.\\
-
-Autokoreliacijai patikrinti naudosime Durbin-Watson testą:
-irgi kodus i prieda, pateikti tik koef reiksmes
-
-<<>>=
+ 
 durbinWatsonTest(microsoftmod, max.lag=1)
 durbinWatsonTest(applemod, max.lag=1) 
 durbinWatsonTest(goldmod, max.lag=1)  
 
-@
-Liekanos nėra autokoreliuotos su savo pirmos eilės ankstiniais.\\
-
-Normalumui tikrinti naudosime Jarque-Bera arba Kolmogorov-Smirnov testą.
-
-
-<<>>=
 jarque.bera.test(microsoftmod$res)
 jarque.bera.test(applemod$res)
 jarque.bera.test(goldmod$res)
 @
 
-P-reikšmės testuose rodo, kad liekanos nėra pasiskirsčiusios pagal normalųjį skirstinį. Galbūt liekanų pasiskirstymas
-reiškia, kad rinkos akcijų kainų pokyčiai mažai sutampa su įmonių akcijų vertės pakitimais.
+\section{Trečias priedas}
+Portfeliai:
 
-\section{Optimalaus portfelio paieška}        
-\section{Rezultatai ir išvados}
-\section{Naudota literatūra}
-\section{Priedai}
+
+
+ Aktyvo $x$ dalis portfelyje iš dviejų aktyvų
+
+<<echo=FALSE>>=
+cbind((var(apple) - cor(apple,gold[-891])*sd(gold)*sd(apple))/(var(gold)+var(apple) - 2*cor(apple,gold[-891])*sd(gold)*sd(apple)),
+      (var(apple) - cor(apple,microsoft[-891])*sd(microsoft)*sd(apple))/(var(microsoft)+var(apple) - 2*cor(apple,microsoft[-891])*sd(microsoft)*sd(apple)),
+      (var(microsoft) - cor(microsoft,gold)*sd(gold)*sd(microsoft))/(var(gold)+var(microsoft) - 2*cor(microsoft,gold)*sd(gold)*sd(microsoft)))
+@
+
+<<echo=FALSE>>=
+vek1=(var(apple) - cor(apple,rkfree[-891])*sd(rkfree)*sd(apple))/(var(rkfree)+var(apple) - 2*cor(apple,rkfree[-891])*sd(rkfree)*sd(apple))
+vek2=(var(microsoft) - cor(microsoft,rkfree)*sd(rkfree)*sd(microsoft))/(var(rkfree)+var(microsoft) - 2*cor(microsoft,rkfree)*sd(rkfree)*sd(microsoft))
+vek3=(var(gold) - cor(gold,rkfree)*sd(rkfree)*sd(gold))/(var(rkfree)+var(gold) - 2*cor(gold,rkfree)*sd(rkfree)*sd(gold))
+
+cbind(vek1, vek2, vek3)
+@
+
+ Iždo vekselio procentas portfelyje iš dviejų aktyvų 
+
+<<echo=FALSE>>=
+cbind((var(apple[1783:2499]) - cor(apple[1783:2499],rkfree[1783:2499])*sd(rkfree[1783:2499])*sd(apple[1783:2499]))/(var(rkfree[1783:2499])+var(apple[1783:2499]) - 2*cor(apple[1783:2499],rkfree[1783:2499])*sd(rkfree[1783:2499])*sd(apple[1783:2499])),
+(var(microsoft[1783:2500]) - cor(microsoft[1783:2500],rkfree[1783:2500])*sd(rkfree[1783:2500])*sd(microsoft[1783:2500]))/(var(rkfree[1783:2500])+var(microsoft[1783:2500]) - 2*cor(microsoft[1783:2500],rkfree[1783:2500])*sd(rkfree[1783:2500])*sd(microsoft[1783:2500])),
+(var(gold[1783:2500])-cor(gold[1783:2500],rkfree[1783:2500])*sd(rkfree[1783:2500])*sd(gold[1783:2500]))/(var(rkfree[1783:2500])+var(gold[1783:2500]) - 2*cor(gold[1783:2500],rkfree[1783:2500])*sd(rkfree[1783:2500])*sd(gold[1783:2500])))
+@
+
+ Apytikslės koeficientų reikšmės portfelyje iš dviejų įmonių
+
+
+
+\begin{figure}[H]
+  \centering
+<<fig=TRUE,width=18,height=12,results=hide,echo=false>>=
+print(plot(sdevs, col=3, ylim=c(0.009, 0.025),ylab="Standartiniai nuokrypiai",type="l"))
+add=TRUE
+print(lines(sdevs2, col=2))
+print(lines(sdevs3, col=7))
+
+text(8, 0.01,"Auksas - Microsoft")
+text(3, 0.01,"Auksas - Apple")
+text(5, 0.02,"Microsoft - Apple")
+
+@
+  \caption{...}
+  
+\end{figure}
+
+(gal nereikia)
+Iliustracija: pagal grafikus rinktis ta skaiciu, ties kuriuo standartinis nuokrypis maziausias, ji istatyti vietoje i.
+
+\textit{optimaliausias portfelis} = $imone1 \times i \times 0.1 + imone2 \times (1 - i\times 0.1)$ \\
+
+
+$0.1 \times (i-1) \times Auksas + (1-0.1 \times (i-1)) \times Microsoft$
+
+$0.1 \times (i-1) \times Apple + (1-0.1 \times (i-1)) \times Microsoft$
+
+$0.1 \times (i-1) \times Apple + (1-0.1\times (i-1)) \times Auksas$
+
+\item Trijų aktyvų portfelio paieška 
+
+I variantas:
+
+<<>>=
+folio=0.8117 * gold[-891] + 0.1883 * apple
+
+(var(microsoft) - cor(microsoft[-891], folio) * sd(folio) * sd(microsoft))/(var(folio) +
++ var(microsoft) - 2 * cor(microsoft[-891], folio) * sd(folio) * sd(microsoft))
+@
+
+80,59 \% folio ir 19,41 \% microsoft
+
+80.59* 0.8117 aukso
+
+80.59* 0.1883 apple
+<<>>=
+sd((65.41*gold[-891] + 15.18*apple + 19.41*microsoft[-891])/100)
+@
+
+
+II variantas
+
+<<>>=
+
+folio = 0.7492* microsoft[-891] + 0.2508 * apple
+(var(folio) - cor(folio, gold[-891]) * sd(gold) * sd(folio))/(var(gold) +
++ var(folio) - 2 * cor(folio, gold[-891]) * sd(gold) * sd(folio))
+@
+
+69.04 \% aukso ir 30.96 \% folio
+
+30.96* 0.7492 = 23.19523 \% microsoft
+
+30.96* 0.2508 = 7.764768 \% apple
+<<>>=
+sd((23.19523*microsoft[-891] + 7.764768*apple + 69.04*gold[-891])/100)
+@
+
+III variantas
+
+
+<<>>=
+folio = 0.2888*microsoft + gold* 0.7112
+(var(folio) - cor(folio[-891], apple) * sd(apple) * sd(folio))/(var(apple) + var(folio) - 2 * cor(folio[-891], apple) * sd(apple) * sd(folio))
+@
+
+
+6.478507 \% apple
+
+93.5215 * 0.2888 = 27.00901 \% microsoft
+
+93.5215 * 0.7112 = 66.51249 \% aukso
+
+<<>>=
+sd((6.478507*apple + 27.00901*microsoft[-891] + 66.51249*gold[-891])/100)
+@
+
+ Portfelių regresinių modelių R kodas
+
+<<>>=
+summary(goldapplemod)
+summary(microapplemod)
+summary(goldmicromod)
+summary(goldmicroapplemod)
+@
+
+ Portfelių regresijos R kodas
+
+<<>>=
+goldapple = 0.8117*gold[-891] + 0.1883*apple 
+microapple = 0.7492* microsoft[-891]  +  0.2508*apple 
+goldmicro = 0.7112*gold + 0.2888*microsoft 
+goldmicroapple=0.232*microsoft[-891] + 0.0776*apple + 0.6904*gold[-891]
+
+goldapplerp = goldapple - rkfree[-891]
+microapplerp = microapple - rkfree[-891]
+goldmicrorp = goldmicro - rkfree
+goldmicroapplerp = goldmicroapple - rkfree[-891]
+
+
+goldapplemod = lm(goldapplerp~mrp[-891] )
+microapplemod = lm(microapplerp~mrp[-891] )
+goldmicromod = lm(goldmicrorp~mrp )
+goldmicroapplemod = lm(goldmicroapplerp~mrp[-891])
+
+
+microapple.table=xtable(microapplemod)
+goldapple.table=xtable(goldapplemod)
+goldmicro.table=xtable(goldmicromod)
+goldmicroapple.table=xtable(goldmicroapplemod)
+
+
+
+
+
+@
 \end{document}
 
            
