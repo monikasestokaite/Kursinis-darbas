@@ -699,6 +699,15 @@ Mažiausiai su rinkos kainomis koreliuoja aukso kainos (-0.04482454). Šis korel
 Viena iš kapitalo aktyvų įvertinimo modelio (\textit{Capital Aset Pricing Model} -- CAPM) išraiškų -- paprasta vieno kintamojo regresija. Pasinaudojus ja, tirsime imonių akcijų ir aukso rizikos premijų priklausomybę nuo rinkos rizikos premijų. Visos R paketo komandos ir lentelės, naudotos šiame skyriuje, pateiktos \ref{B 1} priede.
 Modeliuose pateiktas laisvasis narys $ \alpha $   ir koeficientas  $ \beta $ .
 
+Sudarysime tokius regresinius modelius:
+
+Microsoft rizikos premija $= \alpha + \beta \times $ rinkos rizikos premija
+
+Apple rizikos premija $= \alpha + \beta \times $ rinkos rizikos premija
+
+Aukso rizikos premija $= \alpha + \beta \times $ rinkos rizikos premija
+
+
 
 \begin{table}[ht]
 \begin{center}
@@ -758,6 +767,12 @@ Laisvasis narys šįkart -0.011 ir p--reiksmė rodo, kad jis reikšmingas. Toks 
 kad dieninis aukso pelningumas itin nedidelis.
 $ R^2 $= 0.0007 -- itin maža reikšmė, patvirtinanti, kad rinka beveik nepaaiškina aukso kainų pokyčių, taigi 
 visa aukso pelningumo rizika sisteminė -- priklauso nuo kitų charakteristikų.
+
+Taigi, abiejų įmonių Microsoft Corp. ir Apple Inc. akcijų rizikos premijos panašiai priklauso nuo rinkos svyravimų - rinkos rizikos premijai pasikeitus 1\%, įmonių akcijų rizikos premija taip pat pakis apie 1\%. Kadangi Apple Inc. akcijų grąža didesnė, tai iš dviejų, panašius koeficientus turinčių įmonių, verta pasirinkti Apple Inc. Investavus į šios įmonės akcijas 100 \$, galima gauti 0,18 \$ per dieną. Tai pelningiausias aktyvas, bet kartu ir rizikingiausias.
+
+Aukso rizikos premija rodo atvirkštinę nestiprią priklausomybę nuo rinkos rizikos premijos - taigi į auksą palanku investuoti krizės laikotarpiu. Pagal modelio pateiktą koeficientą, rinkos rizikos premijai nukritus 1\%, aukso rizikos premija išauga 0,02. Vis dėlto koeficiento $\beta$ p-reikšmė rodo, jog koeficientas nereikšmingas, tad galime sušvelninti sąlygą ir teigti, kad rinkos rizikos premijai nukritus 1\%, aukso rizikos premija nekinta arba priklauso nuo kitų faktorių. Į auksą investavus 100 \$, galima gauti 0,07 \$ per dieną.
+
+
 
 \subsection{Sudarytų modelių liekanų tikrinimas}
 
@@ -1261,9 +1276,15 @@ portfelio akcijos pakils arba nukris trečdaliu procento. Laisvasis narys vėl n
 rinkos akcijų pelningumui nekintant, investuotojo rizikos premija neigiama. $R^2$=0.17, taigi 17\% rinkos duomenų
 paaiškina portfelio rizikos premijų svyravimus.\\
 
-Apžvelgus rezultatus, galima daryti išvadą, jog krizės laikotapiu, kai rinkos akcijų kainos ir pelningumas krenta,
-saugiau investuoti į pirmą portfelį iš Apple Inc. akcijų ir aukso. Tačiau rinkos pakilimo laikotarpiu, antras portfelis
-iš Microsoft Corp. ir Apple Inc. akcijų gali būti pelningesnis už pirmąjį.
+
+Labiausiai nuo rinkos svyravimų priklauso portfelis, sudarytas iš Microsoft Corp. ir Apple Inc. kompanijų akcijų. 
+Į jį pelninga investuoti rinkos pakilimo laikotarpiu, nes rinkos rizikos premijai pakilus 1\%, portfelio rizikos premija
+taip pat išaugs 1\%. Investavus 100 \$, galima gauti 0,06\$ per dieną. Tačiau jis visiškai nepelningas krizės 
+laikotarpiu. Tada investuotojui palankiau rinktis pirmąjį portfelį,sudarytą iš aukso ir Apple Inc. akcijų, kuris nuo 
+rinkos svyravimų priklauso mažiausiai iš keturių portfelių. Rinkos rizikos premijai nukritus 1\%, šio portfelio rizikos 
+premija pagal modelį nukris tik 0.17 \%, o į jį investavus 100 \$, galima gauti 0,09\$ per dieną - tai yra didžiausia 
+grąža iš visų keturių portfelių.
+
 
 
 \pagebreak
@@ -1285,6 +1306,17 @@ iš Microsoft Corp. ir Apple Inc. akcijų gali būti pelningesnis už pirmąjį.
 
 \newpage      
 \section{Rezultatai ir išvados}
+
+1. Naudodami CAP modelį, patikrinome aukso bei dviejų kompanijų - Microsoft Corp. ir Apple Inc. akcijų rizikos premijų priklausomybę nuo rinkos rizikos premijų. Auksas nuo rinkos svyravimų priklauso mažiausiai (arba, kaip rodo modelis, iš vis nepriklauso), o kompanijų akcijos svyruoja panašiai kaip ir rinka.
+
+
+2. Radome optimalias, t.y. mažiausią riziką turinčias, kombinacijas tarp dviejų aktyvų ir patikrinome jų rizikos premijos priklausomybę nuo rinkos rizikos premiją. Geriausias portfelis sudarytas iš aukso ir Apple Inc. akcijų. Jo pelningumas didžiausias ir jis mažiausiai priklauso nuo rinkos nestabilumo. Kita vertus, pagal CAP modelį, pelningas gali būti ir antras portfelis, su sąlyga, kad rinkos rizikos premija nuolat kyla.
+
+
+3. Jei investuotojas gali rinktis ne tik investiciją į kurį nors rinkos aktyvą, bet ir į nerizikingą iždo vekselį, tai pagal CAP modelį ir kitus rodiklius (pelningumą, rizikos minimalumą) tai yra geriausia investicija. Trisdešimties dienų JAV iždo vekselis turi didžiausią grąžą, mažiausią riziką, mažai priklauso nuo rinko svyravimų, o bet kuri portfelio kombinacija su iždo vekseliu taip pat nerizikinga iri pelningesnė už kitų aktyvų portfelių kombinacijas. Tačiau verta pastebėti, kad tokie rezultatai atspindi duomenis nuo 2001 iki 2011 metų, o per pakilimo laikotarpį iždo vekselių pelningumas buvo itin didelis. Nuo 2008 metų pelningumas smarkiai krito, nors rizika nepakito ir liko maža.
+
+
+
 \newpage
 \section{Naudota literatūra ir kiti šaltiniai}
 
