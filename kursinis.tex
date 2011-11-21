@@ -1,254 +1,1072 @@
-
 \documentclass[12pt, a14paper, lithuanian]{article}
+
+
+\usepackage[utf8]{inputenc}
+\usepackage[L7x]{fontenc}
+\usepackage[lithuanian]{babel}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{theorem}
+\usepackage{bm}
+\usepackage[unicode]{hyperref}
 \usepackage{float}
 \usepackage{Sweave}
+\usepackage{setspace}
+\usepackage{color}
+\usepackage{url}
+\usepackage{indentfirst}
+
+
 \begin{document}
 
+\begin{titlepage}
+\centerline{ \large VILNIAUS UNIVERSITETAS}
+\bigskip
+\centerline{\large MATEMATIKOS IR INFORMATIKOS FAKULTETAS}
+\smallskip
 
-  
+\centerline{\large  EKONOMETRINĖS ANALIZĖS KATEDRA}
+\vskip 200pt
+\centerline{ \large Monika \textsc{Šeštokaitė} ir \large Simona \textsc{Plonytė}}
+\vskip 50pt
+\centerline{\bf \Large CAPM ir akcijų portfelio konstravimas}
+\bigskip
+\vskip 25pt
+\centerline{Kursinio darbo vadovas prof. \large {Remigijus} \textsc{Leipus}}
+\vskip 25pt
+\hfill Ekonometrija, III kursas, I grupė
+\vskip 100pt
+\centerline{\large VILNIUS 2011}
+\end{titlepage}
 
-\section{Grafikai}
-\subsection{Treasury bill}
-\begin{Schunk}
-\begin{Sinput}
-> Tbill_rate_ts = ts(data$Tbill, start = 2001, frequency = 356)
-\end{Sinput}
-\end{Schunk}
+
+
+\tableofcontents
+\newpage
+
+
+
+\section{Įvadas}
+\newpage
+\section{CAPM}
+\newpage
+\section{Duomenys}
+\subsection{JAV 30--ies dienų iždo vekseliai}
+
+JAV vieno mėnesio iždo vekselius laikysime nerizikinga investicija. Nagrinėjami dieniniai duomenys nuo 2001 rugpjūčio 1 d. iki 2011 metų liepos pabaigos.
+Kadangi JAV iždo vekselių duomenys pateikti kaip dieninė diskonto norma antrinėje rinkoje, vekselių pelningumą galima apskaičiuojant naudojant dvi patogias formules:
+
+
+$$P = 100 - \left( 100 \times \frac{d \times t}{360}\right) .$$\\
+
+Pasinaudojus šia formule iš diskonto normos išreiškiame kainą -- iš nominalo atimtą nuolaidą. 
+Čia nominalas lygus 100, $P$ -- iždo vekselio kaina, $d$ -- iždo vekselio diskonto norma,
+$t$ -- periodo dienų skaičius (mūsų atveju, 30 dienų). 
+Turėdami kainą, galime rasti iždo vekselio pelningumą:
+
+$$Y = \frac{100 - P}{P} \times \frac{365}{t}.$$\\
+
+Čia  $Y$ -- iždo vekselio pelningumas, $t = 30$. \\
+
+1 pav. vaizduojamos JAV iždo vekselių dieninės grąžos.
+   
 \begin{figure}[H]
   \centering
 \includegraphics{kursinis-003}
-  \caption{...}
+  \caption{JAV 30--ies dienų iždo vekselių pelningumas}
   \label{fig:1}
 \end{figure}
-           
 
-\subsection{SP500}
-\begin{Schunk}
-\begin{Sinput}
-> SP500_price_ts = ts(data$SP500_price, start = 2001, frequency = 356)
-> SP500_return_ts = ts(data$SP500, start = 2001, frequency = 356)
-\end{Sinput}
-\end{Schunk}
+Grafikas gana išraiškingai atspindi nuo 2004 m. prasidėjusį ekonomikos pakilimą, išaugusį vartojimą ir analogiškas
+JAV vyriausybės pastangas pritraukti investuotojus didelėmis palūkanų normomis -- iždo vekselių pelningumu.
+Vekselių pelningumas pasiekė aukščiausią lygį 2006 m., iki 2007 m. išlaikė pakankamai aukštą lygį, tačiau nuo 2007 m.
+palaipsniui mažėjo, kol galiausiai 2008 m. iždo vekselių pelningumas nukrito iki žemiausio lygio nuo 2001 m. \\
+Pateikiame JAV 30--ies dienų iždo vekselių duomenis\cite{tbills}.
+
+\subsection{Indekso Standard \& Poor's 500 akcijų dieninės kainos ir grąžos}
+
+JAV įmonių indeksas Standard \& Poor's 500 atstovaja Jungtinių Amerikos valstijų
+rinką. Indeksą sudaro 500 įmonių, gaunančių daugiau nei \$5 mlrd. pelną; tarp jų -- Adobe Systems Inc.,
+Amazon.com Inc., Apple Inc., Coca Cola Co. ir kitos. \\
+
+
 \begin{figure}[H]
   \centering
 \includegraphics{kursinis-005}
-  \caption{...}
+  \caption{S \& P 500 dieninės akcijų kainos 2001--2011 m.}
   \label{fig:2}
 \end{figure}
+
+Indekso dieninių akcijų grąžų grafikas (2 pav.) neblogai atspindi rinkos būklę Jungtinėse Amerikos valstijose per pastaruosius dešimt metų. Nuo 2002 metų vidurio stebimas stabilus rinkos akcijų pelningumo didėjimas, o nuo 2007 metų -- stabilus, bet kiek staigesnis pelningumo mažėjimas.
+Taip pat gana ryškiai pastebima ir 2008--2009 metų rinkos krizė bei po jos prasidėjęs įmonių akcijų pelningumo augimas.
+
 \begin{figure}[H]
   \centering
 \includegraphics{kursinis-006}
-  \caption{...}
+  \caption{Standard \& Poor's 500 dieninės akcijų grąžos}
   \label{fig:3}
 \end{figure}
-             
 
-\subsection{Microsoft}
-\begin{Schunk}
-\begin{Sinput}
-> Microsoft_price_ts = ts(data$Microsoft_price, start = 2001, frequency = 356)
-> Microsoft_return_ts = ts(data$Microsoft, start = 2001, frequency = 356)
-\end{Sinput}
-\end{Schunk}
+3 pav. vaizduojamos rinkos dieninės akcijų grąžos. Didesnis nei vidutinis gražų dispersijos padidėjimas
+taip pat sutampa su 2008--2009 metų krizės laikotarpiu. Dieninės grąžos stabiliausios 2003--2007 metų periodu,
+o tai irgi sutampa su stabilumo laikotapiu JAV ekonomikoje.    \\
+
+Pateikiami indekso Standard \& Poor's 500 dienininiai duomenys\cite{market}.
+
+\subsection{Microsoft Corp.}
+
+Viena is CAPM modelio tyrimui pasirinktų įmonių -- Microsoft Corp. Tai viena didžiausių programinę įrangą
+ gaminančių kompanijų, turinti savo atstovybę ir Lietuvoje. \\
+ 
+ 4 pav. pateiktos šios įmonės dieninių akcijų kainos
+ bei dieninių akcijų grąžos.
+ 
 \begin{figure}[H]
   \centering
 \includegraphics{kursinis-008}
-  \caption{...}
+  \caption{Microsoft Corp. dieninės akcijų kainos 2001--2011 m.}
   \label{fig:4}
 \end{figure}
+
+Microsoft Corp. akcijų kainos pasižymi gana periodiškais svyravimais iki maždaug 2005 m. pabaigos. Nuo 2006 m.
+akcijų kaina gerokai pakilo ir 2007 metais pasiekė aukščiausią lygį. Tačiau tikriausiai šią įmonę taip pat paveikė
+krizė ir nuo 2007 iki 2008 metų vidurio akcijų kainos krito, kol pasiekė žemiausią lygį. Toliau stebime stabilų
+akcijų kainų kilimą iki 2011 metų vasaros.
+
 \begin{figure}[H]
   \centering
 \includegraphics{kursinis-009}
-  \caption{...}
+  \caption{Microsoft Corp. dieninės akcijų grąžos 2001--2011 m. }
   \label{fig:5}
 \end{figure}
              
+Microsoft Corp. dieninės akcijų grąžos (5 pav.), taip pat kaip ir Standard \& Poor's, neblogai atspindi stabilumo ir
+krizės laikotarpius, o kelios išskirtys susijusios su individualiomis imonės charakteristikomis. \\
 
-\subsection{Apple}
-\begin{Schunk}
-\begin{Sinput}
-> Apple_price_ts = ts(data$Apple_price, start = 2001, frequency = 356)
-> Apple_return_ts = ts(data$Apple, start = 2001, frequency = 356)
-\end{Sinput}
-\end{Schunk}
+Pateikiami Microsoft Corp. akcijų kainų dienininiai duomenys~\cite{microsoft} .
+
+
+\subsection{Apple Inc.}
+
+Kita įmonė, pasirinkta CAPM modelio tyrimui -- Apple Inc. Tai kompanija, siūlanti plataus vartojimo elektronikos
+ir programinės įrangos produktus. \\
+6 pav. ir 7 pav. pateikti Apple Inc. dieninių akcijų
+kainų bei dieninių akcijų grąžų grafikai.
+
 \begin{figure}[H]
   \centering
 \includegraphics{kursinis-011}
-  \caption{...}
+  \caption{Apple Inc. dieninės akcijų kainos 2001--2011 m.}
   \label{fig:6}
 \end{figure}
+
+Apple Inc. dieninių akcijų kainų svyravimai kiek skiriasi nuo S\&P 500 ar Microsoft akcijų kainų. Pastaruosius
+keletą metų šios kompanijos akcijų kainos stabiliai kilo ir net krizės laikotarpiu nepasiekė žemiausios
+kainos per dešimties metų laikotarpį. Svarbi data duomenų tyrimui -- 2005 vasario 5 d. Šią dieną Apple Inc.
+padvigubino akcijų kiekį už tą pačią kainą, t.y. jei iki padalijimo viena akcija kainavo \$88, tai po padalijimo
+už tą pačią kainą investuotojas jau galėjo įsigyti dvi akcijas (po \$44 už vieną). Spėjama, jog Apple Inc.
+tokiu veiksmu norėjo pritraukti naujų investuotojų.
+
 \begin{figure}[H]
   \centering
 \includegraphics{kursinis-012}
-  \caption{...}
+  \caption{Apple Inc. dieninės akcijų grąžos 2001--2011 m.}
   \label{fig:7}
 \end{figure}
              
+Šiame grafike pateikiamos dieninės akcijų grąžos, be 891--ojo duomens (pašalinta išskirtis, atsiradusi dėl akcijų kiekio padvigubinimo). Galima pastebėti pakankamai stabilią ir, lyginant su anksčiau pateiktais duomenimis, nemažą duomenų dispersiją, o kelios išskirtys turbūt susijusios su pavieniais įmonės sprendimais, ivykiais arba rezonavo su krize. \\
 
-\subsection{Gold}
-\begin{Schunk}
-\begin{Sinput}
-> Gold_price_ts = ts(data$Gold_price, start = 2001, frequency = 356)
-> Gold_return_ts = ts(data$Gold, start = 2001, frequency = 356)
-\end{Sinput}
-\end{Schunk}
+Pateikiami Apple Inc. akcijų kainų dienininiai duomenys~\cite{apple} .
+\subsection{Auksas}
+
+Įdomu tyrinėti ne tik svarbių įmonių rizikos premijų priklausomybę nuo rinkos rizikos premijos, bet ir
+aukso pelningumą. Aukso gavybos istorija siekia 4 tūkst. m. pr. Kr. Nuo tada žmonija yra išgavusi maždaug 90--100 tūkst. tonų aukso. Šis ilgaamžis metalas ekonomikoje dėl savo cheminių savybių turi ypatingą vartojamąją vertę, atlieka pinigų funkciją. Iš aukso kalamos monetos, auksas specialiais luitais saugomas kaip valstybių centrinių bankų atsargos. Investicija į auksą dažnai siejama su apsauga nuo infliacijos, todėl valstybės laiko auksą kaip savo tarptautinių atsargų dalį ir gali jį panaudoti mokėjimo balanso deficitui padengti.\\
+
 \begin{figure}[H]
   \centering
 \includegraphics{kursinis-014}
-  \caption{...}
+  \caption{Aukso dieninės kainos}
   \label{fig:8}
 \end{figure}
+
+Aukso kaina (8 pav.) per dešimt metų stabiliai kyla be jokių ryškesnių nuosmukių. AFP duomenimis liepos 18d. iki pietų aukso uncijos (apie 31 gramą) kaina NYMEX biržoje jau siekė \$ 1598,8.
+
+
 \begin{figure}[H]
   \centering
 \includegraphics{kursinis-015}
-  \caption{...}
+  \caption{Aukso dieninės grąžos}
   \label{fig:9}
 \end{figure}
              
+Aukso dieninių grąžų grafikas (9 pav.) turi gana mažą dispersiją, kurios padidėjimas 2008 metais 
+sutampa su krizės laikotapiu. Tačiau net ir per krizę didžiausios aukso grąžų vertės nepasiekia 0.1 ar -0.1. \\
 
-\section{Kitas R kodas}
+Pateikiami aukso kainų dienininiai duomenys~\cite{gold} .
+
+\newpage
+\section{Aprašomoji duomenų statistika}
+
+Rizikos premija -- skirtumas tarp įmonės akcijos grąžos ir iždo vekselio pelningumo. Tai premija investuotojui,
+pasirinkusiam rizikingesnės įmonės akcijas vietoje nerizikingo iždo vekselio. Kuo ji didesnė, tuo labiau
+traukia investicijas, bet dažnai (pagal kapitalo aktyvų įvertinimo modelio teoriją) didesnė premija taip pat reiškia ir didesnę riziką 
+investuojant į tam tikrą imonę. Žemiau pateiktose lentelėse (reikšmės gautos naudojant R paketo komandas, pateiktos \ref{A 1} priede) paskaičiuosime aktyvų vidutines grąžas,
+standartinius nuokrypius, dispersijas, jų vidutines rizikos premijas bei koreliacijas. Šiame skyriuje bus naudojami trumpiniai:
+rkfree -- JAV 30--ies dienų iždo vekselių grąžos;
+market -- indekso Standard \& Poor's 500 akcijų dieninės grąžos;
+microsoft -- Microsoft Corp. akcijų dieninės grąžos;
+apple -- Apple Inc. akcijų dieninės grąžos;
+gold -- aukso dieninės grąžos;
+mrp -- rinkos rizikos premijos;
+microsoftrp -- Microsoft Corp. akcijų rizikos premijos;
+applerp -- Apple Inc. akcijų rizikos premijos;
+goldrp -- aukso rizikos premijos. 
+
+
+\begin{table}[ht]
+\begin{center}
+    \begin{tabular}{ | l | l | l | l |}
+    \hline
+    Duomenys & Vidurkis & Dispersija & Standartinis nuokrypis \\
+    \hline
+    rkfree & 0.00186004 & 2.789252e-06 & 0.001670105 \\
+    market & 0.0001173288 & 0.0001827668 & 0.01351913 \\
+    microsoft & 0.0001968397 & 0.0003574371 & 0.01890601 \\
+    apple & 0.001807715 & 0.0006370941 & 0.02524072 \\  
+    gold & 0.0007931419 & 0.0001357824 & 0.01165257 \\
+    mrp & -0.001742711 & 0.0001857122 & 0.01362763 \\
+    microsoftrp & -0.001663201 & 0.0003601065 & 0.01897647 \\
+    applerp & -5.20737e-05 & 0.000639531 & 0.02528895 \\
+    goldrp & -0.001066898 & 0.0001384164 & 0.01176505 \\
+    \hline
+    \end{tabular}
+\end{center}
+\caption{Duomenų vidurkiai, dispersijos ir standartiniai nuokrypiai}
+\end{table}
+
+
+
+
+Didžiausią grąžų vidurkį turi Apple Inc. (0.001807715), šis aktyvas galėtų būti investuotojams patraukliausias.
+Didžiausia grąžų dispersija (0.0006370941) ir standartinis nuokrypis (0.02524072) taip pat priklauso Apple Inc., taigi, nors šios akcijos žada ir didžiausią pelną, tai yra rizikingiausias aktyvas.
+Mažiausia dispersija (0.0001357824),standartinis nuokrypis (0.01165257) priklauso aukso kainų grąžoms, šis aktyvas turi mažiausius svyravimus, todėl atrodo patikimai.
+
+
+\begin{table}[ht]
+\begin{center}
+    \begin{tabular}{ | l | l | l | }
+    \hline
+    market & microsoft & 0.7184425 \\
+	market & apple & 0.5511114 \\
+	market & gold & -0.04482454 \\
+	mrp & microsoftrp & 0.7209318 \\
+	mrp & applerp & 0.5534901 \\
+	mrp & goldrp & -0.0266428 \\
+	\hline
+    \end{tabular}
+\end{center}
+\caption{Duomenų koreliacijos koeficientai}
+\end{table}
+
+
+Labiausiai su rinka koreliuoja Microsoft Corp. (koreliacijos koeficientas lygus 0.7184425), t.y. daugiausiai priklauso nuo rinkos būklės.
+
+Mažiausiai su rinkos kainomis koreliuoja aukso kainos (-0.04482454). Šis koreliacijos koeficientas yra neigiamas, taigi tikėtina, kad rinkos akcijų vertei kintant, aukso grąžos kis priešinga kryptimi, tačiau dėl nedidelės koeficiento reikšmės aktyvo kainos tuo pačiu greičiu gali ir nesikeisti. Tai ypač aktualu krizės laikotarpiu, nes rinkos akcijų vertei smunkant, aukso vertė neturėtų kristi.
+
+
+
+\newpage
+\section{Kapitalo aktyvų įvertinimo modelis}
+
+Viena iš kapitalo aktyvų įvertinimo modelio (\textit{Capital Aset Pricing Model} -- CAPM) išraiškų -- paprasta vieno kintamojo regresija. Pasinaudojus ja, tirsime imonių akcijų ir aukso rizikos premijų priklausomybę nuo rinkos rizikos premijų. Visos R paketo komandos ir lentelės, naudotos šiame skyriuje, pateiktos \ref{B 1} priede.
+Modeliuose pateiktas laisvasis narys $ \alpha $   ir koeficientas  $ \beta $ .
+
+
+\begin{table}[ht]
+\begin{center}
+    \begin{tabular}{ | l | l | l | l | }
+    \hline
+    $ \alpha $ & $ \beta $ & $ R^2 $ & $ p-value $  \\
+    \hline
+	0.0000863 & 1.0038977 &  0.5197 & < 2.2e-16\\
+	\hline
+    \end{tabular}
+\end{center}
+\caption{Microsoft Corp. modelis}
+\end{table}
+
+Gautas $\beta$ koeficientas lygus 1.004 ir yra reikšmingas. Tai reiškia, jog rinkos rizikos premijai pakilus ar nukritus 1\%, Microsoft Corp. rizikos premijos taip pat pakils 1\%. Laisvasis narys beveik lygus nuliui ir nereikšmingas,
+tai neprieštarauja CAPM teorijai ir logikai -- jei rinkos rizikos premija lygi nuliui, tai investuotojo į Microsoft Corp. šansai gauti rizikos premiją yra labai maži.
+$R^2$= 0.5197, tai reiškia, kad 51,97\% rinkos duomenų paaiškina Microsoft Corp. rizikos premijų svyravimus, t.y. sudaro sisteminę (rinkos) riziką. Likusi specifinė rizika priklauso nuo kitų įmonės charakteristikų.
+
+\begin{table}[ht]
+\begin{center}
+    \begin{tabular}{ | l | l | l | l | }
+    \hline
+    $ \alpha $ & $ \beta $ & $ R^2 $ & $ p-value $  \\
+    \hline
+	0.0017347 & 1.0269695 & 0.3064 & < 2.2e-16\\
+	\hline
+    \end{tabular}
+\end{center}
+\caption{Aplle Inc. modelis}
+\end{table}
+
+Koeficientas $\beta$, kaip ir Microsoft Corp. imonės, lygus 1.027 ir yra reikšmingas (0<0.005). Taigi rinkos akcijų vertei susvyravus 1\%, Apple
+Inc. irgi gali patirti panašų akcijų kainos pokytį. Laisvasis narys labai arti nulio ir nereikšmingas,
+taigi investuotojas pasirinkęs Apple Inc. akcijas negali tikėtis jokios rizikos premijos, kai rinkos akcijų vertės
+pokytis lygus nuliui.
+Visgi  $R^2$ nėra labai didelis -- tik 30\% rinkos duomenų paaiškina Apple Inc. akcijų vertės svyravimus.
+
+\begin{table}[ht]
+\begin{center}
+    \begin{tabular}{ | l | l | l | l | }
+    \hline
+    $ \alpha $ & $ \beta $ & $ R^2 $ & $ p-value $  \\
+    \hline
+	-0.0011070 & -0.0230014 & 0.01176 &  0.183\\
+	\hline
+    \end{tabular}
+\end{center}
+\caption{aukso modelis}
+\end{table}
+
+Visai kitoks rezultatas gaunamas sudarius aukso rizikos premijų priklausomybės nuo rinkos rizikos premijų modelį.
+Šįkart $\beta=-0.023$ ir tai reikštų, kad aukso kainos ne tik mažai priklauso nuo rinkos akcijų vertės svyravimų,
+bet netgi juda priešinga linkme. Tai gali pasirodyti kaip itin patraukli investicija nuosmukio laikotarpiu.
+Tačiau koeficiento p--reiksmė = 0.183 > 0.05, taigi negalima atmesti $ H_0 $ hipotezės, kad $\beta=0 $. Bet ir
+priėmus šią hipotezę, galima tarti, kad aukso kainos mažai priklauso nuo rinkos svyravimų.
+Laisvasis narys šįkart -0.011 ir p--reiksmė rodo, kad jis reikšmingas. Toks rezultatas kiek prieštarauja CAPM logikai -- rinkos akcijų vertėms nesikeičiant, aukso rizikos premija neigiama. Galbūt tai galetų reikšti,
+kad dieninis aukso pelningumas itin nedidelis.
+$ R^2 $= 0.0007 -- itin maža reikšmė, patvirtinanti, kad rinka beveik nepaaiškina aukso kainų pokyčių, taigi 
+visa aukso pelningumo rizika sisteminė -- priklauso nuo kitų charakteristikų.
+
+\subsection{Sudarytų modelių liekanų tikrinimas}
+
+Liekanos turi buti homoskedastiškos, ne autokoreliuotos ir pasiskirsčiusios pagal normalųjį skirstinį.
+
+\begin{figure}[H]
+  \centering
+\includegraphics{kursinis-018}
+  \caption{Aukso modelio liekanos nėra heteroskedastiskos}
+  \label{fig:10}
+\end{figure}
+
+
+Patikrinsime, ar liekanos turi slenkantį vidurkį.
+
+\begin{table}[ht]
+\begin{center}
+    \begin{tabular}{ | l | l | l | }
+    \hline
+    aktyvas  &  koef. prieš ankstinį  & $ p-value $  \\
+    \hline
+	Microsoft Corp. & -2.293e-02 & 0.252\\
+	Apple Inc. & 0.0337889 &  0.155\\
+	Auksas & 0.0360663 &  0.0716\\
+	\hline
+    \end{tabular}
+\end{center}
+\caption{Microsoft Corp., Apple Inc. ir aukso modeliai su pirmos eilės ankstiniais}
+\end{table}
+
+Visuose modeliuose pirmos eilės liekanų ankstiniai nereikšmingi.\\
+
+Autokoreliacijai patikrinti naudosime Durbin--Watson testą:
+
+
+
+\begin{table}[ht]
+\begin{center}
+    \begin{tabular}{ | l | l | l | }
+    \hline
+    $ aktyvas $ & $ D-W statistika $ & $ p-value $  \\
+    \hline
+	Microsoft Corp. & 2.04577 &  0.24\\
+	Apple Inc. & 1.97393 &  0.54\\
+	Gold & 1.927601 &  0.076\\
+	\hline
+    \end{tabular}
+\end{center}
+\caption{Durbin--Watson testas Microsoft Corp., Apple Inc. ir aukso liekanoms}
+\end{table}
+
+Liekanos nėra autokoreliuotos su savo pirmos eilės ankstiniais.\\
+
+Normalumui tikrinti naudosime Jarque--Bera testą.
+
+
+
+\begin{table}[ht]
+\begin{center}
+    \begin{tabular}{ | l | l | l | }
+    \hline
+    $ aktyvas $ &  $ X^2 $  & $ p-value $  \\
+    \hline
+	Microsoft Corp. & 8683.798 & < 2.2e-16\\
+	Apple Inc. & 3384.751 & < 2.2e-16\\
+	Gold & 1593.331 & < 2.2e-16\\
+	\hline
+    \end{tabular}
+\end{center}
+\caption{Jarque--Bera testas Microsoft Corp., Apple Inc. ir aukso liekanoms}
+\end{table}
+
+P--reikšmės testuose rodo, kad liekanos nėra pasiskirsčiusios pagal normalųjį skirstinį. Galbūt liekanų pasiskirstymas
+reiškia, kad rinkos akcijų kainų pokyčiai mažai sutampa su įmonių akcijų vertės pakitimais.
+\newpage
+\section{Optimalaus portfelio paieška}   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Portfeliai iš dviejų aktyvų}
+
+Visi skaičiavimai, kurie bus naudojami portfelių sudarymams, su R programa pateikti \ref{C1} priede.
+ 
+Iš pradžių ieškosime optimalių portfelių tarp dviejų aktyvų. Formulė ~\cite{cope} $$a^{\ast}= \frac{\sigma_y^2 - r_{xy}\sigma_x \sigma_y}{\sigma^2_x + \sigma^2_y - 2r_{xy}\sigma_x \sigma_y}$$
+randa optimalų įmonės $x$ akcijų procentą portfelyje. Dar paskaičiuosime kokią dalį portfelyje turėtų sudaryti aktyvas ir iždo vekselis. \\
+
+Žymėjimai:
+
+P \#1 -- Apple Inc. akcijų ir aukso portfelis
+
+P \#2 -- Apple Inc. ir Microsoft Corp. akcijų portfelis
+
+P \#3 -- Microsoft Corp. ir auksas
+
+P \#4 -- Apple Inc. ir nerizikingas aktyvas (iždo vekselis)
+
+P \#5 -- Microsoft Corp. ir nerizikingas aktyvas
+
+P \#6 -- Auksas ir nerizikingas aktyvas
+
+\begin{table}[ht]
+\begin{center}
+\begin{tabular}{ccccccc}
+  \hline
+ & P \#1 & P \#2 & P \#3 & P \#4 & P \#5 & P \#6 \\ 
+  \hline
+Apple Inc. & 18,83 \% & 25,08 \% &  & 0,041 \%  & & &\\
+\hline
+ Microsoft Corp. &  & 74,92 \% & 28,88 \% & & 0,076 \% & & \\ 
+   \hline
+   Auksas & 81,17 \% & & 71,12 \% & & & 1,96 \% & \\
+   \hline
+   Vekselis & & & & 99,59 \% & 99,24 \% & 98,04 \% & \\
+   \hline
+   Grąžos & 0.00099 & 0.00060 & 0.00062 & 0.00186 & 0.00185 & 0.00184 &\\
+   \hline
+   Rizika (s.d.) & 0.0104 & 0.0180 & 0.0096 & 0.0017 & 0.0017 & 0.0017 &\\
+   \hline
+\end{tabular}
+\end{center}
+\caption{Portfelius sudarančių aktyvų procentai, jų grąžos ir rizika}
+\end{table}
+
+Aukso ir Apple Inc. portfelyje -- 81,17 \% aukso ir 18,83 \% Apple akcijų
+
+Microsoft Corp. ir Apple Inc. portfelyje -- 74,92 \% Microsoft Corp. akcijų  25,08 \% Apple Inc. akcijų
+
+Aukso ir Microsoft Corp. portfelyje -- 71,12 \% aukso ir 28,88 \% Microsoft akcijų
+
+Visoms trims kombinacijoms su nerizikingu aktyvu tiek rizika, tiek grąža yra vienodos, o iždo vekselis sudaro beveik visą portfelį. \\
+
+
+
+JAV iždo vekselių diskonto norma ilgą laiką buvo gan aukšta ir viršijo 1\%, tačiau
+po 2008--ųjų metų rugsėjo 15 d. vekselių diskonto norma nukrito nuo 1.35\% iki 0.28\% ir vėliau tiek nebepakilo iki 2011--ųjų
+vasaros. Todėl būtų naudinga patikrinti optimalias vekselių ir aktyvų kombinacijas, kai vekselių pelningumas
+nėra toks didelis. Pakartokime analogišką analizę prieš tai buvusiai, duomenis imant tik nuo 2008 m. rugsėjo 15 d. 
+
+\begin{table}[ht]
+\begin{center}
+\begin{tabular}{cccc}
+  \hline
+ & P \# 4 & P \# 5 & P \# 6 \\ 
+  \hline
+Apple Inc. & 0,04 \% &  &  &  \\
+\hline
+ Microsoft Corp. &  & 0,00 \% &  &  \\ 
+   \hline
+   Auksas & & & 0,04 \% &\\
+   \hline
+   Vekselis & 99,96 \% & 100 \% & 99,96 \% &\\
+   \hline
+   Grąžos & 0.001860 & 0.001860 & 0.001860 & \\
+   \hline
+   Rizika (stand. nuokrypis) & 0.00167 & 0.00167 & 0.001669 & \\
+   \hline
+\end{tabular}
+\end{center}
+\caption{Portfelių iš nerizikingo ir rizikingo aktyvo grąžos ir rizika}
+\end{table}
+
+Deja, iždo vekselių procentai portfeliuose nepakito labai smarkiai, grąžos ir standartiniai nuokrypiai liko beveik tokie patys, todėl liksime prie pradinių kombinacijų. Darome hipotezę, kad  rezultatai galėjo nepasikeisti dėl nuo 2008 m. sumažėjusio vekselio ir padidėjusio įmonių standartinio nuokrypio.
+
+
+
+
+\begin{figure}[H]
+  \centering
+\includegraphics{kursinis-019}
+  \caption{Iliustracija: dviejų aktyvų kombinacijų rizika ir grąžos}
+  %\label{fig:11}
+\end{figure}  
+
+Iš šių kreivių galima matyti, jog net optimalus portfelis, sudarytas iš Apple Inc. ir Microsoft Corp. akcijų turi daug
+didesnę riziką ir tokią pat grąžą, kaip ir iš aukso bei Microsoft Corp. akcijų sudarytas portfelis. O vos padidinus riziką,
+iš Apple Inc. ir aukso akcijų sudaryto portfelio, galima gauti didesnę grąžą. Todėl optimaliausias pasirinkimas
+tarp portfelių, sudarytų iš dviejų aktyvų, yra Apple Inc. ir aukso akcijų kombinacija.
+
+           
+\subsection{Trijų aktyvų portfelis}
+ 
+\begin{figure}[H]
+  \centering
+\includegraphics{kursinis-020}
+  \caption{Portfelio, sudaryto iš Apple, Microsoft ir aukso rizikos ir grąžos kombinacijos}
+  %\label{fig:10}
+\end{figure}
+
+Pav.: norint turėti portfelį su mažiausia rizika, reikėtų rinktis portfelio kombinaciją~\cite{cope}, grafike esančią kairiausiai. Kiti portfelio pasirinkimai priklauso nuo vartotojo rizikos preferencijos. \\
+
+Apytiksliai aktyvų svoriai optimaliame portfelyje, kai i=8 ir j=3:
+
+$ 0.1 \times (i-1) \times Microsoft + 0.1 \times (j-1) \times Auksas + (1 - (i-1) - (j-1)) \times  0.1 \times Apple$ \\
+
+% sd(0.7*gold[-891] + 0.2*apple + 0.1*microsoft[-891])
+
+
+Portfelio aktyvų svorius, kai aktyvų yra $n$ (šiuo atveju $n=3$) nėra lengva rasti, todėl pabandykime pritaikyti dviejų aktyvų optimalaus portfelio formulę: iš ankstesnio poskyrio turime optimalius svorius tarp dviejų aktyvų, dabar ieškome optimalios proporcijos tarp portfelio ir trečio aktyvo. \\
+
+
+Portfelių žymėjimai:
+
+P \# 7 = optimalus aukso ir Apple Inc. akcijų portfelis ir Microsoft Corp. akcijos
+
+P \#8 = optimalus Microsoft Corp. ir Apple Inc. akcijų portfelis ir auksas
+
+P \#9 = optimalus Microsoft Corp. akcijų ir aukso portfelis ir Apple Inc. akcijos.
+
+\begin{table}[ht]
+\begin{center}
+\begin{tabular}{cccccc}
+  \hline
+  & Apple Inc. & Microsoft Corp. & Auksas & Grąžos & Rizika (s.d.) \\ 
+  \hline
+P \# 7 & 15.18 \% & 19.41 \% & 65.41 \% & 0.0008311881 & 0.009586881 &\\
+\hline
+ P \# 8 & 7.764768 \% & 23.19523 \% & 69.04 \% & 0.0007334121 & 0.009427794 &\\ 
+\hline
+P \# 9 & 6.478507 \% & 27.00901 \% & 66.51249 \% & 0.0006976978 & 0.009455108 &\\
+\hline
+
+\end{tabular}
+\end{center}
+\caption{Portfeliai iš trijų aktyvų}
+\end{table}
+
+
+ Mažiausią standartinį nuokrypį, t.y. riziką turi aštuntas portfelis. Jį ir pasirinksime.
+\\
+
+
+Kombinacija su iždo vekseliais ir II portfeliu:
+
+P \# 10 = 97,04 \% * izdo-vekselis + 2,96 \% * portfelis2
+
+\begin{Schunk}
+\begin{Sinput}
+> portfolio = 0.232 * microsoft[-891] + 0.0776 * apple + 0.6904 * 
++     gold[-891]
+> (var(portfolio) - cor(portfolio, rkfree[-891]) * sd(rkfree) * 
++     sd(portfolio))/(var(rkfree) + var(portfolio) - 2 * cor(portfolio, 
++     rkfree[-891]) * sd(rkfree) * sd(portfolio))
+\end{Sinput}
+\begin{Soutput}
+[1] 0.970406
+\end{Soutput}
+\end{Schunk}
+
+\pagebreak
+
+\begin{table}[ht]
+\begin{center}
+\begin{tabular}{ccc}
+  \hline
+ & \beta & Grąžos  \\ 
+  \hline
+Apple Inc. & 1.0291 & 0.0018077 &   \\
+\hline
+ Microsoft Corp. & 1.0047 &  0.000197 &  \\ 
+   \hline
+   Auksas & -0.03864 & 0.0007931 & \\
+   \hline
+   Vekselis & -0.0004271 & 0.00186 & \\
+   \hline
+   P 1 & 0.16243 & 0.000984 & \\
+   \hline
+   P 2 & 1.0111 & 0.00060198 & \\
+   \hline
+   P 3 & 0.26268 & 0.00062093 &  \\
+   \hline
+   P 4 & 0.2864 &  0.000733 & \\
+\end{tabular}
+\end{center}
+\caption{Aktyvų ir portfelių priklausomybė nuo rinkos svyravimų ($\beta$) ir jų pelningumas}
+\end{table}
+
+
+$\beta$ parodo, kaip įmonės akcijų ar portfelio rizikos premijos reaguoja į rinkos svyravimus:  kuo didesnė $\beta$, tuo aktyvas nestabilesnis ir rizikingesnis. \\
+
+Pateikta lentelė su įmonių, aukso bei portfelių $\beta$ koeficientais ir jų pelningumais.
+
+\begin{figure}[H]
+  \centering
+\includegraphics{kursinis-022}
+
+\caption{Rinkos, iždo vekselių ir įmoniu $\beta$ ir ją atitinkantis grąžų vidurkis}
+ % \label{fig:11}
+\end{figure}
+
+Iš lentelės investuotojas gali pasirinkti sau patraukliausią investavimo būdą: jei investuotojas nori gauti itin dideles grąžas, ir visiškai nekreipia dėmesio į įmonės priklausomybę nuo rinkos svyravimų, jis rinktųsi investiciją į Apple Inc. akcijas. Kita vertus, turimi empiriniai duomenys rodo, jog JAV iždo vekselio grąža yra itin didelė, o rizika ir priklausomybė nuo rinkos itin mažos, todėl vienareikšmiškai galima tarti, kad protingiausia ir naudingiausia investuoti į JAV trisdešimties dienų iždo vekselius.
+
+\pagebreak
+
+\subsection{Optimalių portfelių modeliai}
+
+
+Kandangi jau sudarėme optimalias kombinacijas tarp dviejų aktyvų ir
+pasirinkome trijų aktyvų portfelio svorius, galime sudaryti CAPM regresinius modelius ir pažiūrėti, kaip portfelių pelningumas priklauso nuo rinkos svyravimų. R kodas pateiktas priede. \\
+
+Regresiniai modeliai: \\
+
+Modelis 1: Portfelis-1$= \alpha + \beta \times \text{Rinkos rizikos premija}$
+
+Modelis 2: Portfelis-2$= \alpha + \beta \times \text{Rinkos rizikos premija}$
+
+Modelis 3: Portfelis-3$= \alpha + \beta \times \text{Rinkos rizikos premija}$
+
+Modelis 4: Portfelis-4$= \alpha + \beta \times \text{Rinkos rizikos premija}$ \\
+
+Čia:\\
+
+Portfelis-1 = 81,17 \% aukso + 18,83 \% Apple Inc. akciju
+
+Portfelis-2 = 74,92 \% Microsoft Corp. + 25,08 \% Apple Inc. akciju
+
+Portfelis-3 = 71,12 \% aukso + 28,88 \% Microsoft Corp. akciju
+
+Portfelis-4 = 7.764768 \% Apple Inc. + 23.19523 \% Microsoft Corp. + 69.04 \% aukso.\\
+
+
+
+
+
+\begin{table}[ht]
+\begin{center}
+\begin{tabular}{ccccc}
+  \hline
+ &   \alpha & \beta &  $R^2$ \\ 
+  \hline
+Modelis 1  & -0.0005723 & 0.1747229 & 0.05161 &  \\
+\hline
+(p--reiksmes) & (0.00549) & (0) & \\
+\hline
+ Modelis 2  & 0.0004989 & 1.0097165 & 0.5831 &  \\
+ \hline
+(p--reiksmes) & (0.0336) & (0) & \\
+   \hline
+   Modelis 3   & -0.0007624 & 0.2735671 & 0.1469 & \\
+   \hline
+(p--reiksmes) & (0) & (0)& \\
+   \hline
+   Modelis 4  & -0.0006102 & 0.2967395 & 0.1787 & \\
+   \hline
+  (p--reiksmes) & (0.00004) & (0) & \\
+   \hline
+   
+   
+\end{tabular}
+\end{center}
+\caption{Visų modelių laisvieji nariai, $\beta$ ir $R^2$}
+\end{table}
+
+
+\begin{table}[ht]
+\begin{center}
+\begin{tabular}{rrrrr}
+\hline
+& Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\
+\hline
+(Intercept) & -0.0006 & 0.0002 & -2.78 & 0.0055 \\
+mrp[-891] & 0.1747 & 0.0150 & 11.66 & 0.0000 \\
+\hline
+\end{tabular}
+\end{center}
+\caption{Pirmojo regresinio modelio įvertiniai}
+\end{table}
+
+Pirmojo modelio koeficientas $\beta$=0.17, tai reiškia, kad portfelio aktyvų svyravimai mažai priklauso nuo rinkos
+akcijų kainų svyravimų, taigi portfelis gan patikimas. Laisvasis narys nereikųmingas, todėl galime jį prilyginti nuliui,
+kaip ir ankstesnėse interpretacijose, tai reiškia, kad portfelio rizikos premija lygi nuliui, jei rinkos rizikos premija
+nekinta. Mažas $R^2$ rodo, jog tik 5\% rinkos duomenų paaiškina portfelio akcijų kainų pokyčius, taigi portfelis
+turi didelį procentą nesisteminės rizikos.
+
+
+\begin{table}[ht]
+\begin{center}
+\begin{tabular}{rrrrr}
+\hline
+& Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\
+\hline
+(Intercept) & 0.0005 & 0.0002 & 2.13 & 0.0336 \\
+mrp[-891] & 1.0097 & 0.0171 & 59.09 & 0.0000 \\
+\hline
+\end{tabular}
+\end{center}
+\caption{Antrojo regresinio modelio įvertiniai}
+\end{table}
+
+Antrojo modelio $\beta$ = 1, todėl portfelio aktyvų svyravimai judės proporcingai su rinkos akcijų kainų svyravimais.
+Pakankamai didelis $R^2$=58\% reiškia, kad tiek procentų rinkos duomenų paaiškina šio portfelio aktyvų pelningumo
+svyravimus. Nuosmukio laikotarpiu tai ne pats geriausias portfelis, bet pakilimo metu gali būti gan pelningas.
+
+
+\begin{table}[ht]
+\begin{center}
+\begin{tabular}{rrrrr}
+\hline
+& Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\
+\hline
+(Intercept) & -0.0008 & 0.0002 & -4.21 & 0.0000 \\
+mrp & 0.2736 & 0.0132 & 20.74 & 0.0000 \\
+\hline
+\end{tabular}
+\end{center}
+\caption{Trečiojo regresinio modelio įvertiniai}
+\end{table}
+
+Trečiame modelyje $\beta$=0.27, taigi rinkos akcijų kainoms pakilus arba nukritus 1\%, portfelio aktyvų rizikos premijos
+proporcingai pakis daugiau nei ketvirčiu. P--reikšme prie laisvojo nario rodo, kad jis reikšmingas ir yra 
+neigiamas. Taigi rinkos akcijų rizikos premijoms nekintant, investuotojas iš portfelio gauna
+nuostolingą rizikos premiją (dėl didesnės iždo vekselio grąžos). Tad rinkos akcijų kainoms nekintant,
+pelningiau investuoti į iždo vekselius, ne tik į šį portfelį.
+
+
+\begin{table}[ht]
+\begin{center}
+\begin{tabular}{rrrrr}
+\hline
+& Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\
+\hline
+(Intercept) & -0.0006 & 0.0002 & -3.49 & 0.0005 \\
+mrp[-891] & 0.2967 & 0.0127 & 23.31 & 0.0000 \\
+\hline
+\end{tabular}
+\end{center}
+\caption{Ketvirtojo regresinio modelio įvertiniai}
+\end{table}
+
+Trijų aktyvų kombinacijos portfelis panašus į aukso ir Microsoft Corp. portfelį. Čia $\beta$=0.29, taigi rinkai susvyravus 1\%,
+portfelio akcijos pakils arba nukris trečdaliu procento. Laisvasis narys vėl neigiamas ir reikšmingas, taigi
+rinkos akcijų pelningumui nekintant, investuotojo rizikos premija neigiama. $R^2$=0.17, taigi 17\% rinkos duomenų
+paaiškina portfelio rizikos premijų svyravimus.\\
+
+Apžvelgus rezultatus, galima daryti išvadą, jog krizės laikotapiu, kai rinkos akcijų kainos ir pelningumas krenta,
+saugiau investuoti į pirmą portfelį iš Apple Inc. akcijų ir aukso. Tačiau rinkos pakilimo laikotarpiu, antras portfelis
+iš Microsoft Corp. ir Apple Inc. akcijų gali būti pelningesnis už pirmąjį.
+
+
+\pagebreak
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage      
+\section{Rezultatai ir išvados}
+\newpage
+\section{Naudota literatūra ir kiti šaltiniai}
+
+\begin{thebibliography}{99}
+\label{mySection}
+\bibitem{cope} T. E. Copeland, J. F. Weston:
+\emph{Financial Theory and Corporate Policy},
+Addison--Wesley Publishing Company(2004).
+
+\bibitem{capm} E. R. Berndt:
+\emph{The Practice of Econometrics: Classic and Contemporary},
+Prentice Hall (1991).
+
+\bibitem{aster} Dimitrios Asteriou:
+\emph{Applied Econometrics},
+Palgrave Macmillian (2006).
+
+\bibitem[]{tbills} JAV 30--ies dienų iždo vekselių duomenys:
+\emph{ \url{http://www.treasurydirect.gov/RI/OFAuctions?form=ndnld&typesec=bills} }.
+
+\bibitem{market} Standard & Poor's 500 indekso dieniniai duomenys:
+\emph{ \url{http://wikiposit.org/w?action=dl\&dltypes=comma\%20separated\&sp=daily\&uid=STOCKINDEX.SPX} }.
+
+\bibitem{microsoft} Microsoft Corp. akcijų kainų dieniniai duomenys:
+\emph{ \url{http://wikiposit.org/w?action=dl\&dltypes=comma\%20separated\&sp=daily\&uid=NASDAQ.MSFT} }.
+
+\bibitem{apple} Apple Inc. akcijų kainų dieniniai duomenys:
+\emph{ \url{http://wikiposit.org/w?action=dl\&dltypes=comma\%20separated\&sp=daily\&uid=NASDAQ.AAPL} }.
+
+\bibitem{gold} Aukso kainų dieniniai duomenys:
+\emph{ \url{http://wikiposit.org/w?action=dl\&dltypes=comma\%20separated\&sp=daily\&uid=GOLDDAILY} }.
+
+\end{thebibliography}
+
+
+
+\newpage
+
+\appendix
+
+\section{Aprašomoji statistika}
+\label{A 1}
+Aprašomoji statistika:
+
 \begin{Schunk}
 \begin{Sinput}
 > mean(rkfree)
 \end{Sinput}
 \begin{Soutput}
-[1] 0.01830224
+[1] 0.00186004
 \end{Soutput}
 \begin{Sinput}
 > mean(market)
 \end{Sinput}
 \begin{Soutput}
-[1] 0.0003240704
+[1] 0.0001173288
 \end{Soutput}
 \begin{Sinput}
 > mean(microsoft)
 \end{Sinput}
 \begin{Soutput}
-[1] 4.878049e-06
+[1] 0.0001968397
 \end{Soutput}
 \begin{Sinput}
 > mean(apple)
 \end{Sinput}
 \begin{Soutput}
-[1] 0.001486166
+[1] 0.001807715
 \end{Soutput}
 \begin{Sinput}
 > mean(gold)
 \end{Sinput}
 \begin{Soutput}
-[1] 0.005448221
+[1] 0.0007931419
 \end{Soutput}
 \begin{Sinput}
 > mean(mrp)
 \end{Sinput}
 \begin{Soutput}
-[1] -0.01797817
+[1] -0.001742711
 \end{Soutput}
 \begin{Sinput}
 > mean(microsoftrp)
 \end{Sinput}
 \begin{Soutput}
-[1] -0.01829736
+[1] -0.001663201
 \end{Soutput}
 \begin{Sinput}
 > mean(applerp)
 \end{Sinput}
 \begin{Soutput}
-[1] -0.01681607
+[1] -5.20737e-05
 \end{Soutput}
 \begin{Sinput}
 > mean(goldrp)
 \end{Sinput}
 \begin{Soutput}
-[1] -0.01285402
+[1] -0.001066898
+\end{Soutput}
+\begin{Sinput}
+> var(rkfree)
+\end{Sinput}
+\begin{Soutput}
+[1] 2.789252e-06
+\end{Soutput}
+\begin{Sinput}
+> var(market)
+\end{Sinput}
+\begin{Soutput}
+[1] 0.0001827668
+\end{Soutput}
+\begin{Sinput}
+> var(microsoft)
+\end{Sinput}
+\begin{Soutput}
+[1] 0.0003574371
+\end{Soutput}
+\begin{Sinput}
+> var(apple)
+\end{Sinput}
+\begin{Soutput}
+[1] 0.0006370941
+\end{Soutput}
+\begin{Sinput}
+> var(gold)
+\end{Sinput}
+\begin{Soutput}
+[1] 0.0001357824
 \end{Soutput}
 \begin{Sinput}
 > var(mrp)
 \end{Sinput}
 \begin{Soutput}
-[1] 0.02027366
+[1] 0.0001857122
 \end{Soutput}
 \begin{Sinput}
 > var(microsoftrp)
 \end{Sinput}
 \begin{Soutput}
-[1] 0.0002862415
+[1] 0.0003601065
 \end{Soutput}
 \begin{Sinput}
 > var(applerp)
 \end{Sinput}
 \begin{Soutput}
-[1] 0.001130364
+[1] 0.000639531
 \end{Soutput}
 \begin{Sinput}
 > var(goldrp)
 \end{Sinput}
 \begin{Soutput}
-[1] 0.01866635
+[1] 0.0001384164
+\end{Soutput}
+\begin{Sinput}
+> sd(rkfree)
+\end{Sinput}
+\begin{Soutput}
+[1] 0.001670105
 \end{Soutput}
 \begin{Sinput}
 > sd(market)
 \end{Sinput}
 \begin{Soutput}
-[1] 0.1414519
+[1] 0.01351913
 \end{Soutput}
 \begin{Sinput}
 > sd(microsoft)
 \end{Sinput}
 \begin{Soutput}
-[1] 0.004222447
+[1] 0.01890601
 \end{Soutput}
 \begin{Sinput}
 > sd(apple)
 \end{Sinput}
 \begin{Soutput}
-[1] 0.02904144
+[1] 0.02524072
+\end{Soutput}
+\begin{Sinput}
+> sd(gold)
+\end{Sinput}
+\begin{Soutput}
+[1] 0.01165257
 \end{Soutput}
 \begin{Sinput}
 > sd(mrp)
 \end{Sinput}
 \begin{Soutput}
-[1] 0.1423856
+[1] 0.01362763
 \end{Soutput}
 \begin{Sinput}
 > sd(microsoftrp)
 \end{Sinput}
 \begin{Soutput}
-[1] 0.01691867
+[1] 0.01897647
 \end{Soutput}
 \begin{Sinput}
 > sd(applerp)
 \end{Sinput}
 \begin{Soutput}
-[1] 0.03362089
+[1] 0.02528895
 \end{Soutput}
 \begin{Sinput}
 > sd(goldrp)
 \end{Sinput}
 \begin{Soutput}
-[1] 0.1366249
+[1] 0.01176505
+\end{Soutput}
+\begin{Sinput}
+> cor(market, microsoft)
+\end{Sinput}
+\begin{Soutput}
+[1] 0.7184425
+\end{Soutput}
+\begin{Sinput}
+> cor(market[-891], apple)
+\end{Sinput}
+\begin{Soutput}
+[1] 0.5511114
+\end{Soutput}
+\begin{Sinput}
+> cor(market, gold)
+\end{Sinput}
+\begin{Soutput}
+[1] -0.04482454
 \end{Soutput}
 \begin{Sinput}
 > cor(mrp, microsoftrp)
 \end{Sinput}
 \begin{Soutput}
-[1] 0.2828318
+[1] 0.7209318
 \end{Soutput}
 \begin{Sinput}
-> cor(mrp, applerp)
+> cor(mrp[-891], applerp)
 \end{Sinput}
 \begin{Soutput}
-[1] 0.4942141
+[1] 0.5534901
 \end{Soutput}
 \begin{Sinput}
 > cor(mrp, goldrp)
 \end{Sinput}
 \begin{Soutput}
-[1] 0.006774264
+[1] -0.0266428
 \end{Soutput}
+\end{Schunk}
+
+\section{Modeliai ir jų liekanos}
+\label{B 1}
+Modeliai:
+\begin{Schunk}
 \begin{Sinput}
 > microsoftmod = lm(microsoftrp ~ mrp)
-> applemod = lm(applerp ~ mrp)
+> applemod = lm(applerp ~ mrp[-891])
 > goldmod = lm(goldrp ~ mrp)
 > summary(microsoftmod)
 \end{Sinput}
@@ -258,32 +1076,40 @@ lm(formula = microsoftrp ~ mrp)
 
 Residuals:
       Min        1Q    Median        3Q       Max 
--0.054090 -0.011170  0.004143  0.013395  0.035673 
+-0.114489 -0.006098 -0.000315  0.005991  0.088079 
 
 Coefficients:
-              Estimate Std. Error t value Pr(>|t|)    
-(Intercept) -0.0176932  0.0003271  -54.09   <2e-16 ***
-mrp          0.0336069  0.0022799   14.74   <2e-16 ***
+             Estimate Std. Error t value Pr(>|t|)    
+(Intercept) 0.0000863  0.0002652   0.325    0.745    
+mrp         1.0038977  0.0193079  51.994   <2e-16 ***
 ---
-Signif. codes:  0 
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+
+Residual standard error: 0.01315 on 2498 degrees of freedom
+Multiple R-squared: 0.5197,	Adjusted R-squared: 0.5196 
+F-statistic:  2703 on 1 and 2498 DF,  p-value: < 2.2e-16 
 \end{Soutput}
 \begin{Sinput}
 > summary(applemod)
 \end{Sinput}
 \begin{Soutput}
 Call:
-lm(formula = applerp ~ mrp)
+lm(formula = applerp ~ mrp[-891])
 
 Residuals:
-     Min       1Q   Median       3Q      Max 
--0.43916 -0.01670  0.00001  0.01467  0.16122 
+      Min        1Q    Median        3Q       Max 
+-0.135080 -0.010883 -0.000986  0.010278  0.139434 
 
 Coefficients:
-              Estimate Std. Error t value Pr(>|t|)    
-(Intercept) -0.0147181  0.0005892  -24.98   <2e-16 ***
-mrp          0.1166966  0.0041063   28.42   <2e-16 ***
+             Estimate Std. Error t value Pr(>|t|)    
+(Intercept) 0.0017347  0.0004248   4.083 4.58e-05 ***
+mrp[-891]   1.0269695  0.0309249  33.209  < 2e-16 ***
 ---
-Signif. codes:  0 
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+
+Residual standard error: 0.02107 on 2497 degrees of freedom
+Multiple R-squared: 0.3064,	Adjusted R-squared: 0.3061 
+F-statistic:  1103 on 1 and 2497 DF,  p-value: < 2.2e-16 
 \end{Soutput}
 \begin{Sinput}
 > summary(goldmod)
@@ -293,280 +1119,411 @@ Call:
 lm(formula = goldrp ~ mrp)
 
 Residuals:
-    Min      1Q  Median      3Q     Max 
--3.4445 -0.0366 -0.0011  0.0352  3.5163 
-
-Coefficients:
-             Estimate Std. Error t value Pr(>|t|)    
-(Intercept) -0.012737   0.002754  -4.625 3.94e-06 ***
-mrp          0.006500   0.019194   0.339    0.735    
----
-Signif. codes:  0 
-\end{Soutput}
-\begin{Sinput}
-> plot(microsoftmod$res)
-> plot(applemod$res)
-> plot(goldmod$res)
-> linearHypothesis(microsoftmod, "(Intercept) = 0")
-\end{Sinput}
-\begin{Soutput}
-Linear hypothesis test
-
-Hypothesis:
-(Intercept) = 0
-
-Model 1: restricted model
-Model 2: microsoftrp ~ mrp
-
-  Res.Df     RSS Df Sum of Sq      F    Pr(>F)    
-1   2500 1.42900                                  
-2   2499 0.65836  1   0.77064 2925.2 < 2.2e-16 ***
----
-Signif. codes:  0 
-\end{Soutput}
-\begin{Sinput}
-> linearHypothesis(applemod, "(Intercept) = 0")
-\end{Sinput}
-\begin{Soutput}
-Linear hypothesis test
-
-Hypothesis:
-(Intercept) = 0
-
-Model 1: restricted model
-Model 2: applerp ~ mrp
-
-  Res.Df    RSS Df Sum of Sq      F    Pr(>F)    
-1   2500 2.6690                                  
-2   2499 2.1357  1   0.53327 623.98 < 2.2e-16 ***
----
-Signif. codes:  0 
-\end{Soutput}
-\begin{Sinput}
-> linearHypothesis(goldmod, "(Intercept) = 0")
-\end{Sinput}
-\begin{Soutput}
-Linear hypothesis test
-
-Hypothesis:
-(Intercept) = 0
-
-Model 1: restricted model
-Model 2: goldrp ~ mrp
-
-  Res.Df    RSS Df Sum of Sq      F    Pr(>F)    
-1   2500 47.063                                  
-2   2499 46.664  1   0.39938 21.388 3.942e-06 ***
----
-Signif. codes:  0 
-\end{Soutput}
-\begin{Sinput}
-> linearHypothesis(microsoftmod, "mrp = 1")
-\end{Sinput}
-\begin{Soutput}
-Linear hypothesis test
-
-Hypothesis:
-mrp = 1
-
-Model 1: restricted model
-Model 2: microsoftrp ~ mrp
-
-  Res.Df    RSS Df Sum of Sq      F    Pr(>F)    
-1   2500 47.993                                  
-2   2499  0.658  1    47.335 179673 < 2.2e-16 ***
----
-Signif. codes:  0 
-\end{Soutput}
-\begin{Sinput}
-> linearHypothesis(applemod, "mrp = 1")
-\end{Sinput}
-\begin{Soutput}
-Linear hypothesis test
-
-Hypothesis:
-mrp = 1
-
-Model 1: restricted model
-Model 2: applerp ~ mrp
-
-  Res.Df    RSS Df Sum of Sq     F    Pr(>F)    
-1   2500 41.681                                 
-2   2499  2.136  1    39.545 46272 < 2.2e-16 ***
----
-Signif. codes:  0 
-\end{Soutput}
-\begin{Sinput}
-> linearHypothesis(goldmod, "mrp = 1")
-\end{Sinput}
-\begin{Soutput}
-Linear hypothesis test
-
-Hypothesis:
-mrp = 1
-
-Model 1: restricted model
-Model 2: goldrp ~ mrp
-
-  Res.Df    RSS Df Sum of Sq      F    Pr(>F)    
-1   2500 96.691                                  
-2   2499 46.664  1    50.027 2679.1 < 2.2e-16 ***
----
-Signif. codes:  0 
-\end{Soutput}
-\begin{Sinput}
-> port1 = microsoft/3 + apple/3 + gold/3
-> port2 = microsoft/2 + gold/2
-> port3 = microsoft/2 + apple/2
-> port4 = apple/2 + gold/2
-> cor(microsoft, gold)
-\end{Sinput}
-\begin{Soutput}
-[1] -0.0195387
-\end{Soutput}
-\begin{Sinput}
-> cor(microsoft, apple)
-\end{Sinput}
-\begin{Soutput}
-[1] 0.3719346
-\end{Soutput}
-\begin{Sinput}
-> cor(apple, gold)
-\end{Sinput}
-\begin{Soutput}
-[1] -0.003228027
-\end{Soutput}
-\begin{Sinput}
-> mean(port1)
-\end{Sinput}
-\begin{Soutput}
-[1] 0.002313088
-\end{Soutput}
-\begin{Sinput}
-> mean(port2)
-\end{Sinput}
-\begin{Soutput}
-[1] 0.002726549
-\end{Soutput}
-\begin{Sinput}
-> mean(port3)
-\end{Sinput}
-\begin{Soutput}
-[1] 0.0007455218
-\end{Soutput}
-\begin{Sinput}
-> mean(port4)
-\end{Sinput}
-\begin{Soutput}
-[1] 0.003467193
-\end{Soutput}
-\begin{Sinput}
-> sd(port1)
-\end{Sinput}
-\begin{Soutput}
-[1] 0.04626695
-\end{Soutput}
-\begin{Sinput}
-> sd(port2)
-\end{Sinput}
-\begin{Soutput}
-[1] 0.067743
-\end{Soutput}
-\begin{Sinput}
-> sd(port3)
-\end{Sinput}
-\begin{Soutput}
-[1] 0.01543091
-\end{Soutput}
-\begin{Sinput}
-> sd(port4)
-\end{Sinput}
-\begin{Soutput}
-[1] 0.06924411
-\end{Soutput}
-\begin{Sinput}
-> port1rp = port1 - rkfree
-> port2rp = port2 - rkfree
-> port3rp = port3 - rkfree
-> port4rp = port4 - rkfree
-> port1mod = lm(port1rp ~ mrp)
-> port2mod = lm(port2rp ~ mrp)
-> port3mod = lm(port3rp ~ mrp)
-> port4mod = lm(port4rp ~ mrp)
-> summary(port1mod)
-\end{Sinput}
-\begin{Soutput}
-Call:
-lm(formula = port1rp ~ mrp)
-
-Residuals:
-     Min       1Q   Median       3Q      Max 
--1.15342 -0.01755 -0.00033  0.01506  1.16535 
+      Min        1Q    Median        3Q       Max 
+-0.071932 -0.005851  0.000178  0.006454  0.071524 
 
 Coefficients:
               Estimate Std. Error t value Pr(>|t|)    
-(Intercept) -0.0150495  0.0009818 -15.328  < 2e-16 ***
-mrp          0.0522679  0.0068426   7.639 3.11e-14 ***
+(Intercept) -0.0011070  0.0002372  -4.667 3.21e-06 ***
+mrp         -0.0230014  0.0172673  -1.332    0.183    
 ---
-Signif. codes:  0 
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+
+Residual standard error: 0.01176 on 2498 degrees of freedom
+Multiple R-squared: 0.0007098,	Adjusted R-squared: 0.0003098 
+F-statistic: 1.774 on 1 and 2498 DF,  p-value: 0.183 
 \end{Soutput}
 \begin{Sinput}
-> summary(port2mod)
+> summary(dynlm(ts(applerp) ~ ts(mrp) + L(ts(applemod$res), 1)))
 \end{Sinput}
 \begin{Soutput}
-Call:
-lm(formula = port2rp ~ mrp)
+Time series regression with "ts" data:
+Start = 2, End = 2499
 
-Residuals:
-     Min       1Q   Median       3Q      Max 
--1.72050 -0.02195 -0.00066  0.01920  1.76049 
-
-Coefficients:
-             Estimate Std. Error t value Pr(>|t|)    
-(Intercept) -0.015215   0.001406 -10.818   <2e-16 ***
-mrp          0.020054   0.009802   2.046   0.0409 *  
----
-Signif. codes:  0 
-\end{Soutput}
-\begin{Sinput}
-> summary(port3mod)
-\end{Sinput}
-\begin{Soutput}
 Call:
-lm(formula = port3rp ~ mrp)
+dynlm(formula = ts(applerp) ~ ts(mrp) + L(ts(applemod$res), 1))
 
 Residuals:
       Min        1Q    Median        3Q       Max 
--0.221664 -0.012561  0.002066  0.011771  0.088835 
+-0.179507 -0.013359 -0.000553  0.013549  0.131190 
 
 Coefficients:
-              Estimate Std. Error t value Pr(>|t|)    
-(Intercept) -0.0162056  0.0004038  -40.13   <2e-16 ***
-mrp          0.0751518  0.0028144   26.70   <2e-16 ***
+                        Estimate Std. Error t value Pr(>|t|)    
+(Intercept)            0.0004459  0.0005040   0.885    0.376    
+ts(mrp)                0.2883804  0.0366877   7.860 5.65e-15 ***
+L(ts(applemod$res), 1) 0.0337889  0.0237419   1.423    0.155    
 ---
-Signif. codes:  0 
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+
+Residual standard error: 0.02499 on 2495 degrees of freedom
+Multiple R-squared: 0.02478,	Adjusted R-squared: 0.024 
+F-statistic:  31.7 on 2 and 2495 DF,  p-value: 2.545e-14 
 \end{Soutput}
 \begin{Sinput}
-> summary(port4mod)
+> summary(dynlm(ts(microsoftrp) ~ ts(mrp) + L(ts(microsoftmod$res), 
++     1)))
+\end{Sinput}
+\begin{Soutput}
+Time series regression with "ts" data:
+Start = 2, End = 2500
+
+Call:
+dynlm(formula = ts(microsoftrp) ~ ts(mrp) + L(ts(microsoftmod$res), 
+    1))
+
+Residuals:
+      Min        1Q    Median        3Q       Max 
+-0.114434 -0.006106 -0.000373  0.006017  0.088020 
+
+Coefficients:
+                             Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                 8.717e-05  2.653e-04   0.329    0.743    
+ts(mrp)                     1.004e+00  1.932e-02  51.999   <2e-16 ***
+L(ts(microsoftmod$res), 1) -2.293e-02  2.002e-02  -1.146    0.252    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+
+Residual standard error: 0.01316 on 2496 degrees of freedom
+Multiple R-squared:  0.52,	Adjusted R-squared: 0.5196 
+F-statistic:  1352 on 2 and 2496 DF,  p-value: < 2.2e-16 
+\end{Soutput}
+\begin{Sinput}
+> summary(dynlm(goldrp ~ mrp + L(ts(goldmod$res), 1)))
+\end{Sinput}
+\begin{Soutput}
+Time series regression with "numeric" data:
+Start = 1, End = 2499
+
+Call:
+dynlm(formula = goldrp ~ mrp + L(ts(goldmod$res), 1))
+
+Residuals:
+      Min        1Q    Median        3Q       Max 
+-0.072581 -0.005880  0.000178  0.006435  0.072343 
+
+Coefficients:
+                        Estimate Std. Error t value Pr(>|t|)    
+(Intercept)           -0.0011091  0.0002372  -4.677 3.07e-06 ***
+mrp                   -0.0236453  0.0172664  -1.369   0.1710    
+L(ts(goldmod$res), 1)  0.0360663  0.0200098   1.802   0.0716 .  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+
+Residual standard error: 0.01176 on 2496 degrees of freedom
+Multiple R-squared: 0.00201,	Adjusted R-squared: 0.00121 
+F-statistic: 2.513 on 2 and 2496 DF,  p-value: 0.08123 
+\end{Soutput}
+\begin{Sinput}
+> durbinWatsonTest(microsoftmod, max.lag = 1)
+\end{Sinput}
+\begin{Soutput}
+ lag Autocorrelation D-W Statistic p-value
+   1     -0.02291682       2.04577   0.256
+ Alternative hypothesis: rho != 0
+\end{Soutput}
+\begin{Sinput}
+> durbinWatsonTest(applemod, max.lag = 1)
+\end{Sinput}
+\begin{Soutput}
+ lag Autocorrelation D-W Statistic p-value
+   1      0.01299961       1.97393   0.514
+ Alternative hypothesis: rho != 0
+\end{Soutput}
+\begin{Sinput}
+> durbinWatsonTest(goldmod, max.lag = 1)
+\end{Sinput}
+\begin{Soutput}
+ lag Autocorrelation D-W Statistic p-value
+   1      0.03604061      1.927601   0.062
+ Alternative hypothesis: rho != 0
+\end{Soutput}
+\begin{Sinput}
+> jarque.bera.test(microsoftmod$res)
+\end{Sinput}
+\begin{Soutput}
+	Jarque Bera Test
+
+data:  microsoftmod$res 
+X-squared = 8683.798, df = 2, p-value < 2.2e-16
+\end{Soutput}
+\begin{Sinput}
+> jarque.bera.test(applemod$res)
+\end{Sinput}
+\begin{Soutput}
+	Jarque Bera Test
+
+data:  applemod$res 
+X-squared = 3384.751, df = 2, p-value < 2.2e-16
+\end{Soutput}
+\begin{Sinput}
+> jarque.bera.test(goldmod$res)
+\end{Sinput}
+\begin{Soutput}
+	Jarque Bera Test
+
+data:  goldmod$res 
+X-squared = 1593.331, df = 2, p-value < 2.2e-16
+\end{Soutput}
+\end{Schunk}
+
+\section{Portfeliai}
+Portfeliai:
+
+
+\label{C1}
+ Aktyvo $x$ dalis portfelyje iš dviejų aktyvų
+
+\begin{Schunk}
+\begin{Soutput}
+          [,1]      [,2]      [,3]
+[1,] 0.8116744 0.7491511 0.7111582
+\end{Soutput}
+\end{Schunk}
+
+\begin{Schunk}
+\begin{Soutput}
+          vek1      vek2      vek3
+[1,] 0.9959148 0.9924209 0.9804096
+\end{Soutput}
+\end{Schunk}
+
+ Iždo vekselio procentas portfelyje iš dviejų aktyvų 
+
+\begin{Schunk}
+\begin{Soutput}
+         [,1]     [,2]      [,3]
+[1,] 0.999665 1.000066 0.9996887
+\end{Soutput}
+\end{Schunk}
+
+ Apytikslės koeficientų reikšmės portfelyje iš dviejų įmonių
+
+
+
+\begin{figure}[H]
+  \centering
+\includegraphics{kursinis-033}
+  \caption{...}
+  
+\end{figure}
+
+(gal nereikia)
+Iliustracija: pagal grafikus rinktis ta skaiciu, ties kuriuo standartinis nuokrypis maziausias, ji istatyti vietoje i.
+
+\textit{optimaliausias portfelis} = $imone1 \times i \times 0.1 + imone2 \times (1 - i\times 0.1)$ \\
+
+
+$0.1 \times (i-1) \times Auksas + (1-0.1 \times (i-1)) \times Microsoft$
+
+$0.1 \times (i-1) \times Apple + (1-0.1 \times (i-1)) \times Microsoft$
+
+$0.1 \times (i-1) \times Apple + (1-0.1\times (i-1)) \times Auksas$
+
+\item Trijų aktyvų portfelio paieška 
+
+I variantas:
+
+\begin{Schunk}
+\begin{Sinput}
+> folio = 0.8117 * gold[-891] + 0.1883 * apple
+> (var(microsoft) - cor(microsoft[-891], folio) * sd(folio) * sd(microsoft))/(var(folio) + 
++     +var(microsoft) - 2 * cor(microsoft[-891], folio) * sd(folio) * 
++     sd(microsoft))
+\end{Sinput}
+\begin{Soutput}
+[1] 0.8059366
+\end{Soutput}
+\end{Schunk}
+
+80,59 \% folio ir 19,41 \% microsoft
+
+80.59* 0.8117 aukso
+
+80.59* 0.1883 apple
+\begin{Schunk}
+\begin{Sinput}
+> sd((65.41 * gold[-891] + 15.18 * apple + 19.41 * microsoft[-891])/100)
+\end{Sinput}
+\begin{Soutput}
+[1] 0.009586881
+\end{Soutput}
+\end{Schunk}
+
+
+II variantas
+
+\begin{Schunk}
+\begin{Sinput}
+> folio = 0.7492 * microsoft[-891] + 0.2508 * apple
+> (var(folio) - cor(folio, gold[-891]) * sd(gold) * sd(folio))/(var(gold) + 
++     +var(folio) - 2 * cor(folio, gold[-891]) * sd(gold) * sd(folio))
+\end{Sinput}
+\begin{Soutput}
+[1] 0.6904081
+\end{Soutput}
+\end{Schunk}
+
+69.04 \% aukso ir 30.96 \% folio
+
+30.96* 0.7492 = 23.19523 \% microsoft
+
+30.96* 0.2508 = 7.764768 \% apple
+\begin{Schunk}
+\begin{Sinput}
+> sd((23.19523 * microsoft[-891] + 7.764768 * apple + 69.04 * gold[-891])/100)
+\end{Sinput}
+\begin{Soutput}
+[1] 0.009427794
+\end{Soutput}
+\end{Schunk}
+
+III variantas
+
+
+\begin{Schunk}
+\begin{Sinput}
+> folio = 0.2888 * microsoft + gold * 0.7112
+> (var(folio) - cor(folio[-891], apple) * sd(apple) * sd(folio))/(var(apple) + 
++     var(folio) - 2 * cor(folio[-891], apple) * sd(apple) * sd(folio))
+\end{Sinput}
+\begin{Soutput}
+[1] 0.06478507
+\end{Soutput}
+\end{Schunk}
+
+
+6.478507 \% apple
+
+93.5215 * 0.2888 = 27.00901 \% microsoft
+
+93.5215 * 0.7112 = 66.51249 \% aukso
+
+\begin{Schunk}
+\begin{Sinput}
+> sd((6.478507 * apple + 27.00901 * microsoft[-891] + 66.51249 * 
++     gold[-891])/100)
+\end{Sinput}
+\begin{Soutput}
+[1] 0.009455108
+\end{Soutput}
+\end{Schunk}
+
+ Portfelių regresinių modelių R kodas
+
+\begin{Schunk}
+\begin{Sinput}
+> summary(goldapplemod)
 \end{Sinput}
 \begin{Soutput}
 Call:
-lm(formula = port4rp ~ mrp)
+lm(formula = goldapplerp ~ mrp[-891])
 
 Residuals:
-     Min       1Q   Median       3Q      Max 
--1.73189 -0.02302 -0.00050  0.02030  1.74570 
+      Min        1Q    Median        3Q       Max 
+-0.065798 -0.005279  0.000247  0.005839  0.063207 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)    
+(Intercept) -0.0005723  0.0002059  -2.779  0.00549 ** 
+mrp[-891]    0.1747229  0.0149894  11.656  < 2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+
+Residual standard error: 0.01021 on 2497 degrees of freedom
+Multiple R-squared: 0.05161,	Adjusted R-squared: 0.05123 
+F-statistic: 135.9 on 1 and 2497 DF,  p-value: < 2.2e-16 
+\end{Soutput}
+\begin{Sinput}
+> summary(microapplemod)
+\end{Sinput}
+\begin{Soutput}
+Call:
+lm(formula = microapplerp ~ mrp[-891])
+
+Residuals:
+      Min        1Q    Median        3Q       Max 
+-0.082629 -0.006268 -0.000240  0.006055  0.066101 
 
 Coefficients:
              Estimate Std. Error t value Pr(>|t|)    
-(Intercept) -0.013728   0.001427  -9.617  < 2e-16 ***
-mrp          0.061598   0.009948   6.192 6.93e-10 ***
+(Intercept) 0.0004989  0.0002347   2.126   0.0336 *  
+mrp[-891]   1.0097165  0.0170871  59.092   <2e-16 ***
 ---
-Signif. codes:  0 
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+
+Residual standard error: 0.01164 on 2497 degrees of freedom
+Multiple R-squared: 0.5831,	Adjusted R-squared: 0.5829 
+F-statistic:  3492 on 1 and 2497 DF,  p-value: < 2.2e-16 
+\end{Soutput}
+\begin{Sinput}
+> summary(goldmicromod)
+\end{Sinput}
+\begin{Soutput}
+Call:
+lm(formula = goldmicrorp ~ mrp)
+
+Residuals:
+      Min        1Q    Median        3Q       Max 
+-0.050394 -0.004731  0.000146  0.005137  0.057667 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)    
+(Intercept) -0.0007624  0.0001812  -4.207 2.68e-05 ***
+mrp          0.2735671  0.0131925  20.737  < 2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+
+Residual standard error: 0.008987 on 2498 degrees of freedom
+Multiple R-squared: 0.1469,	Adjusted R-squared: 0.1465 
+F-statistic:   430 on 1 and 2498 DF,  p-value: < 2.2e-16 
+\end{Soutput}
+\begin{Sinput}
+> summary(goldmicroapplemod)
+\end{Sinput}
+\begin{Soutput}
+Call:
+lm(formula = goldmicroapplerp ~ mrp[-891])
+
+Residuals:
+      Min        1Q    Median        3Q       Max 
+-0.050221 -0.004560  0.000177  0.004888  0.055819 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)    
+(Intercept) -0.0006102  0.0001749  -3.489 0.000492 ***
+mrp[-891]    0.2967395  0.0127287  23.313  < 2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+
+Residual standard error: 0.008671 on 2497 degrees of freedom
+Multiple R-squared: 0.1787,	Adjusted R-squared: 0.1784 
+F-statistic: 543.5 on 1 and 2497 DF,  p-value: < 2.2e-16 
 \end{Soutput}
 \end{Schunk}
-           
 
+ Portfelių regresijos R kodas
+
+\begin{Schunk}
+\begin{Sinput}
+> goldapple = 0.8117 * gold[-891] + 0.1883 * apple
+> microapple = 0.7492 * microsoft[-891] + 0.2508 * apple
+> goldmicro = 0.7112 * gold + 0.2888 * microsoft
+> goldmicroapple = 0.232 * microsoft[-891] + 0.0776 * apple + 0.6904 * 
++     gold[-891]
+> goldapplerp = goldapple - rkfree[-891]
+> microapplerp = microapple - rkfree[-891]
+> goldmicrorp = goldmicro - rkfree
+> goldmicroapplerp = goldmicroapple - rkfree[-891]
+> goldapplemod = lm(goldapplerp ~ mrp[-891])
+> microapplemod = lm(microapplerp ~ mrp[-891])
+> goldmicromod = lm(goldmicrorp ~ mrp)
+> goldmicroapplemod = lm(goldmicroapplerp ~ mrp[-891])
+> microapple.table = xtable(microapplemod)
+> goldapple.table = xtable(goldapplemod)
+> goldmicro.table = xtable(goldmicromod)
+> goldmicroapple.table = xtable(goldmicroapplemod)
+\end{Sinput}
+\end{Schunk}
 \end{document}
 
            
