@@ -1,0 +1,275 @@
+%\documentclass[pdf,lt,slideColor,colorBG,noaccumulate,nototal,final]{prosper}
+%% Norint matyti lietuviskas raides reikia susiinstaliuoti lietuvybes
+%% arba unikodo palaikyma. Sitas dokumentas yra standartinėje ISO-8859-13 koduoteje. 
+\documentclass[utf8,hyperref={unicode},xcolor=dvipsnames]{beamer}
+%\documentclass[utf8]{beamer}
+
+\mode<presentation>
+{
+
+\usecolortheme[named=Apricot]{structure} 
+ 
+\usetheme[height=11mm]{Rochester} 
+\setbeamertemplate{items}[ball] 
+\setbeamertemplate{blocks}[rounded][shadow=true] 
+\setbeamertemplate{navigation symbols}{} 
+  % or whatever (possibly just delete it)
+   \setbeamertemplate{footline}
+   {%
+     \leavevmode%
+    \hbox{\begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm 	plus1fill,rightskip=.3cm]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertshortauthor
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle \hfill p.
+	\insertpagenumber\enspace iš \insertdocumentendpage\enspace
+    \end{beamercolorbox}}%
+  \vskip0pt%
+}
+%\hfill\insertshorttitle\enspace -- p. \insertpagenumber\enspace iš
+%\insertdocumentendpage\enspace%
+%   }
+    
+}
+ \setbeamertemplate{navigation symbols}{}
+
+
+
+\usepackage[english]{babel}
+%\usepackage[utf8x]{inputenc}
+\usepackage[L7x]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{amssymb}
+%\usepackage{theorem}
+\usepackage{bm}
+\usepackage{graphicx}
+
+\newcommand{\ab}[1]{#1_{\alpha}}
+\newcommand{\wab}[2][\delta]{w_{\alpha}(#2,#1)}
+\newcommand{\normab}[1]{\lVert#1\rVert_{\alpha}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\sprod}[1]{\langle #1 \rangle}
+\DeclareMathOperator{\diam}{diam}
+%\renewcommand{\theenumi}{\roman{enumi}}
+%\renewcommand{\labelenumi}{\theenumi)}
+\theoremstyle{change}\newtheorem{teorema}{Teiginys}
+\theoremstyle{change}\newtheorem{salyga}{}
+%	\vspace*{20pt}
+%	\vspace*{20pt}
+\DeclareMathOperator{\seq}{seq}
+\DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\tr}{tr}
+\newcommand{\ds}[1]{\displaystyle{#1}}
+\newcommand{\dlt}[2]{\Delta^{(#1)}_{#2}}
+\newcommand{\norms}[1]{\lVert#1\rVert_{\alpha}^{\seq}}
+\newcommand{\normh}[1]{\lVert#1\rVert}
+\newcommand{\norma}[1]{\lVert #1\rVert_{\alpha}}
+
+\newcommand{\skirt}[2]{\Delta^{(#1)}_{#2}}
+\newcommand{\cp}{\buildrel P\over\longrightarrow}
+\renewcommand{\theenumi}{\roman{enumi}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbf{E}\,} % expectation operator
+\newcommand{\bv}{\bm{v}}
+
+\newcommand{\T}{T}
+\newcommand{\n}{{\bm{n}}}
+\newcommand{\jj}{{\bm{j}}}
+\newcommand{\kk}{{\bm{k}}}
+\newcommand{\bt}{\bm{t}}
+\newcommand{\bu}{\bm{u}}
+\newcommand{\B}{\bm{B}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\bi}{\bm{i}}
+\newcommand{\p}{\bm{\pi}}
+\newcommand{\one}{{\bm{1}}}
+
+\newcommand{\nni}{{\bm{n},\bm{i}}}
+\newcommand{\nj}{{\bm{n},\bm{j}}}
+\newcommand{\nk}{{\bm{n},\bm{k}}}
+\newcommand{\kn}{\bm{k}_{\bm{n}}}
+
+\newcommand{\vv}{\bm{\mathrm{v}}}
+\newcommand{\vr}{{\mathrm{v}}}
+\newcommand{\uu}{\bm{\mathrm{u}}}
+\newcommand{\ur}{{\mathrm{u}}}
+
+
+\newcommand{\abs}[1]{\left\vert #1 \right\vert}
+\newcommand{\snk}{\sigma^2_{\bm{n},\bm{k}}}
+\newcommand{\snj}{\sigma^2_{\bm{n},\bm{j}}}
+
+\newcommand{\Rnj}{R_{\bm{n},\bm{j}}}
+\newcommand{\Rnk}{R_{\bm{n},\bm{k}}}
+
+\newcommand{\HH}{\mathrm{H}} % a set of notations for Holder spaces
+\newcommand{\Ha}{\HH_{\alpha}}
+\newcommand{\Hab}{\HH_{\alpha,\beta}}
+\newcommand{\Habo}{\HH_{\alpha,\beta}^o}
+\newcommand{\Hao}{\HH_{\alpha}^o}
+\newcommand{\m}{\mathrm{m}}
+\newcommand{\s}{\bm{s}}
+
+\newcommand{\bb}{\bm{\beta}}
+\newcommand{\bx}{\mathbf{x}}
+\newcommand{\indf}[1]{\mathbf{1}\left( #1 \right)}
+
+\title[CAPM]{CAPM ir akcijų portfelio konstravimas}
+%\shorttitle{}
+\author[ ]{Monika Šeštokaitė ir Simona Plonytė}
+\institute[Vilnius University] {
+    
+    Vilniaus Universitetas
+    \and
+    
+   Matematikos ir informatikos fakultetas
+\and
+Ekonometrinės analizės katedra
+ }
+\date{2011 gruodžio 8 d.}
+
+\begin{document}
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\begin{frame}
+    \frametitle{CAPM} 
+    \begin{itemize}
+	\item Kapitalo aktyvų įvertinimo modelis (CAPM) įvertina aktyvo investicinės grąžos ir rizikos santykį tiriant vertybinių popierių rinkoje esančių akcijų pajamingumą.
+    \item Kintamieji: $r_a$ -- a aktyvo pelningumas/grąža; 
+
+$r_m$ -- rinkos akcijų pelningumas; 
+
+$r_f$ -- nerizikingo aktyvo (iždo vekselio) grąža; 
+
+$r_a-r_f$ -- a aktyvo rizikos premija; 
+
+$r_m - r_f$ -- rinkos rizikos premija
+    \end{itemize}
+\end{frame}
+\begin{frame}
+    \frametitle{Regresinis modelis} 
+    \begin{itemize}
+	\item $r_a - r_f = \alpha + \beta \times (r_m - r_f)$
+	\item Koeficientai: $ \alpha $ parodo aktyvo vertę ,\\ $ \beta $ -- aktyvo pelningumo priklausomybę nuo bendro rinkos pelningumo.
+	
+\begin{comment}	
+	
+\item $\beta = \frac{\sigma_{am}}{\sigma^2_m}$
+\item Čia $\sigma_{am}$ -- a aktyvo ir rinkos rizikos premijų kovariacija; 
+
+$\sigma^2_m$ -- rinkos rizikos premijos dispersija
+\end{comment}
+
+    \end{itemize}
+\end{frame}
+\begin{frame}
+    \frametitle{Duomenys} 
+    \begin{itemize}
+ 	\item Aktyvai: Auksas, Microsoft Corp. akcijos, Apple Inc. akcijos, S\&P 500 indeksas, JAV 30-ies dienų iždo vekseliai;
+	\item 2001 m. rugpjūčio 1 d. - 2011 m. liepos 29 d.
+	\item Dieniniai duomenys
+
+    \end{itemize}
+\end{frame}
+\begin{frame}
+    \frametitle{Aktyvų rizikos premijos priklausomybė nuo rinkos rizikos premijos} 
+    \begin{itemize}
+\item Modelis: $r_a - r_f = \alpha + \beta \times (r_m - r_f)$
+	
+\begin{table}[ht]
+\begin{center}
+    \begin{tabular}{ | l | l | l | }
+    \hline
+    Aktyvas & \beta & $ R^2 $ \\
+    \hline
+  Microsoft Corp. akcijos & 1.0039 & 0.5197 \\
+	Apple Inc. akcijos  & 1.0270 & 0.3012 \\
+  Auksas & −0.023 & 0.0007 \\
+	\hline
+    \end{tabular}
+\end{center}
+\end{table}
+nzn ar grazu reikia!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+	    \end{itemize}
+\end{frame}
+\begin{frame}
+    \frametitle{Portfelis iš dviejų aktyvų}
+    \begin{itemize}
+	\item Formulė : a^{\ast}= \frac{\sigma_y^2 - r_{xy}\sigma_x \sigma_y}{\sigma^2_x + \sigma^2_y - 2r_{xy}\sigma_x \sigma_y} \label{form}
+
+
+\begin{table}[ht]
+\begin{center}
+
+\resizebox{11cm}{!} {
+    \begin{tabular}{ | l | l | l | l | }
+    \hline
+    Portfelio nr. & 1 & 2 & 3\\
+    \hline
+    I aktyvas; \% & Auksas; 81,17 \% & Microsoft Corp. akcijos; 74,92 \% & Auksas; 71,12 \% \\
+    \hline
+    II aktyvas; \% & Apple Inc. akcijos; 18,83 \% & Apple Inc. akcijos; 25,08 \% & Microsoft Corp. akcijos; 28,88 \% \\
+    \hline
+    Rizika & 0.0104 & 0.0180 & 0.0096 \\
+    \hline
+    Grąža & 0.00099 & 0.00060 & 0.00062 \\
+    \hline
+    \beta & 0.16243 & 1.0111 & 0.26268\\
+	\hline	
+    \end{tabular}
+    }
+
+\end{center}
+\end{table}
+
+\end{itemize}
+\end{frame}
+\begin{frame}
+    \frametitle{Portfelis iš trijų aktyvų}
+    \begin{itemize}
+	\item 7.764768 \% Apple Inc. akcijų, 23.19523 \% Microsoft Corp. akcijų ir
+69.04 \% aukso;
+	\item Portfelio $\beta= 0.2967$, grąža -- 0.000733
+%	\item Note $0<\alpha<1/2$, since $W$ ``lives only'' in $\Hao([0,1])$ for
+%	    $\alpha<1/2$.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Išvados} 
+
+    \begin{itemize}
+\item Geriausia investicija  -- auksas
+
+\item Geriausi portfeliai: 
+\begin{itemize}
+	\item portfelis iš aukso ir Apple Inc. akcijų (geriausias esant nestabiliai rinkai);
+	\item portfelis iš Microsoft Corp. ir Apple Inc. kompanijų akcijų (geriausias pakilimo laikotarpiu).
+\end{itemize}
+    \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Literatūra} 
+    \begin{itemize}
+	\item 
+\item 
+ \item 
+   \item  
+\item 
+\item 
+    \end{itemize}
+ \end{frame}
+ 
+
+
+
+\end{document}
+
