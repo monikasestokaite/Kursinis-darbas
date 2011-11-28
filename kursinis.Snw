@@ -63,21 +63,27 @@ capm = read.csv("TBILLS daily.csv")
 }
 \sectionnonum{Įvadas}
 
-Šio kursinio darbo tikslas -- naudojantis kapitalo aktyvų vertinimo modeliu (\textit{Capital Asset Pricing Model} -- CAPM) ištirti Microsoft Corp. ir Apple Inc. įmonių akcijų bei aukso rizikos premijų priklausomybę nuo JAV rinkos rizikos premijų per pastarąjį dešimtmetį, taip pat iš minėtųjų aktyvų sudaryti kelis portfelius ir juos įvertinti. \\
+Šio kursinio darbo tikslas -- naudojantis kapitalo aktyvų vertinimo modeliu (\textit{Capital Asset Pricing Model} -- CAPM) ištirti Microsoft Corp. ir Apple Inc. įmonių akcijų bei aukso rizikos premijų priklausomybę nuo kai kurių įmonių akcijų ir aukso rinkos rizikos premijų per pastarąjį dešimtmetį, taip pat iš atitinkamų aktyvų sudaryti kelis portfelius ir juos įvertinti. \\
 
-Pirmame skyriuje supažindinsime su kapitalo aktyvų įvertinimo modeliu ir pagrindinėmis sąvokomis. Antrame skyriuje aprašysime Microsoft Corp. ir Apple Inc. įmonių akcijų bei aukso kainų duomenis, išbrėšime kainas bei grąžas patspindinčius grafikus. Duomenų vidurkiai, dispersijos, standartiniai nuokrypiai, koreliacijų koeficientai ir jų intrepretacijos bus pateikiami trečiame skyriuje. Ketvirtame skyriuje sudarysime aktyvų vertinimo modelius, patikrinsime liekanų homoskedastiškumą, autokoreliuotumą bei normalumą. Penktas skyrius bus skirtas portfelių konstravimui ir analizei iš dviejų ir trijų aktyvų, įtraukiant Microsoft Corp., Apple Inc. įmonių akcijas, auksą bei nerizikingą aktyvą. Kursinio darbo pabaigoje pateiksime rezultatus ir išvadas, naudotą literatūrą bei priedus.
+Pirmame skyriuje supažindinsime su kapitalo aktyvų įvertinimo modeliu ir pagrindinėmis sąvokomis. Antrame skyriuje aprašysime Microsoft Corp. ir Apple Inc. įmonių akcijų bei aukso kainų duomenis, pateiksime kainas bei grąžas atspindinčius grafikus. Trečiame skyriuje bus pateikti duomenų vidurkiai, dispersijos, standartiniai nuokrypiai, koreliacijų koeficientai ir jų intrepretacijos. Ketvirtame skyriuje sudarysime aktyvų vertinimo modelius, patikrinsime liekanų homoskedastiškumą, autokoreliuotumą bei normalumą. Penktas skyrius bus skirtas portfelių konstravimui ir analizei, įtraukiant Microsoft Corp., Apple Inc. įmonių akcijas, auksą bei nerizikingą aktyvą. Darbo pabaigoje pateiksime rezultatus ir išvadas, naudotą literatūrą bei priedus.
 
 \newpage
 
-\section{CAPM}
+\section{Kapitalo aktyvų įvertinimo modelis}
 
-Pirmą kartą kapitalo aktyvų vertinimo modelį (CAPM) aprašė William Forsyth Sharpe (1964), nors panašius darbus pristatė ir Jack Treynor (1961, 1962), John Lintner (1965) ir Jan Mossin (1966). CAPM praplėtė Harry Markowitz'o portfelio teoriją, įtraukiant sisteminės ir nesisteminės rizikos sąvokas. Už darbą su CAPM W. F. Sharp, drauge su H. Markowitz ir M. Miller, 1990 m. gavo Nobelio premiją ekonomikos srityje. \\
+Pirmą kartą kapitalo aktyvų vertinimo modelį (CAPM) aprašė William Forsyth Sharpe (1964), nors panašius darbus pristatė ir Jack Treynor (1961, 1962), John Lintner (1965) ir Jan Mossin (1966). CAPM praplėtė Harry Markowitz'o portfelio teoriją, įtraukiant sisteminės ir nesisteminės rizikos sąvokas. Už darbą su CAPM W. F. Sharp, drauge su H. Markowitz ir M. Miller, 1990 m. gavo Nobelio ekonomikos premiją. \\
 
 Kapitalo aktyvų vertinimo modelis įvertina aktyvo investicinės grąžos ir rizikos santykį tiriant 
-vertybinių popierių rinkoje esančių akcijų pajamingumą. Modeliui galioja tiesinė priklausomybė:
-$$ R = \alpha  + \beta  \cdot R_m, $$ kur $ R $ -- rizikos premija (skirtumas tarp mus dominančio aktyvo grąžos ir nerizikingo aktyvo grąžos), $ R_m $ -- rinkos rizikos premija (skirtumas tarp rinką atitinkančio portfelio grąžos ir nerizikingo aktyvo grąžos). Svarbūs yra koeficientai $ \alpha $ ir $ \beta $. Jei turime $ n $ istorinių aktyvo, nerizikingo aktyvo bet rinką atitinkančio portfelio grąžų, $$ \alpha = \sum_{i=1}^{n}\frac{R_i}{n} - \beta \cdot \sum_{i=1}^{n}\frac{R_m_i}{n} \text{, o } \beta = \frac{Cov (R, R_m)} { Var (R_m) }. $$ 
+vertybinių popierių rinkoje esančių akcijų pajamingumą. Finansų valdymo teorijoje riziką apibūdina aktyvo laukiamų grąžų išsibarstymas, t.y. dispersija $ {\sigma} $. Taip pat rizika gali būti matuojama ir standartiniu nuokrypiu. Kuo standartinis nuokrypis ar dispersija didesni, tuo rizika aukštesnė. Investuotojas norėtų skolinti su kuo mažesne rizika. Jei rizika būtų lygi nuliui, mažiausia laukiama grąža, dominanti investuotoją, bus vadinama nerizikinga grąža $r_f$. Kompensaciją už rizikos prisiėmimą vadinsime rizikos premija $R$. Ji lygi laukiamos grąžos $r$ ir nerizikingos grąžos $r_f$ skirtumui.\\
 
- Koeficientas $ \beta $ atspindi sisteminę (rinkos) riziką -- riziką, nepriklausančią nuo įmonės veiksnių. Sisteminę riziką sudaro makroekonominiai veiksniai. Taigi, $ \beta $ parodo aktyvo pelningumo priklausomybę nuo bendro rinkos pelningumo. Koeficiento ženklas parodo aktyvo vertės kitimo kryptį -- jei $ \beta > 0 $, aktyvo vertė kinta ta pačia linkme, kaip ir rinkos pokyčiai, jei $ \beta < 0 $ -- atvirkščiai. Kuo $ \beta $  didesnis tuo aktyvas rizikingesnis (aktyvo rizikos dydį matuojama jo pelningumo dispersija). Nerizikingo aktyvo koeficientas $ \beta $ lygus nuliui. Koeficientas $ \alpha $ parodo aktyvo vertę: jei jis teigiamas -- aktyvas nuvertintas ir jį verta pirkti, jei neigiamas -- verta parduoti.
+Kapitalo aktyvų vertinimo modelis plačiai naudojamas sudarant portfelius. Bendra portfelio, sudaryto iš n aktyvų, grąža $r_p$ apskaičiuojama nesudėtingai: $$ r_p =  \sum_{i=1}^{n} w_j \cdot r_j, $$ kur 
+ $r_j$ -- $j$--ojo aktyvo laukiamų grąžų vidurkis, o $w_j$ -- $j$--ojo aktyvo dalis portfelyje. Taigi, visų $w_j$ suma privalo būti lygi vienetui. Tokio portfelio rizika $$ {{\sigma}^2}_p = \sum_{i=1}^{n} {\sum_{i=1}^{n} w_i \cdot w_j \cdot {{\sigma}_{ij}}}, $$  kur $ {\sigma}_{ij}} $ -- kovariacija tarp  $i$--ojo ir  $j$--ojo aktyvo grąžų.\\
+ 
+Nagrinėkime portfelį sudarytą iš dviejų aktyvų: aktyvo $ j $ su laukiama grąžą $ r_j $ ir rizika $ {{\sigma}^2}_j $ bei nerizikingo aktyvo $r_f$. Tada portfelio grąžos formulė: $$ r_p = (1-w_j) \cdot r_f + w_j \cdot r_j, $$ o riziką apskaičiuojame tokią: $$ {{\sigma}^2}_p = {{w^2}_j} \cdot {{\sigma}^2}_j + (1- w_j)^2 \cdot {{\sigma}^2}_f + 2 \cdot (1-w_j) \cdot w_j \cdot {\sigma}_{jf} . $$ 
+ Kadangi nerizikingo aktyvo rizika yra nulinė, tai bendrą portfelio riziką galima aprašyti trumpiau: $$ {\sigma}_p = w_j \cdot {\sigma}_j . $$ Pažymėjus $ w_j = \frac{{\sigma}_p}{ {\sigma}_j}, $ gauname, kad porfelio rizika $$ r_p = r_f + \left( \frac{r_j - r_f}{{\sigma}_j} \right) \cdot {\sigma }_p. $$ Jei tarsime, kad dabar $j$ investiciją atitiks rinkos portfelis $m$ su laukiama grąža $r_m$ bei rizika ${\sigma}_m$, gautąją tiesinę priklausomybę, galime perrašyti tokiu pavidalu: 
+$$ R = \alpha  + \beta  \cdot R_m, $$ kur $ R = r_p - r_f$ -- rizikos premija , $ R_m = r_m - r_f$ -- rinkos rizikos premija. Nesunku pastebėti, jog $$ \beta = \frac{Cov (R, R_m)} { Var (R_m) } . $$
+
+Koeficientai $ \alpha $ ir $ \beta $ yra labai svarbūs. $ \beta $ atspindi sisteminę (rinkos) riziką -- riziką, nepriklausančią nuo įmonės veiksnių. Sisteminę riziką sudaro makroekonominiai veiksniai. Taigi, $ \beta $ parodo aktyvo (arba portfelio) pelningumo priklausomybę nuo bendro rinkos pelningumo. Koeficiento ženklas parodo nagrinėjamo objekto vertės kitimo kryptį -- jei $ \beta > 0 $, aktyvo (portfelio) vertė kinta ta pačia linkme, kaip ir rinkos pokyčiai, jei $ \beta < 0 $ -- atvirkščiai. Kuo $ \beta $  didesnis tuo aktyvas (portfelis) rizikingesnis. Nerizikingo aktyvo koeficientas $ \beta $ lygus nuliui. Koeficientas $ \alpha $ parodo aktyvo vertę: jei jis teigiamas -- aktyvas nuvertintas ir jį verta pirkti, jei neigiamas -- verta parduoti.\\
 
 Visa, kas nesudaro sisteminės rizikos, vadinama nesistemine rizika. Tai rizika, priklausanti tik nuo konkrečios įmonės veiksnių. Skirtingai nei sisteminę riziką, šią galima minimizuoti diversifikuojant vertybinių popierių portfelį.\\
 
@@ -717,7 +723,7 @@ Mažiausiai su rinkos akcijų kainomis koreliuoja aukso kainos (-0.04482454). Š
 
 
 \newpage
-\section{Kapitalo aktyvų įvertinimo modelis}
+\section{Kapitalo aktyvų įvertinimo modelio taikymas}
 
 Viena iš kapitalo aktyvų įvertinimo modelio (\textit{Capital Asset Pricing Model} -- CAPM) išraiškų -- paprasta vieno kintamojo regresija. Ją naudosime tirdami imonių akcijų ir aukso rizikos premijų priklausomybę nuo rinkos rizikos premijų. Visos R paketo komandos ir lentelės, naudotos šiame skyriuje, pateiktos \ref{B 1} priede.
 Lentelėse pateiktas laisvasis narys $ \alpha $, koeficientas  $ \beta $ bei jų statistinis reikšmingumas.\\
@@ -1351,10 +1357,11 @@ Palgrave Macmillian (2006).
 
 \appendix
 
-\section{Priedas: aprašomoji statistika}
+\section{priedas: aprašomoji statistika}
 \label{A 1}
 Aprašomoji statistika:
 
+\begin{verbatim}
 @
 <<>>=
 
@@ -1399,9 +1406,13 @@ cor(mrp[-891], applerp),
 cor(mrp, goldrp))
 @
 
-\section{Priedas: modeliai ir jų liekanos}
+\end{verbatim}
+
+\section{priedas: modeliai ir jų liekanos}
 \label{B 1}
 Modeliai:
+
+\begin{verbatim}
 <<results=hide>>=
 
 microsoftmod = lm(microsoftrp~mrp)
@@ -1430,12 +1441,14 @@ jarque.bera.test(applemod$res)
 jarque.bera.test(goldmod$res)
 @
 
-\section{Priedas: portfeliai}
+\end{verbatim}
+
+\section{priedas: portfeliai}
 Portfeliai:
 
 
 \label{C1}
- Aktyvo $x$ dalis portfelyje iš dviejų aktyvų
+ Aktyvo $x$ dalis portfelyje iš dviejų aktyvų:
 
 <<echo=FALSE>>=
 cbind((var(apple) - cor(apple,gold[-891])*sd(gold)*sd(apple))/(var(gold)+var(apple) - 2*cor(apple,gold[-891])*sd(gold)*sd(apple)),
@@ -1451,7 +1464,9 @@ vek3=(var(gold) - cor(gold,rkfree)*sd(rkfree)*sd(gold))/(var(rkfree)+var(gold) -
 cbind(vek1, vek2, vek3)
 @
 
- Iždo vekselio procentas portfelyje iš dviejų aktyvų 
+
+ Iždo vekselio procentas portfelyje iš dviejų aktyvų:
+
 
 <<echo=FALSE>>=
 cbind((var(apple[1783:2499]) - cor(apple[1783:2499],rkfree[1783:2499])*sd(rkfree[1783:2499])*sd(apple[1783:2499]))/(var(rkfree[1783:2499])+var(apple[1783:2499]) - 2*cor(apple[1783:2499],rkfree[1783:2499])*sd(rkfree[1783:2499])*sd(apple[1783:2499])),
@@ -1459,14 +1474,17 @@ cbind((var(apple[1783:2499]) - cor(apple[1783:2499],rkfree[1783:2499])*sd(rkfree
 (var(gold[1783:2500])-cor(gold[1783:2500],rkfree[1783:2500])*sd(rkfree[1783:2500])*sd(gold[1783:2500]))/(var(rkfree[1783:2500])+var(gold[1783:2500]) - 2*cor(gold[1783:2500],rkfree[1783:2500])*sd(rkfree[1783:2500])*sd(gold[1783:2500])))
 @
 
+
+
 \begin{comment}
 
- Apytikslės koeficientų reikšmės portfelyje iš dviejų įmonių
+ Apytikslės koeficientų reikšmės portfelyje iš dviejų įmonių:
 
 
 
 \begin{figure}[H]
   \centering
+  \begin{verbatim}
 <<fig=TRUE,width=18,height=12,results=hide,echo=false>>=
 print(plot(sdevs, col=3, ylim=c(0.009, 0.025),ylab="Standartiniai nuokrypiai",type="l"))
 add=TRUE
@@ -1478,6 +1496,7 @@ text(3, 0.01,"Auksas - Apple")
 text(5, 0.02,"Microsoft - Apple")
 
 @
+\end{verbatim}
   \caption{...}
   
 \end{figure}
@@ -1498,7 +1517,7 @@ $0.1 \times (i-1) \times Apple + (1-0.1\times (i-1)) \times Auksas$
 
 Optimalus portfelis iš trijų aktyvų, naudojant formulę \eqref{form}:
 
-
+\begin{verbatim}
 
 <<>>=
 portfolio=0.8117 * gold[-891] + 0.1883 * apple
@@ -1508,6 +1527,8 @@ sd(portfolio) * sd(microsoft))/(var(portfolio) +
 + var(microsoft) - 2 * cor(microsoft[-891], portfolio) * 
 sd(portfolio) * sd(microsoft))
 @
+
+\end{verbatim}
 
 80,59 \% portfelio ir 19,41 \% microsoft
 
@@ -1559,8 +1580,8 @@ sd((6.478507*apple + 27.00901*microsoft[-891] + 66.51249*gold[-891])/100)
 @
 \end{comment}
 
- Portfelių regresinių modelių R kodas
-
+ Portfelių regresinių modelių R kodas:
+\begin{verbatim}
 <<results=hide>>=
 goldapple = 0.8117*gold[-891] + 0.1883*apple 
 microapple = 0.7492* microsoft[-891]  +  0.2508*apple 
@@ -1588,6 +1609,7 @@ summary(goldmicromod)
 summary(goldmicroapplemod)
 
 @
+\end{verbatim}
 \end{document}
 
            
