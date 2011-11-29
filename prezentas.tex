@@ -137,6 +137,7 @@ Ekonometrinės analizės katedra
 \begin{frame}
     \frametitle{CAPM} 
     \begin{itemize}
+\item Kursinio darbo tikslas -- naudojant kapitalo aktyvų įvertinimo modelį (CAPM), rasti aktyvų rizikos premijų priklausomybę nuo rinkos rizikos premijos.
 	\item Kapitalo aktyvų įvertinimo modelis (CAPM) įvertina aktyvo investicinės grąžos ir rizikos santykį tiriant vertybinių popierių rinkoje esančių akcijų pajamingumą.
     \item Kintamieji: $r_a$ -- a aktyvo pelningumas/grąža; 
 
@@ -153,7 +154,11 @@ $r_m - r_f$ -- rinkos rizikos premija.
     \frametitle{Regresinis modelis} 
     \begin{itemize}
 	\item $r_a - r_f = \alpha + \beta \times (r_m - r_f)$
-	\item Koeficientai: $ \alpha $ parodo aktyvo vertę,\\ $ \beta $ -- aktyvo pelningumo priklausomybę nuo bendro rinkos pelningumo.
+	\item Koeficientai: 
+
+$ \alpha $ parodo aktyvo vertę,\\ 
+
+$ \beta $ -- aktyvo pelningumo priklausomybę nuo bendro rinkos pelningumo.
 	
 
 	
@@ -181,20 +186,17 @@ $r_m - r_f$ -- rinkos rizikos premija.
 	
 \begin{table}[ht]
 \begin{center}
-    \begin{tabular}{ | l | l | l | }
+    \begin{tabular}{ | l | l | l | l |}
     \hline
-    Aktyvas & \beta & $ R^2 $ \\
+    Aktyvas & $\beta$ &  grąža & rizika  \\
     \hline
-  Microsoft Corp. akcijos & 1.0039 & 0.5197 \\
-	Apple Inc. akcijos  & 1.0270 & 0.3012 \\
-  Auksas & −0.023 & 0.0007 \\
+  Microsoft Corp. akcijos & 1.0039 & 0.00019 & 0.0189 \\
+	Apple Inc. akcijos  & 1.0270 & 0.0018 & 0.02524 \\
+  Auksas & −0.023 & 0.0007 & 0.0117 \\
 	\hline
     \end{tabular}
 \end{center}
 \end{table}
-nzn ar grazu reikia!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-
 	    \end{itemize}
 \end{frame}
 \begin{frame}
@@ -234,7 +236,7 @@ nzn ar grazu reikia!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     \begin{itemize}
 	\item 7.764768 \% Apple Inc. akcijų, 23.19523 \% Microsoft Corp. akcijų ir
 69.04 \% aukso;
-	\item Portfelio $\beta= 0.2967$, grąža -- 0.000733.
+	\item Portfelio $\beta= 0.2967$, grąža = 0.000733, rizika = 0.00942.
 %	\item Note $0<\alpha<1/2$, since $W$ ``lives only'' in $\Hao([0,1])$ for
 %	    $\alpha<1/2$.
     \end{itemize}
@@ -258,14 +260,27 @@ nzn ar grazu reikia!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 \begin{frame}
     \frametitle{Literatūra} 
-    \begin{itemize}
-	\item 
-\item 
- \item 
-   \item  
-\item 
-\item 
-    \end{itemize}
+     \begin{thebibliography}{99}
+\label{mySection}
+\bibitem{cope} T. E. Copeland, J. F. Weston:
+\emph{Financial Theory and Corporate Policy},
+Addison--Wesley Publishing Company (2004).
+
+\bibitem{capm} E. R. Berndt:
+\emph{The Practice of Econometrics: Classic and Contemporary},
+Prentice Hall (1991).
+
+\bibitem{aster} Dimitrios Asteriou:
+\emph{Applied Econometrics},
+Palgrave Macmillian (2006).
+
+\bibitem{?} Duomenys iš:
+\emph{ \url{http://wikiposit.org} }.
+
+
+
+\end{thebibliography}
+
  \end{frame}
  
 
