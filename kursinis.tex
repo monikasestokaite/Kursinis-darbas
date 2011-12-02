@@ -57,7 +57,7 @@
 
 Šio kursinio darbo tikslas -- naudojantis kapitalo aktyvų vertinimo modeliu (\textit{Capital Asset Pricing Model} -- CAPM) ištirti Microsoft Corp. ir Apple Inc. įmonių akcijų bei aukso rizikos premijų priklausomybę nuo kai kurių įmonių akcijų ir aukso rinkos rizikos premijų per pastarąjį dešimtmetį, taip pat iš atitinkamų aktyvų sudaryti kelis portfelius ir juos įvertinti. \\
 
-Pirmame skyriuje supažindinsime su kapitalo aktyvų įvertinimo modeliu ir pagrindinėmis sąvokomis. Antrame skyriuje aprašysime Microsoft Corp. ir Apple Inc. įmonių akcijų bei aukso kainų duomenis, pateiksime kainas bei grąžas atspindinčius grafikus. Trečiame skyriuje bus pateikti duomenų vidurkiai, dispersijos, standartiniai nuokrypiai, koreliacijų koeficientai ir jų intrepretacijos. Ketvirtame skyriuje sudarysime aktyvų vertinimo modelius, patikrinsime liekanų homoskedastiškumą, autokoreliuotumą bei normalumą. Penktas skyrius bus skirtas portfelių konstravimui ir analizei, įtraukiant Microsoft Corp., Apple Inc. įmonių akcijas, auksą bei nerizikingą aktyvą. Darbo pabaigoje pateiksime rezultatus ir išvadas, naudotą literatūrą bei priedus.
+Pirmame skyriuje supažindinsime su kapitalo aktyvų įvertinimo modeliu ir pagrindinėmis sąvokomis. Antrame skyriuje aprašysime Microsoft Corp. ir Apple Inc. įmonių akcijų bei aukso kainų duomenis, pateiksime kainas bei grąžas atspindinčius grafikus. Trečiame skyriuje bus pateikti duomenų vidurkiai, dispersijos, standartiniai nuokrypiai, koreliacijų koeficientai ir jų interpretacijos. Ketvirtame skyriuje sudarysime aktyvų vertinimo modelius, patikrinsime liekanų homoskedastiškumą, autokoreliuotumą bei normalumą. Penktas skyrius bus skirtas portfelių konstravimui ir analizei, įtraukiant Microsoft Corp., Apple Inc. įmonių akcijas, auksą bei nerizikingą aktyvą. Darbo pabaigoje pateiksime rezultatus ir išvadas, naudotą literatūrą bei priedus.
 
 \newpage
 
@@ -66,16 +66,16 @@ Pirmame skyriuje supažindinsime su kapitalo aktyvų įvertinimo modeliu ir pagr
 Pirmą kartą kapitalo aktyvų vertinimo modelį (CAPM) aprašė William Forsyth Sharpe (1964), nors panašius darbus pristatė ir Jack Treynor (1961, 1962), John Lintner (1965) ir Jan Mossin (1966). CAPM praplėtė Harry Markowitz'o portfelio teoriją, įtraukiant sisteminės ir nesisteminės rizikos sąvokas. Už darbą su CAPM W. F. Sharp, drauge su H. Markowitz ir M. Miller, 1990 m. gavo Nobelio ekonomikos premiją. \\
 
 Kapitalo aktyvų vertinimo modelis įvertina aktyvo investicinės grąžos ir rizikos santykį tiriant 
-vertybinių popierių rinkoje esančių akcijų pajamingumą. Finansų valdymo teorijoje riziką apibūdina aktyvo laukiamų grąžų išsibarstymas, t.y. dispersija $ {\sigma} $. Taip pat rizika gali būti matuojama ir standartiniu nuokrypiu. Kuo standartinis nuokrypis ar dispersija didesni, tuo rizika aukštesnė. Investuotojas norėtų skolinti su kuo mažesne rizika. Jei rizika būtų lygi nuliui, mažiausia laukiama grąža, dominanti investuotoją, bus vadinama nerizikinga grąža $r_f$. Kompensaciją už rizikos prisiėmimą vadinsime rizikos premija $R$. Ji lygi laukiamos grąžos $r$ ir nerizikingos grąžos $r_f$ skirtumui.\\
+vertybinių popierių rinkoje esančių akcijų pajamingumą. Finansų valdymo teorijoje riziką apibūdina aktyvo laukiamų grąžų išsibarstymas, t.y. dispersija $ {\sigma^2} $. Taip pat rizika gali būti matuojama ir standartiniu nuokrypiu. Kuo standartinis nuokrypis ar dispersija didesni, tuo rizika aukštesnė. Investuotojas norėtų skolinti su kuo mažesne rizika. Jei rizika būtų lygi nuliui, mažiausia laukiama grąža, dominanti investuotoją, bus vadinama nerizikinga grąža $r_f$. Kompensaciją už rizikos prisiėmimą vadinsime rizikos premija $R$. Ji lygi laukiamos grąžos $r$ ir nerizikingos grąžos $r_f$ skirtumui.\\
 
 Kapitalo aktyvų vertinimo modelis plačiai naudojamas sudarant portfelius. Bendra portfelio, sudaryto iš n aktyvų, grąža $r_p$ apskaičiuojama nesudėtingai: $$ r_p =  \sum_{i=1}^{n} w_j \cdot r_j, $$ kur 
  $r_j$ -- $j$--ojo aktyvo laukiamų grąžų vidurkis, o $w_j$ -- $j$--ojo aktyvo dalis portfelyje. Taigi, visų $w_j$ suma privalo būti lygi vienetui. Tokio portfelio rizika $$ {{\sigma}^2}_p = \sum_{i=1}^{n} {\sum_{i=1}^{n} w_i \cdot w_j \cdot {{\sigma}_{ij}}}, $$  kur $ {\sigma}_{ij}} $ -- kovariacija tarp  $i$--ojo ir  $j$--ojo aktyvo grąžų.\\
  
 Nagrinėkime portfelį sudarytą iš dviejų aktyvų: aktyvo $ j $ su laukiama grąžą $ r_j $ ir rizika $ {{\sigma}^2}_j $ bei nerizikingo aktyvo $r_f$. Tada portfelio grąžos formulė: $$ r_p = (1-w_j) \cdot r_f + w_j \cdot r_j, $$ o riziką apskaičiuojame tokią: $$ {{\sigma}^2}_p = {{w^2}_j} \cdot {{\sigma}^2}_j + (1- w_j)^2 \cdot {{\sigma}^2}_f + 2 \cdot (1-w_j) \cdot w_j \cdot {\sigma}_{jf} . $$ 
- Kadangi nerizikingo aktyvo rizika yra nulinė, tai bendrą portfelio riziką galima aprašyti trumpiau: $$ {\sigma}_p = w_j \cdot {\sigma}_j . $$ Pažymėjus $ w_j = \frac{{\sigma}_p}{ {\sigma}_j}, $ gauname, kad porfelio rizika $$ r_p = r_f + \left( \frac{r_j - r_f}{{\sigma}_j} \right) \cdot {\sigma }_p. $$ Jei tarsime, kad dabar $j$ investiciją atitiks rinkos portfelis $m$ su laukiama grąža $r_m$ bei rizika ${\sigma}_m$, gautąją tiesinę priklausomybę, galime perrašyti tokiu pavidalu: 
+ Kadangi nerizikingo aktyvo rizika yra nulinė, tai bendrą portfelio riziką galima aprašyti trumpiau: $$ {\sigma}_p = w_j \cdot {\sigma}_j . $$ Pažymėjus $ w_j = \frac{{\sigma}_p}{ {\sigma}_j}, $ gauname, kad porfelio rizika $$ r_p = r_f + \left( \frac{r_j - r_f}{{\sigma}_j} \right) \cdot {\sigma }_p. $$ Jei tarsime, kad dabar $j$ investiciją atitiks rinkos portfelis $m$ su laukiama grąža $r_m$ bei rizika ${\sigma}_m$, gautąją tiesinę priklausomybę galime perrašyti tokiu pavidalu: 
 $$ R = \alpha  + \beta  \cdot R_m, $$ kur $ R = r_p - r_f$ -- rizikos premija , $ R_m = r_m - r_f$ -- rinkos rizikos premija. Nesunku pastebėti, jog $$ \beta = \frac{Cov (R, R_m)} { Var (R_m) } . $$
 
-Koeficientai $ \alpha $ ir $ \beta $ yra labai svarbūs. $ \beta $ atspindi sisteminę (rinkos) riziką -- riziką, nepriklausančią nuo įmonės veiksnių. Sisteminę riziką sudaro makroekonominiai veiksniai. Taigi, $ \beta $ parodo aktyvo (arba portfelio) pelningumo priklausomybę nuo bendro rinkos pelningumo. Koeficiento ženklas parodo nagrinėjamo objekto vertės kitimo kryptį -- jei $ \beta > 0 $, aktyvo (portfelio) vertė kinta ta pačia linkme, kaip ir rinkos pokyčiai, jei $ \beta < 0 $ -- atvirkščiai. Kuo $ \beta $  didesnis tuo aktyvas (portfelis) rizikingesnis. Nerizikingo aktyvo koeficientas $ \beta $ lygus nuliui. Koeficientas $ \alpha $ parodo aktyvo vertę: jei jis teigiamas -- aktyvas nuvertintas ir jį verta pirkti, jei neigiamas -- verta parduoti.\\
+Koeficientai $ \alpha $ ir $ \beta $ yra labai svarbūs. $ \beta $ atspindi sisteminę (rinkos) riziką -- riziką, nepriklausančią nuo įmonės veiksnių. Sisteminę riziką sudaro makroekonominiai veiksniai. Taigi, $ \beta $ parodo aktyvo (arba portfelio) pelningumo priklausomybę nuo bendro rinkos pelningumo. Koeficiento ženklas parodo nagrinėjamo objekto vertės kitimo kryptį: jei $ \beta > 0 $, aktyvo (portfelio) vertė kinta ta pačia linkme, kaip ir rinkos pokyčiai, jei $ \beta < 0 $ -- atvirkščiai. Kuo $ \beta $  didesnis tuo aktyvas (portfelis) rizikingesnis. Nerizikingo aktyvo koeficientas $ \beta $ lygus nuliui. Koeficientas $ \alpha $ parodo aktyvo vertę: jei jis teigiamas -- aktyvas nuvertintas ir jį verta pirkti, jei neigiamas -- verta parduoti.\\
 
 Visa, kas nesudaro sisteminės rizikos, vadinama nesistemine rizika. Tai rizika, priklausanti tik nuo konkrečios įmonės veiksnių. Skirtingai nei sisteminę riziką, šią galima minimizuoti diversifikuojant vertybinių popierių portfelį.\\
 
@@ -308,7 +308,7 @@ Mažiausiai su rinkos akcijų kainomis koreliuoja aukso kainos (-0.04482454). Š
 \newpage
 \section{Kapitalo aktyvų įvertinimo modelio taikymas}
 
-Viena iš kapitalo aktyvų įvertinimo modelio (\textit{Capital Asset Pricing Model} -- CAPM) išraiškų -- paprasta vieno kintamojo regresija. Ją naudosime tirdami imonių akcijų ir aukso rizikos premijų priklausomybę nuo rinkos rizikos premijų. Visos R paketo komandos ir lentelės, naudotos šiame skyriuje, pateiktos \ref{B 1} priede.
+Viena iš kapitalo aktyvų įvertinimo modelio (\textit{Capital Asset Pricing Model} -- CAPM) išraiškų -- paprasta vieno kintamojo regresija. Ją naudosime tirdami imonių akcijų ir aukso rizikos premijų priklausomybę nuo rinkos rizikos premijų. Visos R paketo komandos, naudotos šiame skyriuje, pateiktos \ref{B 1} priede.
 Lentelėse pateiktas laisvasis narys $ \alpha $, koeficientas  $ \beta $ bei jų statistinis reikšmingumas.\\
 
 Sudarysime tokius regresinius modelius:
@@ -335,7 +335,7 @@ Aukso rizikos premija $= \alpha + \beta \times \text {Rinkos rizikos premija}$
 \caption{Microsoft Corp. modelis}
 \end{table}
 
-Gautas $\beta$ koeficientas lygus 1.004 ir yra reikšmingas. Tai reiškia, jog rinkos rizikos premijai pakilus ar nukritus 1\%, Microsoft Corp. rizikos premijos taip pat pakils 1\%. Laisvasis narys beveik lygus nuliui ir nereikšmingas,
+Gautas $\beta$ koeficientas lygus 1.004 ir yra reikšmingas. Tai reiškia, jog rinkos rizikos premijai pakilus (ar nukritus) 1\%, Microsoft Corp. rizikos premijos taip pat pakils (nukris) 1\%. Laisvasis narys beveik lygus nuliui ir nereikšmingas,
 tai neprieštarauja CAPM teorijai ir logikai -- jei rinkos rizikos premija lygi nuliui, tai investuotojo į Microsoft Corp. šansai gauti rizikos premiją yra labai maži.
 $R^2$= 0.5197, tai reiškia, kad 51,97\% rinkos duomenų paaiškina Microsoft Corp. rizikos premijų svyravimus, t.y. sudaro sisteminę (rinkos) riziką. Likusi specifinė rizika priklauso nuo kitų įmonės charakteristikų.
 
@@ -376,7 +376,7 @@ Visgi  $R^2$ nėra labai didelis -- tik 30\% rinkos duomenų paaiškina Apple In
 Visai kitoks rezultatas gaunamas sudarius aukso rizikos premijų priklausomybės nuo rinkos rizikos premijų modelį.
 Šįkart $\beta=-0.023$ ir tai reikštų, kad aukso kainos ne tik mažai priklauso nuo rinkos akcijų vertės svyravimų,
 bet netgi juda priešinga linkme. Tai gali pasirodyti kaip itin patraukli investicija nuosmukio laikotarpiu.
-Tačiau koeficiento p--reiksmė = 0.183 > 0.05, taigi negalima atmesti $ H_0 $ hipotezės, kad $\beta=0 $.
+Tačiau koeficiento p--reikšmė = 0.183 > 0.05, taigi negalima atmesti $ H_0 $ hipotezės, kad $\beta=0 $.
 Priėmus šią hipotezę, galima tarti, kad aukso kainos mažai priklauso nuo rinkos svyravimų.
 Laisvasis narys šįkart -0.011 ir p--reikšmė rodo, kad jis reikšmingas. Toks rezultatas kiek prieštarauja CAPM logikai -- rinkos akcijų vertėms nesikeičiant, aukso rizikos premija neigiama. Tai galėtų reikšti,
 kad dieninis aukso pelningumas itin nedidelis.
@@ -384,13 +384,13 @@ $ R^2 $= 0.0007 -- itin maža reikšmė, patvirtinanti, kad rinka beveik nepaai�
 visa aukso pelningumo rizika sisteminė -- priklauso nuo kitų charakteristikų. \\
 
 
-Aukso rizikos premija rodo atvirkštinę nestiprią priklausomybę nuo rinkos rizikos premijos - taigi į auksą palanku investuoti krizės laikotarpiu. Pagal modelio pateiktą koeficientą, rinkos rizikos premijai nukritus 1\%, aukso rizikos premija išauga 0,02. Vis dėlto koeficiento $\beta$ p-reikšmė rodo, jog koeficientas nereikšmingas, tad galime sušvelninti sąlygą ir teigti, kad rinkos rizikos premijai nukritus 1\%, aukso rizikos premija nekinta arba priklauso nuo kitų faktorių. Į auksą investavus 100\$, galima gauti 0,07\$ per dieną.
+Aukso rizikos premija rodo atvirkštinę nestiprią priklausomybę nuo rinkos rizikos premijos - taigi į auksą palanku investuoti krizės laikotarpiu. Pagal modelio pateiktą koeficientą, rinkos rizikos premijai nukritus 1\%, aukso rizikos premija išauga 0,02. Vis dėlto koeficiento $\beta$ p-reikšmė rodo, jog koeficientas nereikšmingas, tad galime sušvelninti sąlygą ir teigti, kad rinkos rizikos premijai nukritus 1\%, aukso rizikos premija nekinta arba priklauso nuo kitų faktorių. Į auksą investavus \$100, galima gauti \$0,07 per dieną.
 
 
 
 \subsection{Sudarytų modelių liekanų tikrinimas}
 
-Liekanos turi buti homoskedastiškos, ne autokoreliuotos ir pasiskirsčiusios pagal normalųjį skirstinį.
+Liekanos turi buti homoskedastiškos, ne autokoreliuotos ir pasiskirsčiusios pagal normalųjį skirstinį. \\
 
 Patikrinsime, ar liekanos homoskedastiškos, naudodami Breusch-Pagan testą:
 
@@ -409,15 +409,21 @@ Patikrinsime, ar liekanos homoskedastiškos, naudodami Breusch-Pagan testą:
 \caption{Heteroskedastiškumo testas Microsoft Corp., Apple Inc. ir aukso modelių liekanoms}
 \end{table}
 
-Aukso ir Microsoft Corp. regresinių modelių liekanos yra homoskedastiškos (6 lentelė).
+6 lentelėje pateiktos Breusch--Pagan'o statistikų p--reikšmės rodo, kad aukso ir Microsoft Corp. regresinių modelių liekanos yra homoskedastiškos.\\
 
-Patikrinsime, ar liekanos turi slenkantį vidurkį.
+Patikrinsime, ar liekanos turi slenkamąjį vidurkį:
+
+Sudarome regresiją $ r_i-r_f=\alpha + \beta  (r_m-r_f)  $,
+užfiksuojame liekanas $\epsilon_t$ ir tikriname regresiją su liekanų ankstiniais  
+$$ r_i-r_f=\alpha + \beta  (r_m-r_f) + \beta_1 \epsilon_{t-1},  $$
+(čia $r_i$ - aktyvo rizika, $r_m$ - rinkos rizika).
+
 
 \begin{table}[ht]
 \begin{center}
     \begin{tabular}{ | l | l | l | }
     \hline
-    aktyvas  &  koef. prieš ankstinį  & $ p-value $  \\
+    aktyvas  &  $\beta_1$  & $ p-value $  \\
     \hline
 	Microsoft Corp. & -2.293e-02 & 0.252\\
 	Apple Inc. & 0.0337889 &  0.155\\
@@ -425,10 +431,10 @@ Patikrinsime, ar liekanos turi slenkantį vidurkį.
 	\hline
     \end{tabular}
 \end{center}
-\caption{Microsoft Corp., Apple Inc. ir aukso modeliai su pirmos eilės ankstiniais}
+\caption{Microsoft Corp., Apple Inc. ir aukso modeliai su pirmos eilės liekanų ankstiniais}
 \end{table}
 
-Visuose modeliuose pirmos eilės liekanų ankstiniai nereikšmingi.\\
+Remdamiesi regresijos pateiktais koeficientais (7 lentelė) ir jų p--reikšmėmis, galime tarti, kad visuose modeliuose pirmos eilės liekanų ankstiniai nereikšmingi. Taigi, visų aktyvų sudaryti CAPM modeliai neturi slenkamo vidurkio.\\
 
 Autokoreliacijai patikrinti naudosime Durbin--Watson testą:
 
@@ -449,9 +455,9 @@ Autokoreliacijai patikrinti naudosime Durbin--Watson testą:
 \caption{Durbin--Watson testas Microsoft Corp., Apple Inc. ir aukso liekanoms}
 \end{table}
 
-Liekanos nėra autokoreliuotos su savo pirmos eilės ankstiniais.\\
+Remdamiesi Durbin--Watson'o testo rezultatais (p-reikšmėmis) (8 lentelė), galime daryti išvadą, kad liekanos nėra autokoreliuotos su savo pirmos eilės ankstiniais.\\
 
-Normalumui tikrinti naudosime Jarque--Bera testą.
+Liekanų normalumui tikrinti naudosime Jarque--Bera testą:
 
 
 
@@ -459,7 +465,7 @@ Normalumui tikrinti naudosime Jarque--Bera testą.
 \begin{center}
     \begin{tabular}{ | l | l | l | }
     \hline
-    $ aktyvas $ &  $ X^2 $  & $ p-value $  \\
+    $ aktyvas $ &  $ \chi^2 $  & $ p-value $  \\
     \hline
 	Microsoft Corp. & 8683.798 & < 2.2e-16\\
 	Apple Inc. & 3384.751 & < 2.2e-16\\
@@ -479,9 +485,9 @@ P--reikšmės testuose (9 lentelė) rodo, kad $H_0$ hipotezę, jog modelių liek
   \label{fig:10}
 \end{figure}
 
-10 pav. histogramos rodo, jog vis dėlto visų modelių liekanos simetriškai pasiskirsčiusios apie nulį, o jų ekscesas aštresnis nei normaliojo skirstinio.
+10 pav. histogramos rodo, jog vis dėlto visų modelių liekanos simetriškai pasiskirsčiusios apie nulį, o jų ekscesas aštresnis nei normaliojo skirstinio.\\
 
-
+Kadangi atmetėme hipotezę apie liekanų normalumą, patikrinsime, ar visų modelių liekanos sudaro GARCH(1,1) procesą\cite{Brook}. Sudarius regresiją $$\sigma_t^2 = \alpha_0 + \alpha_1 u_{t-1} + \alpha_2  \sigma^2_{t-1} $$ gauname, kad visų trijų aktyvų modelių liekanos sudaro GARCH(1,1) procesą (koeficientai $\alpha_0$, $\alpha_1$, $\alpha_2$ reikšmingi). Čia $\sigma_t^2$ -- modelio liekanų sąlyginė dispersija, $u_{t-1}$ -- modelio liekanų ankstinys, $\sigma^2_{t-1}$ -- sąlyginės dispersijos ankstinys. Tačiau GARCH(1,1) modelio liekanos vis tiek nėra pasiskirsčiusios pagal normalųjį skirstinį (Jarque--Bera testo p--reikšmė mažesnė už $0.05$). Taip gali būti dėl to, kad didžioji dauguma liekanų susitelkusios prie nulio reikšmės. Atliktos analizės \textbf{R} kodas pateiktas \ref{B 1} priede.
 
 
 \newpage
@@ -859,14 +865,12 @@ grąža iš visų keturių portfelių.
 \newpage      
 \sectionnonum{Rezultatai ir išvados}
 
-1. Naudodami kapitalo aktyvų įvertinimo modelį, patikrinome aukso bei dviejų kompanijų -- Microsoft Corp. ir Apple Inc. akcijų rizikos premijų priklausomybę nuo rinkos rizikos premijų. Auksas nuo rinkos svyravimų priklauso mažiausiai (arba, kaip rodo modelis, iš vis nepriklauso), o kompanijų akcijos svyruoja panašiai kaip ir rinka.\\
+1. Šiame darbe nagrinėjome kapitalo aktyvų įvertinimo modelį, patikrinome aukso bei dviejų kompanijų -- Microsoft Corp. ir Apple Inc. akcijų rizikos premijų priklausomybę nuo rinkos rizikos premijų. Gauti rezultatai rodo, kad aukso kainos nuo rinkos svyravimų priklauso mažiausiai (arba, kaip rodo modelis, iš vis nepriklauso), o kompanijų akcijos svyruoja panašiai kaip ir rinka.\\
 
-2. Radome optimalias, t.y. mažiausią riziką turinčias, kombinacijas tarp dviejų aktyvų ir patikrinome jų rizikos premijos priklausomybę nuo rinkos rizikos premijos. Geriausias portfelis sudarytas iš aukso ir Apple Inc. akcijų. Jo pelningumas didžiausias ir jis mažiausiai priklauso nuo rinkos nestabilumo. Kita vertus, pagal kapitalo aktyvų įvertinimo modelį, pelningas gali būti ir antras portfelis iš Microsoft Corp. ir Apple Inc. akcijų, su sąlyga, kad rinkos rizikos premija nuolat kyla.\\
-
-
-3. Jei investuotojas gali rinktis ne tik investiciją į kurį nors rinkos aktyvą, bet ir į nerizikingą iždo vekselį, tai pagal kapitalo aktyvų įvertinimo modelį ir kitus rodiklius (pelningumą, rizikos minimalumą) tai yra geriausia investicija. Trisdešimties dienų JAV iždo vekselis turi didžiausią grąžą, mažiausią riziką, mažai priklauso nuo rinko svyravimų, o bet kuri portfelio kombinacija su iždo vekseliu taip pat nerizikinga ir pelningesnė už kitų aktyvų portfelių kombinacijas. Tačiau verta pastebėti, kad tokie rezultatai atspindi duomenis nuo 2001 iki 2011 metų, o per pakilimo laikotarpį iždo vekselių pelningumas buvo itin didelis. Nuo 2008 metų pelningumas smarkiai krito, nors rizika nepakito ir liko maža. \\
+2. Taip pat radome optimalias, t.y. turinčias mažiausią riziką, kombinacijas tarp dviejų ir trijų aktyvų bei patikrinome jų rizikos premijos priklausomybę nuo rinkos rizikos premijos. Iš visų portfelių mažiausią riziką turi portfelis sudarytas iš aukso ir Apple Inc. akcijų. Jo pelningumas didžiausias ir jis mažiausiai priklauso nuo rinkos nestabilumo. Kita vertus, pagal kapitalo aktyvų įvertinimo modelį, pelningas gali būti ir antras portfelis iš Microsoft Corp. ir Apple Inc. akcijų, su sąlyga, kad rinkos rizikos premija nuolat kyla.\\
 
 
+3. Kai investuotojas renkasi ne tik tarp rinkos aktyvų, bet ir nerizikingo iždo vekselio, tai pagal kapitalo aktyvų įvertinimo modelį ir kitus rodiklius (pelningumą, rizikos minimalumą), pelningiausia ir saugiausia investuoti į iždo vekselį. Trisdešimties dienų JAV iždo vekselis turi didžiausią grąžą, mažiausią riziką, mažai priklauso nuo rinko svyravimų. Bet kuri rinkos aktyvo kombinacija su iždo vekseliu taip pat yra nerizikinga ir pelningesnė už kitų aktyvų portfelius. Tačiau verta pastebėti, jog tokius rezultatus sąlygoja itin didelis iždo vekselių pelningumas per pakilimo laikotarpį (2005-2008 m.).  \\
 
 \newpage
 \sectionnonum{Naudota literatūra ir kiti šaltiniai}
@@ -875,7 +879,7 @@ grąža iš visų keturių portfelių.
 \label{mySection}
 \bibitem{cope} T. E. Copeland, J. F. Weston:
 \emph{Financial Theory and Corporate Policy},
-Addison--Wesley Publishing Company(2004).
+Addison--Wesley Publishing Company (2004).
 
 \bibitem{capm} E. R. Berndt:
 \emph{The Practice of Econometrics: Classic and Contemporary},
@@ -884,6 +888,10 @@ Prentice Hall (1991).
 \bibitem{aster} Dimitrios Asteriou:
 \emph{Applied Econometrics},
 Palgrave Macmillian (2006).
+
+\bibitem{brook} Chris Brooks:
+\emph{Introductory Econometrics for Finance},
+Cambridge University Press (2002).
 
 \bibitem{tbills} JAV 30--ies dienų iždo vekselių duomenys:
 \emph{ \url{http://www.treasurydirect.gov/RI/OFAuctions?form=ndnld&typesec=bills} }.
@@ -998,6 +1006,20 @@ Modeliai:
 \end{Sinput}
 \end{Schunk}
 
+GARCH(1,1) modelis liekanoms:
+
+\begin{Schunk}
+\begin{Sinput}
+> res = goldmod$res
+> res2 = applemod$res
+> res3 = microsoftmod$res
+> summary(garch(res, order = c(1, 1)))
+> summary(garch(res2, order = c(1, 1)))
+> summary(garch(res3, order = c(1, 1)))
+\end{Sinput}
+\end{Schunk}
+
+
 \end{verbatim}
 
 \section{priedas: portfeliai}
@@ -1043,7 +1065,7 @@ Portfeliai:
 \begin{figure}[H]
   \centering
   \begin{verbatim}
-\includegraphics{kursinis-028}
+\includegraphics{kursinis-029}
 \end{verbatim}
   \caption{...}
   
