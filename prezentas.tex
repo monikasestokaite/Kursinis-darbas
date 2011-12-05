@@ -7,9 +7,9 @@
 \mode<presentation>
 {
 
-\usecolortheme[named=Apricot]{structure} 
+\usecolortheme[named=TealBlue]{structure} 
  
-\usetheme[height=11mm]{Rochester} 
+\usetheme[height=11mm]{Madrid} 
 \setbeamertemplate{items}[ball] 
 \setbeamertemplate{blocks}[rounded][shadow=true] 
 \setbeamertemplate{navigation symbols}{} 
@@ -17,10 +17,10 @@
    \setbeamertemplate{footline}
    {%
      \leavevmode%
-    \hbox{\begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm 	plus1fill,rightskip=.3cm]{author in head/foot}%
+    \hbox{\begin{beamercolorbox}[wd=0\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm 	plus1fill,rightskip=.3cm]{author in head/foot}%
     \usebeamerfont{author in head/foot}\insertshortauthor
     \end{beamercolorbox}%
-    \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
+    \begin{beamercolorbox}[wd=1\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
     \usebeamerfont{title in head/foot}\insertshorttitle \hfill p.
 	\insertpagenumber\enspace iš \insertdocumentendpage\enspace
     \end{beamercolorbox}}%
@@ -115,11 +115,14 @@
 \newcommand{\bx}{\mathbf{x}}
 \newcommand{\indf}[1]{\mathbf{1}\left( #1 \right)}
 
-\title[CAPM]{CAPM ir akcijų portfelio konstravimas}
+\title[CAPM ir akcijų portfelio konstravimas]{CAPM ir akcijų portfelio konstravimas}
 %\shorttitle{}
 \author[ ]{Monika Šeštokaitė ir Simona Plonytė}
 \institute[Vilnius University] {
     
+Kursinio darbo vadovas prof.\textbf{ Remigijus Leipus}
+\and
+
     Vilniaus Universitetas
     \and
     
@@ -135,33 +138,68 @@ Ekonometrinės analizės katedra
 \end{frame}
 
 \begin{frame}
+\frametitle{Kursinio darbo tikslas}
+\begin{itemize}
+\item Naudojant kapitalo aktyvų įvertinimo modelį (CAPM), rasti aktyvų rizikos premijų priklausomybę nuo rinkos rizikos premijos. \\
+
+\bigskip
+
+\item Rasti optimalius portfelius, sudarytus iš pasirinktų aktyvų, ištirti jų priklausomybę nuo rinkos pokyčių.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
     \frametitle{CAPM} 
-    \begin{itemize}
-\item Kursinio darbo tikslas -- naudojant kapitalo aktyvų įvertinimo modelį (CAPM), rasti aktyvų rizikos premijų priklausomybę nuo rinkos rizikos premijos.
-	\item Kapitalo aktyvų įvertinimo modelis (CAPM) įvertina aktyvo investicinės grąžos ir rizikos santykį tiriant vertybinių popierių rinkoje esančių akcijų pajamingumą.
-    \item Kintamieji: $r_a$ -- a aktyvo pelningumas/grąža; 
+    \begin{itemize} 
+	\item Kapitalo aktyvų įvertinimo modelis (CAPM) įvertina aktyvo investicinės grąžos ir rizikos sąryšį, tiriant vertybinių popierių rinkoje esančių akcijų pajamingumą.
+    \item Kintamieji: 
+
+$r_a$ -- a aktyvo pelningumas/grąža; 
 
 $r_m$ -- rinkos akcijų pelningumas; 
 
-$r_f$ -- nerizikingo aktyvo (iždo vekselio) grąža; 
+$r_f$ -- nerizikingo aktyvo (JAV iždo vekselio) grąža; 
 
 $r_a-r_f$ -- a aktyvo rizikos premija; 
 
 $r_m - r_f$ -- rinkos rizikos premija.
     \end{itemize}
 \end{frame}
+
+\begin{frame}
+    \frametitle{Duomenys} 
+    \begin{itemize}
+ 	\item Aktyvai: Auksas, Microsoft Corp. akcijos, Apple Inc. akcijos, 
+
+S\&P 500 indeksas, JAV 30-ies dienų iždo vekseliai;
+	\item 2001 m. rugpjūčio 1 d. -- 2011 m. liepos 29 d.;
+	\item Dieniniai duomenys.
+
+    \end{itemize}
+\end{frame}
+
 \begin{frame}
     \frametitle{Regresinis modelis} 
+ \center{$r_a - r_f = \alpha + \beta \times (r_m - r_f)$} \\
+
+
     \begin{itemize}
-	\item $r_a - r_f = \alpha + \beta \times (r_m - r_f)$
+	
 	\item Koeficientai: 
 
 $ \alpha $ parodo aktyvo vertę,\\ 
 
 $ \beta $ -- aktyvo pelningumo priklausomybę nuo bendro rinkos pelningumo.
-	
+\bigskip
+\item Kuo didesnis $ \beta $, tuo labiau aktyvas priklauso nuo rinkos pokyčių.
+\bigskip
+\begin{itemize}
+\item Ekonomikos augimo laikotarpiu pelningesnės įmonės, kurių $\beta>1$.
 
-	
+\item Nuosmukio laikotarpiu įmonės, kurių $\beta<1$, yra stabilesnės.
+
+\end{itemize}
+
 %\item $\beta = \frac{\sigma_{am}}{\sigma^2_m}$
 %\item Čia $\sigma_{am}$ -- a aktyvo ir rinkos rizikos premijų kovariacija; 
 
@@ -170,29 +208,34 @@ $ \beta $ -- aktyvo pelningumo priklausomybę nuo bendro rinkos pelningumo.
 
     \end{itemize}
 \end{frame}
-\begin{frame}
-    \frametitle{Duomenys} 
-    \begin{itemize}
- 	\item Aktyvai: Auksas, Microsoft Corp. akcijos, Apple Inc. akcijos, S\&P 500 indeksas, JAV 30-ies dienų iždo vekseliai;
-	\item 2001 m. rugpjūčio 1 d. -- 2011 m. liepos 29 d.;
-	\item Dieniniai duomenys.
 
-    \end{itemize}
+\begin{frame}
+\frametitle{Pavyzdys}
+\center{Aukso kainos nepriklauso nuo indekso S\&P 500 kainų}
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{paveiksl-002}
+
+\end{figure}
+
+\center{Aukso $\beta$ turėtų būti $< 1$}
+
 \end{frame}
+
 \begin{frame}
     \begin{itemize}
     \frametitle{Aktyvų rizikos premijos priklausomybė nuo rinkos rizikos premijos} 
 \item Modelis: $r_a - r_f = \alpha + \beta \times (r_m - r_f)$
-	
+
 \begin{table}[ht]
 \begin{center}
-    \begin{tabular}{ | l | l | l | l |}
+    \begin{tabular}{ | l | l | l | l | l |}
     \hline
-    Aktyvas & $\beta$ &  grąža & rizika  \\
+    Aktyvas & $\alpha $&$\beta$ &  grąža & rizika  \\
     \hline
-  Microsoft Corp. akcijos & 1.0039 & 0.00019 & 0.0189 \\
-	Apple Inc. akcijos  & 1.0270 & 0.0018 & 0.02524 \\
-  Auksas & −0.023 & 0.0007 & 0.0117 \\
+  Microsoft Corp. akcijos & 0.0001 & 1.0039* & 0.00019 & 0.0189 \\
+	Apple Inc. akcijos & 0.0017* & 1.0270* & 0.0018 & 0.02524 \\
+  Auksas & -0.0011* & −0.023 & 0.0007 & 0.0117 \\
 	\hline
     \end{tabular}
 \end{center}
@@ -202,7 +245,9 @@ $ \beta $ -- aktyvo pelningumo priklausomybę nuo bendro rinkos pelningumo.
 \begin{frame}
     \frametitle{Portfelis iš dviejų aktyvų}
     \begin{itemize}
-	\item Formulė : a^{\ast}= \frac{\sigma_y^2 - r_{xy}\sigma_x \sigma_y}{\sigma^2_x + \sigma^2_y - 2r_{xy}\sigma_x \sigma_y} \label{form}
+\item $a^{\ast}$ -- optimalus $x$ aktyvo kiekis portfelyje
+\item $r_p = a^{\ast}r_x + (1 - a^{\ast})r_y$
+	\item Formulė : $a^{\ast}= \frac{\sigma_y^2 - r_{xy}\sigma_x \sigma_y}{\sigma^2_x + \sigma^2_y - 2r_{xy}\sigma_x \sigma_y} \label{form}$
 
 
 \begin{table}[ht]
@@ -213,15 +258,17 @@ $ \beta $ -- aktyvo pelningumo priklausomybę nuo bendro rinkos pelningumo.
     \hline
     Portfelio nr. & 1 & 2 & 3\\
     \hline
-    I aktyvas; \% & Auksas; 81,17 \% & Microsoft Corp. akcijos; 74,92 \% & Auksas; 71,12 \% \\
+    I aktyvas; $\%$ & Auksas; 81,17 $\%$ & Microsoft Corp. akcijos; 74,92 $\%$ & Auksas; 71,12 $\%$ \\
     \hline
-    II aktyvas; \% & Apple Inc. akcijos; 18,83 \% & Apple Inc. akcijos; 25,08 \% & Microsoft Corp. akcijos; 28,88 \% \\
+    II aktyvas; $\%$ & Apple Inc. akcijos; 18,83 $\%$ & Apple Inc. akcijos; 25,08 $\%$ & Microsoft Corp. akcijos; 28,88 $\%$ \\
     \hline
     Rizika & 0.0104 & 0.0180 & 0.0096 \\
     \hline
     Grąža & 0.00099 & 0.00060 & 0.00062 \\
+\hline
+$\alpha$ & -0.0005 & 0.0004* & -0.0007* \\
     \hline
-    \beta & 0.16243 & 1.0111 & 0.26268\\
+    $\beta$ & 0.16243* & 1.0111* & 0.26268*\\
 	\hline	
     \end{tabular}
     }
@@ -233,10 +280,20 @@ $ \beta $ -- aktyvo pelningumo priklausomybę nuo bendro rinkos pelningumo.
 \end{frame}
 \begin{frame}
     \frametitle{Portfelis iš trijų aktyvų}
+\center{Portfelio iš trijų aktyvų rizikos ir grąžos kombinacijos}
+\begin{figure}
+\centering
+\includegraphics[width=0.6\textwidth]{portfel}
+
+\end{figure}
+
     \begin{itemize}
-	\item 7.764768 \% Apple Inc. akcijų, 23.19523 \% Microsoft Corp. akcijų ir
-69.04 \% aukso;
-	\item Portfelio $\beta= 0.2967$, grąža = 0.000733, rizika = 0.00942.
+	\item 7.765 $\%$ Apple Inc. akcijų, 23.195 $\%$ Microsoft Corp. akcijų
+
+ ir 69.04 $\%$ aukso;
+	\item Portfelio $\alpha = - 0.0006$*, $\beta= 0.2967$*, grąža = 0.000733, 
+
+rizika = 0.00942.
 %	\item Note $0<\alpha<1/2$, since $W$ ``lives only'' in $\Hao([0,1])$ for
 %	    $\alpha<1/2$.
     \end{itemize}
@@ -246,7 +303,7 @@ $ \beta $ -- aktyvo pelningumo priklausomybę nuo bendro rinkos pelningumo.
     \frametitle{Išvados} 
 
     \begin{itemize}
-\item Geriausia investicija  -- auksas;
+\item Auksas -- tarp tirtų aktyvų mažiausios rizikos ir santykinai didelio pelningumo investicija;
 
 \item Geriausi portfeliai: 
 \begin{itemize}

@@ -65,17 +65,27 @@ Pirmame skyriuje supažindinsime su kapitalo aktyvų įvertinimo modeliu ir pagr
 
 Pirmą kartą kapitalo aktyvų vertinimo modelį (CAPM) aprašė William Forsyth Sharpe (1964), nors panašius darbus pristatė ir Jack Treynor (1961, 1962), John Lintner (1965) ir Jan Mossin (1966). CAPM praplėtė Harry Markowitz'o portfelio teoriją, įtraukiant sisteminės ir nesisteminės rizikos sąvokas. Už darbą su CAPM W. F. Sharp, drauge su H. Markowitz ir M. Miller, 1990 m. gavo Nobelio ekonomikos premiją. \\
 
-Kapitalo aktyvų vertinimo modelis įvertina aktyvo investicinės grąžos ir rizikos santykį tiriant 
-vertybinių popierių rinkoje esančių akcijų pajamingumą. Finansų valdymo teorijoje riziką apibūdina aktyvo laukiamų grąžų išsibarstymas, t.y. dispersija $ {\sigma^2} $. Taip pat rizika gali būti matuojama ir standartiniu nuokrypiu. Kuo standartinis nuokrypis ar dispersija didesni, tuo rizika aukštesnė. Investuotojas norėtų skolinti su kuo mažesne rizika. Jei rizika būtų lygi nuliui, mažiausia laukiama grąža, dominanti investuotoją, bus vadinama nerizikinga grąža $r_f$. Kompensaciją už rizikos prisiėmimą vadinsime rizikos premija $R$. Ji lygi laukiamos grąžos $r$ ir nerizikingos grąžos $r_f$ skirtumui.\\
+Kapitalo aktyvų vertinimo modelis įvertina aktyvo investicinės grąžos ir rizikos sąryšį, tiriant 
+vertybinių popierių rinkoje esančių akcijų pajamingumą. Finansų valdymo teorijoje riziką apibūdina aktyvo laukiamų grąžų išsibarstymas, t.y. dispersija $ {\sigma^2} $. Rizika tai pat gali būti matuojama ir standartiniu nuokrypiu $ \sigma $. Kuo standartinis nuokrypis ar dispersija didesni, tuo rizika didesnė. Investuotojui palankiausia įsigyti aktyvą su kuo mažesne rizika ir kuo didesne grąža. Pagal kapitalo aktyvų įvertinimo modelį, aktyvas, kuriam priskiriama mažiausia rizika yra laikomas nerizikingu, o $r_f$ -- to aktyvo grąža. Kompensaciją už investavimą į rizikingesnį aktyvą vadinsime rizikos premija $R$. Ji lygi laukiamos aktyvo grąžos $r$ ir nerizikingo aktyvo grąžos $r_f$ skirtumui.\\
 
-Kapitalo aktyvų vertinimo modelis plačiai naudojamas sudarant portfelius. Bendra portfelio, sudaryto iš n aktyvų, grąža $r_p$ apskaičiuojama nesudėtingai: $$ r_p =  \sum_{i=1}^{n} w_j \cdot r_j, $$ kur 
- $r_j$ -- $j$--ojo aktyvo laukiamų grąžų vidurkis, o $w_j$ -- $j$--ojo aktyvo dalis portfelyje. Taigi, visų $w_j$ suma privalo būti lygi vienetui. Tokio portfelio rizika $$ {{\sigma}^2}_p = \sum_{i=1}^{n} {\sum_{i=1}^{n} w_i \cdot w_j \cdot {{\sigma}_{ij}}}, $$  kur $ {\sigma}_{ij}} $ -- kovariacija tarp  $i$--ojo ir  $j$--ojo aktyvo grąžų.\\
+Dažnai nėra pelninga investuoti tik į vieną aktyvą, todėl kapitalo aktyvų vertinimo modelis dar naudojamas ieškant optimalių portfelių, sudarytų iš kelių skirtingų aktyvų. Bendra portfelio, sudaryto iš $n$ aktyvų, grąža $r_p$ apskaičiuojama pagal formulę: $$ r_p =  \sum_{i=1}^{n} w_j \cdot r_j, $$ kur 
+ $r_j$ -- $j$--ojo aktyvo laukiamų grąžų vidurkis, o $w_j$ -- $j$--ojo aktyvo dalis portfelyje. Taigi, visų $w_j$ suma privalo būti lygi vienetui. Tokio portfelio dispersija $$ {{\sigma}^2}_p = \sum_{i=1}^{n} {\sum_{j=1}^{n} w_i \cdot w_j \cdot {{\sigma}_{ij}}}, $$  kur $ {\sigma}_{ij}} $ -- kovariacija tarp  $i$--ojo ir  $j$--ojo aktyvo grąžų.\\
  
-Nagrinėkime portfelį sudarytą iš dviejų aktyvų: aktyvo $ j $ su laukiama grąžą $ r_j $ ir rizika $ {{\sigma}^2}_j $ bei nerizikingo aktyvo $r_f$. Tada portfelio grąžos formulė: $$ r_p = (1-w_j) \cdot r_f + w_j \cdot r_j, $$ o riziką apskaičiuojame tokią: $$ {{\sigma}^2}_p = {{w^2}_j} \cdot {{\sigma}^2}_j + (1- w_j)^2 \cdot {{\sigma}^2}_f + 2 \cdot (1-w_j) \cdot w_j \cdot {\sigma}_{jf} . $$ 
- Kadangi nerizikingo aktyvo rizika yra nulinė, tai bendrą portfelio riziką galima aprašyti trumpiau: $$ {\sigma}_p = w_j \cdot {\sigma}_j . $$ Pažymėjus $ w_j = \frac{{\sigma}_p}{ {\sigma}_j}, $ gauname, kad porfelio rizika $$ r_p = r_f + \left( \frac{r_j - r_f}{{\sigma}_j} \right) \cdot {\sigma }_p. $$ Jei tarsime, kad dabar $j$ investiciją atitiks rinkos portfelis $m$ su laukiama grąža $r_m$ bei rizika ${\sigma}_m$, gautąją tiesinę priklausomybę galime perrašyti tokiu pavidalu: 
-$$ R = \alpha  + \beta  \cdot R_m, $$ kur $ R = r_p - r_f$ -- rizikos premija , $ R_m = r_m - r_f$ -- rinkos rizikos premija. Nesunku pastebėti, jog $$ \beta = \frac{Cov (R, R_m)} { Var (R_m) } . $$
+Nagrinėkime portfelį sudarytą iš dviejų aktyvų: aktyvo $ j $ su laukiama grąžą $ r_j $ ir rizika $ {{\sigma}^2}_j $ bei nerizikingo aktyvo $r_f$. Tada portfelio grąžos formulė: 
+$$ r_p = (1-w_j) \cdot r_f + w_j \cdot r_j, $$ 
+o portfelio rizikos formulė: 
+\begin{equation}  
+{{\sigma}^2}_p = {{w^2}_j} \cdot {{\sigma}^2}_j + (1- w_j)^2 \cdot {{\sigma}^2}_f + 2 \cdot (1-w_j) \cdot w_j \cdot {\sigma}_{jf} .
+\label{portfriz}
+\end{equation}
+ Kadangi nerizikingo aktyvo rizika prilyginama nuliui, tai bendrą portfelio riziką galima užrašyti formule: $$ {\sigma}_p = w_j \cdot {\sigma}_j . $$ Pažymėjus 
+ \begin{equation} 
+  w_j = \frac{{\sigma}_p}{ {\sigma}_j} 
+  \label{wj}
+  \end{equation} gauname, kad porfelio rizika lygi $$ r_p = r_f + \left( \frac{r_j - r_f}{{\sigma}_j} \right) \cdot {\sigma }_p. $$ Tarus, kad $j$ investiciją atitinka rinkos portfelis $m$ su laukiama grąža $r_m$ bei rizika ${\sigma}_m$, gautąją tiesinę priklausomybę galime perrašyti tokiu pavidalu: 
+$$ R = \alpha  + \beta  \cdot R_m, $$ kur $ R = r_p - r_f$ -- rizikos premija , $ R_m = r_m - r_f$ -- rinkos rizikos premija. Tada iš \eqref{portfriz} ir \eqref{wj} formulių gauname, jog $$ \beta = \frac{Cov (R, R_m)} { Var (R_m) } . $$
 
-Koeficientai $ \alpha $ ir $ \beta $ yra labai svarbūs. $ \beta $ atspindi sisteminę (rinkos) riziką -- riziką, nepriklausančią nuo įmonės veiksnių. Sisteminę riziką sudaro makroekonominiai veiksniai. Taigi, $ \beta $ parodo aktyvo (arba portfelio) pelningumo priklausomybę nuo bendro rinkos pelningumo. Koeficiento ženklas parodo nagrinėjamo objekto vertės kitimo kryptį: jei $ \beta > 0 $, aktyvo (portfelio) vertė kinta ta pačia linkme, kaip ir rinkos pokyčiai, jei $ \beta < 0 $ -- atvirkščiai. Kuo $ \beta $  didesnis tuo aktyvas (portfelis) rizikingesnis. Nerizikingo aktyvo koeficientas $ \beta $ lygus nuliui. Koeficientas $ \alpha $ parodo aktyvo vertę: jei jis teigiamas -- aktyvas nuvertintas ir jį verta pirkti, jei neigiamas -- verta parduoti.\\
+Regresinio modelio koeficientų $ \alpha $ ir $ \beta $ įvertiniai naudojami interpretuojant aktyvo ir rinkos sąryšį. $ \beta $ atspindi sisteminę (rinkos) riziką -- riziką, nepriklausančią nuo įmonės veiksnių. Sisteminę riziką sudaro makroekonominiai veiksniai. Taigi, $ \beta $ parodo aktyvo (arba portfelio) pelningumo priklausomybę nuo bendro rinkos pelningumo. Koeficiento ženklas parodo nagrinėjamo objekto vertės kitimo kryptį: kai $ \beta > 0 $, aktyvo (ar portfelio) vertė pakyla $\beta \%$, jei rinkos pelningumas pakyla 1\% \cite{capm}. Kai $ \beta < 0 $ ir rinkos grąža padidėja 1\%, aktyvo pelningumas nukrinta $\beta \%$. Kuo $ \beta $  didesnis, tuo aktyvas (portfelis) rizikingesnis. Jei aktyvas nerizikingas, jo CAPM modelio koeficientas $ \beta $ lygus nuliui. Koeficientas $ \alpha $ parodo aktyvo vertę: jei jis teigiamas -- aktyvas nuvertintas ir jį verta pirkti, jei neigiamas -- verta parduoti.\\
 
 Visa, kas nesudaro sisteminės rizikos, vadinama nesistemine rizika. Tai rizika, priklausanti tik nuo konkrečios įmonės veiksnių. Skirtingai nei sisteminę riziką, šią galima minimizuoti diversifikuojant vertybinių popierių portfelį.\\
 
@@ -88,7 +98,7 @@ Taikant CAPM modelį neatsižvelgsime į pirkimo -- pardavimo sandorių mokesči
 \subsection{JAV 30--ies dienų iždo vekseliai}
 
 JAV vieno mėnesio iždo vekselius laikysime nerizikinga investicija. Nagrinėjami dieniniai duomenys nuo 2001 rugpjūčio 1 d. iki 2011 metų liepos pabaigos\cite{tbills}.
-Kadangi JAV iždo vekselių duomenys pateikti kaip dieninė diskonto norma antrinėje rinkoje, vekselių pelningumą galima gauti naudojant dvi patogias formules:
+Kadangi JAV iždo vekselių duomenys pateikti kaip dieninė diskonto norma antrinėje rinkoje, vekselių pelningumą galima gauti naudojant dvi formules:
 
 
 $$P = 100 - \left( 100 \times \frac{d \times t}{360}\right) .$$\\
@@ -288,10 +298,7 @@ Tarp pasirinktų aktyvų mažiausia dispersija (0.000136) ir mažiausias standar
     \hline
     market & microsoft & 0.7184425 \\
   market & apple & 0.5511114 \\
-	market & gold & -0.04482454 \\
-	mrp & microsoftrp & 0.7209318 \\
-	mrp & applerp & 0.5534901 \\
-	mrp & goldrp & -0.0266428 \\
+  market & gold & -0.04482454 \\
 	\hline
     \end{tabular}
 \end{center}
@@ -390,7 +397,7 @@ Aukso rizikos premija rodo atvirkštinę nestiprią priklausomybę nuo rinkos ri
 
 \subsection{Sudarytų modelių liekanų tikrinimas}
 
-Liekanos turi buti homoskedastiškos, ne autokoreliuotos ir pasiskirsčiusios pagal normalųjį skirstinį. \\
+Pagal sudarytą tiesinės regresijos modelį, liekanos turi buti homoskedastiškos, nekoreliuotos ir pasiskirsčiusios pagal normalųjį dėsnį. \\
 
 Patikrinsime, ar liekanos homoskedastiškos, naudodami Breusch-Pagan testą:
 
@@ -487,7 +494,27 @@ P--reikšmės testuose (9 lentelė) rodo, kad $H_0$ hipotezę, jog modelių liek
 
 10 pav. histogramos rodo, jog vis dėlto visų modelių liekanos simetriškai pasiskirsčiusios apie nulį, o jų ekscesas aštresnis nei normaliojo skirstinio.\\
 
-Kadangi atmetėme hipotezę apie liekanų normalumą, patikrinsime, ar visų modelių liekanos sudaro GARCH(1,1) procesą\cite{Brook}. Sudarius regresiją $$\sigma_t^2 = \alpha_0 + \alpha_1 u_{t-1} + \alpha_2  \sigma^2_{t-1} $$ gauname, kad visų trijų aktyvų modelių liekanos sudaro GARCH(1,1) procesą (koeficientai $\alpha_0$, $\alpha_1$, $\alpha_2$ reikšmingi). Čia $\sigma_t^2$ -- modelio liekanų sąlyginė dispersija, $u_{t-1}$ -- modelio liekanų ankstinys, $\sigma^2_{t-1}$ -- sąlyginės dispersijos ankstinys. Tačiau GARCH(1,1) modelio liekanos vis tiek nėra pasiskirsčiusios pagal normalųjį skirstinį (Jarque--Bera testo p--reikšmė mažesnė už $0.05$). Taip gali būti dėl to, kad didžioji dauguma liekanų susitelkusios prie nulio reikšmės. Atliktos analizės \textbf{R} kodas pateiktas \ref{B 1} priede.
+Kadangi atmetėme hipotezę apie liekanų normalumą, patikrinsime, ar visų modelių liekanos sudaro GARCH(1,1) procesą\cite{brook}. Sudarome regresiją $$\sigma_t^2 = \alpha_0 + \alpha_1 u_{t-1}^2 + \alpha_2  \sigma^2_{t-1} $$
+čia $\sigma_t^2$ -- modelio liekanų sąlyginė dispersija, $u_{t-1}^2$ -- modelio liekanų ankstinys pakeltas kvadratu, $\sigma^2_{t-1}$ -- sąlyginės dispersijos ankstinys. GARCH(1,1) testo rezultatai:
+
+\begin{table}[ht]
+\begin{center}
+    \begin{tabular}{ | l | l | l | l | l | l |}
+    \hline
+     Modelio liekanos  &  $ \alpha_0 $  & $ \alpha_1 $ & $ \alpha_2 $ & JB p-value & Box-Ljung p-value \\
+    \hline
+  Microsoft Corp. & 0.0000013* & 0.0198*& 0.9724*& 0 & 0.7165\\
+	Apple Inc. & 0.0000024*& 0.0345*& 0.9613*& 0 & 0.0584 \\
+	Gold &  0.000001* & 0.049* & 0.9433*& 0 & 0.2798  \\
+	\hline
+    \end{tabular}
+\end{center}
+\caption{GARCH(1,1) modelis Microsoft Corp., Apple Inc. ir aukso liekanoms}
+\end{table}
+
+
+10 lentelėje \ast simboliu pažymėti reikšmingi koeficientų įvertiniai, kiekvieno modelio koeficientų suma
+$ \alpha_0 + \alpha_1 + \alpha_2 $ neviršija 1. Jarque--Bera testo p-reikšmės mažesnės už 0.05, taigi atmetame hipotezę apie GARCH(1,1) proceso liekanų normalumą. Box--Ljung'o testo $H_0$ hipoteze tikrinama, ar liekanos yra nepriklausomai pasiskirsčiusios (nekoreliuotos). Visų modelių Box--Ljung'o testo p-reikšmės didesnės už 0.05, tad nėra pagrindo atmesti $H_0$ hipotezę. Taigi, visų aktyvų modelių liekanos sudaro GARCH(1,1) procesą. Atliktos analizės \textbf{R} kodas pateiktas \ref{B 1} priede.
 
 
 \newpage
@@ -498,13 +525,11 @@ Kadangi atmetėme hipotezę apie liekanų normalumą, patikrinsime, ar visų mod
 
 Visi skaičiavimai, kurie bus naudojami portfelių sudarymams, su R programa pateikti \ref{C1} priede.
  
-Iš pradžių ieškosime optimalių portfelių tarp dviejų aktyvų. Formulė
+Iš pradžių ieškosime optimalių portfelių tarp dviejų aktyvų. Naudojantis formule
 
 \begin{equation}
-a^{\ast}= \frac{\sigma_y^2 - r_{xy}\sigma_x \sigma_y}{\sigma^2_x + \sigma^2_y - 2r_{xy}\sigma_x \sigma_y} \label{form}
-\end{equation}
-
-randa optimalų įmonės $x$ akcijų procentą portfelyje ~\cite{cope}. Dar paskaičiuosime kokią dalį portfelyje turėtų sudaryti aktyvas ir iždo vekselis. \\
+a^{\ast}= \frac{\sigma_y^2 - r_{xy}\sigma_x \sigma_y}{\sigma^2_x + \sigma^2_y - 2r_{xy}\sigma_x \sigma_y} , \label{form}
+\end{equation} randamas optimalus įmonės $x$ akcijų procentas portfelyje~\cite{cope} $ a^{\ast} \in \left( 0;1 \right), $ minimizuojantis bendrą portfelio riziką ir maksimizuojantis pelną. Dar paskaičiuosime kokią dalį portfelyje turėtų sudaryti aktyvas ir iždo vekselis. \\
 
 Žymėjimai:
 
@@ -543,11 +568,11 @@ Apple Inc. & 18,83 \% & 25,08 \% &  & 0,041 \%  & & &\\
 \caption{Portfelius sudarančių aktyvų procentai, jų grąžos ir rizika}
 \end{table}
 
-Aukso ir Apple Inc. portfelyje -- 81,17 \% aukso ir 18,83 \% Apple akcijų
+Aukso ir Apple Inc. portfelyje -- 81,17 \% aukso ir 18,83 \% Apple akcijų.
 
-Microsoft Corp. ir Apple Inc. portfelyje -- 74,92 \% Microsoft Corp. akcijų  25,08 \% Apple Inc. akcijų
+Microsoft Corp. ir Apple Inc. portfelyje -- 74,92 \% Microsoft Corp. akcijų  25,08 \% Apple Inc. akcijų.
 
-Aukso ir Microsoft Corp. portfelyje -- 71,12 \% aukso ir 28,88 \% Microsoft akcijų
+Aukso ir Microsoft Corp. portfelyje -- 71,12 \% aukso ir 28,88 \% Microsoft akcijų.
 
 Visoms trims kombinacijoms su nerizikingu aktyvu tiek rizika, tiek grąža yra vienodos, o iždo vekselis sudaro beveik visą portfelį. \\
 
@@ -581,10 +606,10 @@ Apple Inc. & 0,04 \% &  &  &  \\
 \caption{Portfelių iš nerizikingo ir rizikingo aktyvo grąžos ir rizika}
 \end{table}
 
-Po analizės iždo vekselių procentai portfeliuose nepakito labai smarkiai, grąžos ir standartiniai nuokrypiai liko beveik tokie patys, todėl liksime prie pradinių kombinacijų. Darome hipotezę, kad rezultatai galėjo nepasikeisti dėl nuo 2008 m. sumažėjusio vekselio ir padidėjusio įmonių standartinio nuokrypio.
+Po analizės (12 lentelė) iždo vekselių procentai portfeliuose nepakito labai smarkiai, grąžos ir standartiniai nuokrypiai liko beveik tokie patys, todėl liksime prie pradinių kombinacijų. Darome hipotezę, kad rezultatai galėjo nepasikeisti dėl nuo 2008 m. sumažėjusio vekselio ir padidėjusio įmonių standartinio nuokrypio.
 
 
-
+\begin{comment}
 
 \begin{figure}[H]
   \centering
@@ -593,7 +618,9 @@ Po analizės iždo vekselių procentai portfeliuose nepakito labai smarkiai, gr�
   %\label{fig:11}
 \end{figure}  
 
-Iš 11 pav. ir 10 lentelės galima matyti, jog net optimalus portfelis, sudarytas iš Apple Inc. ir Microsoft Corp. akcijų turi daug
+\end{comment}
+
+Iš 11 lentelės galima matyti, jog net optimalus portfelis, sudarytas iš Apple Inc. ir Microsoft Corp. akcijų turi daug
 didesnę riziką ir tokią pat grąžą, kaip ir iš aukso bei Microsoft Corp. akcijų sudarytas portfelis. O vos padidinus riziką,
 iš Apple Inc. ir aukso akcijų sudaryto portfelio, galima gauti didesnę grąžą. Todėl optimalus pasirinkimas
 tarp portfelių, sudarytų iš dviejų aktyvų, yra Apple Inc. ir aukso akcijų kombinacija.
@@ -608,7 +635,9 @@ tarp portfelių, sudarytų iš dviejų aktyvų, yra Apple Inc. ir aukso akcijų 
   %\label{fig:10}
 \end{figure}
 
-12 pav.: norint turėti portfelį su mažiausia rizika, reikėtų rinktis portfelio kombinaciją, grafike esančią kairiausiai~\cite{cope}. Kiti portfelio pasirinkimai priklauso nuo vartotojo rizikos preferencijos. \\
+11 pav.: norint turėti portfelį su mažiausia rizika, reikėtų rinktis portfelio kombinaciją, grafike esančią kairiausiai~\cite{cope}. Kiti portfelio pasirinkimai priklauso nuo vartotojo rizikos preferencijos. \\
+
+\begin{comment}
 
 Apytiksliai aktyvų svoriai optimaliame portfelyje, kai i=8 ir j=3:
 
@@ -616,8 +645,9 @@ $ 0.1 \times (i-1) \times Microsoft + 0.1 \times (j-1) \times Auksas + (1 - (i-1
 
 % sd(0.7*gold[-891] + 0.2*apple + 0.1*microsoft[-891])
 
+\end{comment}
 
-Portfelio aktyvų svorius, kai aktyvų yra $n$ (šiuo atveju, $n=3$) nėra lengva rasti, todėl pabandykime pritaikyti dviejų aktyvų optimalaus portfelio formulę \eqref{form}: iš ankstesnio poskyrio turime optimalius svorius tarp dviejų aktyvų, dabar ieškome optimalios proporcijos tarp portfelio ir trečio aktyvo. \\
+Portfelio aktyvų svorius, kai aktyvų yra $n$ (šiuo atveju, $n=3$) nėra lengva rasti, todėl pritaikysime dviejų aktyvų optimalaus portfelio formulę \eqref{form}: iš ankstesnio poskyrio turime optimalius svorius tarp dviejų aktyvų, dabar ieškome optimalios proporcijos tarp portfelio ir trečio aktyvo. \\
 
 
 Portfelių žymėjimai:
@@ -658,7 +688,6 @@ P \# 9 & 6.478507 \% & 27.00901 \% & 66.51249 \% & 0.0006976978 & 0.009455108 &\
 
 
 
-\pagebreak
 
 \begin{table}[ht]
 \begin{center}
@@ -702,7 +731,7 @@ $\beta$ parodo, kaip įmonės akcijų ar portfelio rizikos premijos reaguoja į 
 
 \end{comment}
 
-Iš 13 lentelės investuotojas gali pasirinkti patraukliausią investavimo būdą: jei investuotojas nori gauti itin dideles grąžas, ir visiškai nekreipia dėmesio į įmonės priklausomybę nuo rinkos svyravimų, jis rinktųsi investiciją į Apple Inc. akcijas. Kita vertus, turimi empiriniai duomenys rodo, jog JAV iždo vekselio grąža yra itin didelė, o rizika ir priklausomybė nuo rinkos itin mažos, todėl vienareikšmiškai galima tarti, kad racionaliausia būtų investuoti į JAV trisdešimties dienų iždo vekselius.
+Iš 14 lentelės investuotojas gali pasirinkti patraukliausią investavimo būdą: jei investuotojas nori gauti itin dideles grąžas, ir visiškai nekreipia dėmesio į įmonės priklausomybę nuo rinkos svyravimų, jis rinktųsi investiciją į Apple Inc. akcijas. Kita vertus, turimi empiriniai duomenys rodo, jog JAV iždo vekselio grąža yra itin didelė, o rizika ir priklausomybė nuo rinkos itin mažos, todėl vienareikšmiškai galima tarti, kad racionaliausia būtų investuoti į JAV trisdešimties dienų iždo vekselius.
 
 \pagebreak
 
@@ -723,11 +752,11 @@ Modelis 4: Portfelis-4$= \alpha + \beta \times \text{Rinkos rizikos premija}$ \\
 
 Čia:\\
 
-Portfelis-1 = 81,17 \% aukso + 18,83 \% Apple Inc. akciju
+Portfelis-1 = 81,17 \% aukso + 18,83 \% Apple Inc. akcijų
 
-Portfelis-2 = 74,92 \% Microsoft Corp. + 25,08 \% Apple Inc. akciju
+Portfelis-2 = 74,92 \% Microsoft Corp. + 25,08 \% Apple Inc. akcijų
 
-Portfelis-3 = 71,12 \% aukso + 28,88 \% Microsoft Corp. akciju
+Portfelis-3 = 71,12 \% aukso + 28,88 \% Microsoft Corp. akcijų
 
 Portfelis-4 = 7.764768 \% Apple Inc. + 23.19523 \% Microsoft Corp. + 69.04 \% aukso.\\
 
@@ -738,21 +767,15 @@ Portfelis-4 = 7.764768 \% Apple Inc. + 23.19523 \% Microsoft Corp. + 69.04 \% au
   \hline
  &   \alpha & \beta &  $R^2$ \\ 
   \hline
-Modelis 1  & -0.0005723 & 0.1747229 & 0.05161 &  \\
+Modelis 1  & -0.0005723 & 0.1747229* & 0.05161 &  \\
 \hline
-(p--reiksmes) & (0.00549) & (0) & \\
-\hline
- Modelis 2  & 0.0004989 & 1.0097165 & 0.5831 &  \\
- \hline
-(p--reiksmes) & (0.0336) & (0) & \\
+ Modelis 2  & 0.0004989* & 1.0097165* & 0.5831 &  \\
    \hline
-   Modelis 3   & -0.0007624 & 0.2735671 & 0.1469 & \\
+   Modelis 3   & -0.0007624* & 0.2735671* & 0.1469 & \\
+
    \hline
-(p--reiksmes) & (0) & (0)& \\
-   \hline
-   Modelis 4  & -0.0006102 & 0.2967395 & 0.1787 & \\
-   \hline
-  (p--reiksmes) & (0.00004) & (0) & \\
+   Modelis 4  & -0.0006102* & 0.2967395* & 0.1787 & \\
+   
    \hline
    
    
@@ -777,7 +800,7 @@ mrp[-891] & 0.1747 & 0.0150 & 11.66 & 0.0000 \\
 \caption{Pirmojo regresinio modelio įvertiniai}
 \end{table}
 
-Pirmojo modelio koeficientas $\beta$=0.17, tai reiškia, kad portfelio aktyvų svyravimai mažai priklauso nuo rinkos
+Pirmojo modelio koeficientas $\beta=0.17$, tai reiškia, kad portfelio aktyvų svyravimai mažai priklauso nuo rinkos
 akcijų kainų svyravimų, taigi portfelis gana patikimas. Laisvasis narys nereikšmingas, todėl galime jį prilyginti nuliui,
 kaip ir ankstesnėse interpretacijose, tai reiškia, kad portfelio rizikos premija lygi nuliui, jei rinkos rizikos premija
 nekinta. Mažas $R^2$ rodo, jog tik 5\% rinkos duomenų paaiškina portfelio akcijų kainų pokyčius, taigi portfelis
@@ -800,7 +823,7 @@ mrp[-891] & 1.0097 & 0.0171 & 59.09 & 0.0000 \\
 \end{table}
 
 Antrojo modelio $\beta$ = 1, todėl portfelio aktyvų svyravimai judės proporcingai su rinkos akcijų kainų svyravimais.
-Pakankamai didelis $R^2$=58\% reiškia, kad tiek procentų rinkos duomenų paaiškina šio portfelio aktyvų pelningumo
+Pakankamai didelis $R^2=58\%$ reiškia, kad tiek procentų rinkos duomenų paaiškina šio portfelio aktyvų pelningumo
 svyravimus. Nuosmukio laikotarpiu tai ne pats geriausias portfelis, bet pakilimo metu gali būti gana pelningas.
 
 
@@ -819,11 +842,11 @@ mrp & 0.2736 & 0.0132 & 20.74 & 0.0000 \\
 \caption{Trečiojo regresinio modelio įvertiniai}
 \end{table}
 
-Trečiame modelyje $\beta$=0.27, taigi rinkos akcijų kainoms pakilus arba nukritus 1\%, portfelio aktyvų rizikos premijos
+Trečiame modelyje $\beta=0.27$, taigi rinkos akcijų kainoms pakilus arba nukritus 1\%, portfelio aktyvų rizikos premijos
 proporcingai pakis daugiau nei ketvirčiu. P--reikšmė prie laisvojo nario rodo, kad jis reikšmingas ir yra 
 neigiamas. Taigi rinkos akcijų rizikos premijoms nekintant, investuotojas iš portfelio gauna
 nuostolingą rizikos premiją (dėl didesnės iždo vekselio grąžos). Tad rinkos akcijų kainoms nekintant,
-pelningiau investuoti į iždo vekselius, ne tik į šį portfelį.
+pelningiau investuoti į iždo vekselius, o ne į šį portfelį.
 
 
 
@@ -841,18 +864,18 @@ mrp[-891] & 0.2967 & 0.0127 & 23.31 & 0.0000 \\
 \caption{Ketvirtojo regresinio modelio įvertiniai}
 \end{table}
 
-Trijų aktyvų kombinacijos portfelis panašus į aukso ir Microsoft Corp. portfelį. Čia $\beta$=0.29, taigi rinkai susvyravus 1\%,
+Trijų aktyvų kombinacijos portfelis panašus į aukso ir Microsoft Corp. portfelį. Čia $\beta=0.29$, taigi rinkai susvyravus 1\%,
 portfelio akcijos pakils arba nukris trečdaliu procento. Laisvasis narys vėl neigiamas ir reikšmingas, taigi
-rinkos akcijų pelningumui nekintant, investuotojo rizikos premija neigiama. $R^2$=0.17, taigi 17\% rinkos duomenų
+rinkos akcijų pelningumui nekintant, investuotojo rizikos premija neigiama. $R^2=0.17$, taigi 17\% rinkos duomenų
 paaiškina portfelio rizikos premijų svyravimus.\\
 
 
 Labiausiai nuo rinkos svyravimų priklauso portfelis, sudarytas iš Microsoft Corp. ir Apple Inc. kompanijų akcijų. 
 Į jį pelninga investuoti rinkos pakilimo laikotarpiu, nes rinkos rizikos premijai pakilus 1\%, portfelio rizikos premija
-taip pat išaugs 1\%. Investavus 100 \$, galima gauti 0,06\$ per dieną. Tačiau jis visiškai nepelningas krizės 
+taip pat išaugs 1\%. Investavus \$100, galima gauti \$0,06 per dieną. Tačiau jis visiškai nepelningas krizės 
 laikotarpiu. Tada investuotojui palankiau rinktis pirmąjį portfelį, sudarytą iš aukso ir Apple Inc. akcijų, kuris nuo 
 rinkos svyravimų priklauso mažiausiai iš keturių portfelių. Rinkos rizikos premijai nukritus 1\%, šio portfelio rizikos 
-premija pagal modelį nukris tik 0.17 \%, o į jį investavus 100 \$, galima gauti 0,09\$ per dieną - tai yra didžiausia 
+premija pagal modelį nukris tik 0.17 \%, o į jį investavus \$100, galima gauti \$0,09 per dieną - tai yra didžiausia 
 grąža iš visų keturių portfelių.
 
 
@@ -870,7 +893,7 @@ grąža iš visų keturių portfelių.
 2. Taip pat radome optimalias, t.y. turinčias mažiausią riziką, kombinacijas tarp dviejų ir trijų aktyvų bei patikrinome jų rizikos premijos priklausomybę nuo rinkos rizikos premijos. Iš visų portfelių mažiausią riziką turi portfelis sudarytas iš aukso ir Apple Inc. akcijų. Jo pelningumas didžiausias ir jis mažiausiai priklauso nuo rinkos nestabilumo. Kita vertus, pagal kapitalo aktyvų įvertinimo modelį, pelningas gali būti ir antras portfelis iš Microsoft Corp. ir Apple Inc. akcijų, su sąlyga, kad rinkos rizikos premija nuolat kyla.\\
 
 
-3. Kai investuotojas renkasi ne tik tarp rinkos aktyvų, bet ir nerizikingo iždo vekselio, tai pagal kapitalo aktyvų įvertinimo modelį ir kitus rodiklius (pelningumą, rizikos minimalumą), pelningiausia ir saugiausia investuoti į iždo vekselį. Trisdešimties dienų JAV iždo vekselis turi didžiausią grąžą, mažiausią riziką, mažai priklauso nuo rinko svyravimų. Bet kuri rinkos aktyvo kombinacija su iždo vekseliu taip pat yra nerizikinga ir pelningesnė už kitų aktyvų portfelius. Tačiau verta pastebėti, jog tokius rezultatus sąlygoja itin didelis iždo vekselių pelningumas per pakilimo laikotarpį (2005-2008 m.).  \\
+3. Kai investuotojas renkasi ne tik tarp rinkos aktyvų, bet ir nerizikingo iždo vekselio, tai pagal kapitalo aktyvų įvertinimo modelį ir kitus rodiklius (pelningumą, rizikos minimalumą), pelningiausia ir saugiausia investuoti į iždo vekselį. Trisdešimties dienų JAV iždo vekselis turi didžiausią grąžą, mažiausią riziką, mažai priklauso nuo rinkos svyravimų. Bet kuri rinkos aktyvo kombinacija su iždo vekseliu taip pat yra nerizikinga ir pelningesnė už kitų aktyvų portfelius. Tačiau verta pastebėti, jog tokius rezultatus sąlygoja itin didelis iždo vekselių pelningumas per pakilimo laikotarpį (2005-2008 m.).  \\
 
 \newpage
 \sectionnonum{Naudota literatūra ir kiti šaltiniai}
@@ -919,105 +942,80 @@ Cambridge University Press (2002).
 \label{A 1}
 Aprašomoji statistika:
 
-\begin{verbatim}
+
 \begin{Schunk}
-\begin{Sinput}
-> cbind(mean(rkfree), mean(market), mean(microsoft), mean(apple), 
-+     mean(gold))
-\end{Sinput}
 \begin{Soutput}
            [,1]         [,2]         [,3]        [,4]         [,5]
 [1,] 0.00186004 0.0001173288 0.0001968397 0.001807715 0.0007931419
 \end{Soutput}
-\begin{Sinput}
-> cbind(mean(mrp), mean(microsoftrp), mean(applerp), mean(goldrp))
-\end{Sinput}
 \begin{Soutput}
              [,1]         [,2]         [,3]         [,4]
 [1,] -0.001742711 -0.001663201 -5.20737e-05 -0.001066898
 \end{Soutput}
-\begin{Sinput}
-> cbind(var(rkfree), var(market), var(microsoft), var(apple), var(gold))
-\end{Sinput}
 \begin{Soutput}
              [,1]         [,2]         [,3]         [,4]         [,5]
 [1,] 2.789252e-06 0.0001827668 0.0003574371 0.0006370941 0.0001357824
 \end{Soutput}
-\begin{Sinput}
-> cbind(var(mrp), var(microsoftrp), var(applerp), var(goldrp))
-\end{Sinput}
 \begin{Soutput}
              [,1]         [,2]        [,3]         [,4]
 [1,] 0.0001857122 0.0003601065 0.000639531 0.0001384164
 \end{Soutput}
-\begin{Sinput}
-> cbind(sd(rkfree), sd(market), sd(microsoft), sd(apple), sd(gold))
-\end{Sinput}
 \begin{Soutput}
             [,1]       [,2]       [,3]       [,4]       [,5]
 [1,] 0.001670105 0.01351913 0.01890601 0.02524072 0.01165257
 \end{Soutput}
-\begin{Sinput}
-> cbind(sd(mrp), sd(microsoftrp), sd(applerp), sd(goldrp))
-\end{Sinput}
 \begin{Soutput}
            [,1]       [,2]       [,3]       [,4]
 [1,] 0.01362763 0.01897647 0.02528895 0.01176505
 \end{Soutput}
-\begin{Sinput}
-> cbind(cor(market, microsoft), cor(market[-891], apple), cor(market, 
-+     gold), cor(mrp, microsoftrp), cor(mrp[-891], applerp), cor(mrp, 
-+     goldrp))
-\end{Sinput}
 \begin{Soutput}
           [,1]      [,2]        [,3]      [,4]      [,5]       [,6]
 [1,] 0.7184425 0.5511114 -0.04482454 0.7209318 0.5534901 -0.0266428
 \end{Soutput}
 \end{Schunk}
 
-\end{verbatim}
+
 
 \section{priedas: modeliai ir jų liekanos}
 \label{B 1}
 Modeliai:
 
 \begin{verbatim}
-\begin{Schunk}
-\begin{Sinput}
-> microsoftmod = lm(microsoftrp ~ mrp)
-> applemod = lm(applerp ~ mrp[-891])
-> goldmod = lm(goldrp ~ mrp)
-> summary(microsoftmod)
-> summary(applemod)
-> summary(goldmod)
-> bptest(lm(microsoftrp ~ mrp))
-> bptest(lm(goldrp ~ mrp))
-> bptest(lm(applerp ~ mrp[-891]))
-> summary(dynlm(ts(applerp) ~ ts(mrp) + L(ts(applemod$res), 1)))
-> summary(dynlm(ts(microsoftrp) ~ ts(mrp) + L(ts(microsoftmod$res), 
-+     1)))
-> summary(dynlm(goldrp ~ mrp + L(ts(goldmod$res), 1)))
-> durbinWatsonTest(microsoftmod, max.lag = 1)
-> durbinWatsonTest(applemod, max.lag = 1)
-> durbinWatsonTest(goldmod, max.lag = 1)
-> jarque.bera.test(microsoftmod$res)
-> jarque.bera.test(applemod$res)
-> jarque.bera.test(goldmod$res)
-\end{Sinput}
-\end{Schunk}
+
+microsoftmod = lm(microsoftrp~mrp)
+applemod = lm(applerp~mrp[-891])
+goldmod = lm(goldrp~mrp)
+
+summary(microsoftmod)
+summary(applemod)
+summary(goldmod)
+
+bptest(lm(microsoftrp~mrp))
+bptest(lm(goldrp~mrp))
+bptest(lm(applerp~mrp[-891]))
+
+summary(dynlm(ts(applerp)~ts(mrp)+L(ts(applemod$res),1)))
+summary(dynlm(ts(microsoftrp)~ts(mrp)+L(ts(microsoftmod$res),1)))
+summary(dynlm(goldrp~mrp+L(ts(goldmod$res),1)))
+ 
+durbinWatsonTest(microsoftmod, max.lag=1)
+durbinWatsonTest(applemod, max.lag=1) 
+durbinWatsonTest(goldmod, max.lag=1)  
+
+jarque.bera.test(microsoftmod$res)
+jarque.bera.test(applemod$res)
+jarque.bera.test(goldmod$res)
+
 
 GARCH(1,1) modelis liekanoms:
 
-\begin{Schunk}
-\begin{Sinput}
-> res = goldmod$res
-> res2 = applemod$res
-> res3 = microsoftmod$res
-> summary(garch(res, order = c(1, 1)))
-> summary(garch(res2, order = c(1, 1)))
-> summary(garch(res3, order = c(1, 1)))
-\end{Sinput}
-\end{Schunk}
+res=goldmod$res
+res2=applemod$res
+res3=microsoftmod$res
+
+summary(garch(res, order = c(1, 1)))
+summary(garch(res2, order = c(1, 1)))
+summary(garch(res3, order = c(1, 1)))
 
 
 \end{verbatim}
@@ -1034,15 +1032,11 @@ Portfeliai:
           [,1]      [,2]      [,3]
 [1,] 0.8116744 0.7491511 0.7111582
 \end{Soutput}
-\end{Schunk}
-
-\begin{Schunk}
 \begin{Soutput}
           vek1      vek2      vek3
 [1,] 0.9959148 0.9924209 0.9804096
 \end{Soutput}
 \end{Schunk}
-
 
  Iždo vekselio procentas portfelyje iš dviejų aktyvų:
 
@@ -1065,7 +1059,7 @@ Portfeliai:
 \begin{figure}[H]
   \centering
   \begin{verbatim}
-\includegraphics{kursinis-029}
+\includegraphics{kursinis-026}
 \end{verbatim}
   \caption{...}
   
@@ -1086,21 +1080,12 @@ $0.1 \times (i-1) \times Apple + (1-0.1\times (i-1)) \times Auksas$
 \end{comment}
 
 Optimalus portfelis iš trijų aktyvų, naudojant formulę \eqref{form}:
-
 \begin{verbatim}
 
-\begin{Schunk}
-\begin{Sinput}
-> portfolio = 0.8117 * gold[-891] + 0.1883 * apple
-> (var(microsoft) - cor(microsoft[-891], portfolio) * sd(portfolio) * 
-+     sd(microsoft))/(var(portfolio) + +var(microsoft) - 2 * cor(microsoft[-891], 
-+     portfolio) * sd(portfolio) * sd(microsoft))
-\end{Sinput}
-\begin{Soutput}
-[1] 0.8059366
-\end{Soutput}
-\end{Schunk}
-
+portfolio = 0.8117 * gold[-891] + 0.1883 * apple
+(var(microsoft) - cor(microsoft[-891], portfolio) *  sd(portfolio) *
+sd(microsoft))/(var(portfolio) + var(microsoft) - 2 * cor(microsoft[-891],
+portfolio) *sd(portfolio) * sd(microsoft))
 \end{verbatim}
 
 80,59 \% portfelio ir 19,41 \% microsoft
@@ -1108,14 +1093,7 @@ Optimalus portfelis iš trijų aktyvų, naudojant formulę \eqref{form}:
 80.59* 0.8117 aukso
 
 80.59* 0.1883 apple
-\begin{Schunk}
-\begin{Sinput}
-> sd((65.41 * gold[-891] + 15.18 * apple + 19.41 * microsoft[-891])/100)
-\end{Sinput}
-\begin{Soutput}
-[1] 0.009586881
-\end{Soutput}
-\end{Schunk}
+
 
 Analogiškai patikrinamos kitos kombinacijos.
 
@@ -1181,32 +1159,32 @@ III variantas
 
  Portfelių regresinių modelių R kodas:
 \begin{verbatim}
-\begin{Schunk}
-\begin{Sinput}
-> goldapple = 0.8117 * gold[-891] + 0.1883 * apple
-> microapple = 0.7492 * microsoft[-891] + 0.2508 * apple
-> goldmicro = 0.7112 * gold + 0.2888 * microsoft
-> goldmicroapple = 0.232 * microsoft[-891] + 0.0776 * apple + 0.6904 * 
-+     gold[-891]
-> goldapplerp = goldapple - rkfree[-891]
-> microapplerp = microapple - rkfree[-891]
-> goldmicrorp = goldmicro - rkfree
-> goldmicroapplerp = goldmicroapple - rkfree[-891]
-> goldapplemod = lm(goldapplerp ~ mrp[-891])
-> microapplemod = lm(microapplerp ~ mrp[-891])
-> goldmicromod = lm(goldmicrorp ~ mrp)
-> goldmicroapplemod = lm(goldmicroapplerp ~ mrp[-891])
-> microapple.table = xtable(microapplemod)
-> goldapple.table = xtable(goldapplemod)
-> goldmicro.table = xtable(goldmicromod)
-> goldmicroapple.table = xtable(goldmicroapplemod)
-> summary(goldapplemod)
-> summary(microapplemod)
-> summary(goldmicromod)
-> summary(goldmicroapplemod)
-\end{Sinput}
-\end{Schunk}
+
+goldapple = 0.8117*gold[-891] + 0.1883*apple 
+microapple = 0.7492* microsoft[-891]  +  0.2508*apple 
+goldmicro = 0.7112*gold + 0.2888*microsoft 
+goldmicroapple=0.232*microsoft[-891] + 0.0776*apple + 0.6904*gold[-891]
+
+goldapplerp = goldapple - rkfree[-891]
+microapplerp = microapple - rkfree[-891]
+goldmicrorp = goldmicro - rkfree
+goldmicroapplerp = goldmicroapple - rkfree[-891]
+
+goldapplemod = lm(goldapplerp~mrp[-891] )
+microapplemod = lm(microapplerp~mrp[-891] )
+goldmicromod = lm(goldmicrorp~mrp )
+goldmicroapplemod = lm(goldmicroapplerp~mrp[-891])
+
+microapple.table=xtable(microapplemod)
+goldapple.table=xtable(goldapplemod)
+goldmicro.table=xtable(goldmicromod)
+goldmicroapple.table=xtable(goldmicroapplemod)
+
+summary(goldapplemod)
+summary(microapplemod)
+summary(goldmicromod)
+summary(goldmicroapplemod)
+
+
 \end{verbatim}
 \end{document}
-
-           
