@@ -63,7 +63,7 @@ capm = read.csv("TBILLS daily.csv")
 }
 \sectionnonum{Įvadas}
 
-Šio kursinio darbo tikslas -- naudojantis kapitalo aktyvų vertinimo modeliu (\textit{Capital Asset Pricing Model} -- CAPM) ištirti Microsoft Corp. ir Apple Inc. įmonių akcijų bei aukso rizikos premijų priklausomybę nuo kai kurių įmonių akcijų ir aukso rinkos rizikos premijų per pastarąjį dešimtmetį, taip pat iš atitinkamų aktyvų sudaryti kelis portfelius ir juos įvertinti. \\
+Šio kursinio darbo tikslas -- naudojantis kapitalo aktyvų vertinimo modeliu (\textit{Capital Asset Pricing Model} -- CAPM) ištirti Microsoft Corp. ir Apple Inc. įmonių akcijų bei aukso rizikos premijų priklausomybę nuo JAV įmonių rinkos rizikos premijų per pastarąjį dešimtmetį, taip pat iš atitinkamų aktyvų sudaryti kelis portfelius ir juos įvertinti. \\
 
 Pirmame skyriuje supažindinsime su kapitalo aktyvų įvertinimo modeliu ir pagrindinėmis sąvokomis. Antrame skyriuje aprašysime Microsoft Corp. ir Apple Inc. įmonių akcijų bei aukso kainų duomenis, pateiksime kainas bei grąžas atspindinčius grafikus. Trečiame skyriuje bus pateikti duomenų vidurkiai, dispersijos, standartiniai nuokrypiai, koreliacijų koeficientai ir jų interpretacijos. Ketvirtame skyriuje sudarysime aktyvų vertinimo modelius, patikrinsime liekanų homoskedastiškumą, autokoreliuotumą bei normalumą. Penktas skyrius bus skirtas portfelių konstravimui ir analizei, įtraukiant Microsoft Corp., Apple Inc. įmonių akcijas, auksą bei nerizikingą aktyvą. Darbo pabaigoje pateiksime rezultatus ir išvadas, naudotą literatūrą bei priedus.
 
@@ -105,7 +105,7 @@ Taikant CAPM modelį neatsižvelgsime į pirkimo -- pardavimo sandorių mokesči
 \section{Duomenys}
 \subsection{JAV 30--ies dienų iždo vekseliai}
 
-JAV vieno mėnesio iždo vekselius laikysime nerizikinga investicija. Nagrinėjami dieniniai duomenys nuo 2001 rugpjūčio 1 d. iki 2011 metų liepos pabaigos\cite{tbills}.
+JAV vieno mėnesio iždo vekselius laikysime nerizikinga investicija. Nagrinėjami dieniniai duomenys nuo 2001 rugpjūčio 1 d. iki 2011 metų liepos 29 d.\cite{tbills}
 Kadangi JAV iždo vekselių duomenys pateikti kaip dieninė diskonto norma antrinėje rinkoje, vekselių pelningumą galima gauti naudojant dvi formules:
 
 
@@ -799,16 +799,16 @@ Visgi  $R^2$ nėra labai didelis -- tik 30\% rinkos duomenų paaiškina Apple In
 
 Visai kitoks rezultatas gaunamas sudarius aukso rizikos premijų priklausomybės nuo rinkos rizikos premijų modelį.
 Šįkart $\beta=-0.023$ ir tai reikštų, kad aukso kainos ne tik mažai priklauso nuo rinkos akcijų vertės svyravimų,
-bet netgi juda priešinga linkme. Tai gali pasirodyti kaip itin patraukli investicija nuosmukio laikotarpiu.
+bet netgi juda priešinga linkme. Tai gali pasirodyti kaip itin patraukli investicija nuosmukio laikotarpiu, nes rinkos rizikos premijai nukritus 1\%, aukso rizikos premija išauga 0,02.
 Tačiau koeficiento p--reikšmė = 0.183 > 0.05, taigi negalima atmesti $ H_0 $ hipotezės, kad $\beta=0 $.
-Priėmus šią hipotezę, galima tarti, kad aukso kainos mažai priklauso nuo rinkos svyravimų.
-Laisvasis narys šįkart -0.011 ir p--reikšmė rodo, kad jis reikšmingas. Toks rezultatas kiek prieštarauja CAPM logikai -- rinkos akcijų vertėms nesikeičiant, aukso rizikos premija neigiama. Tai galėtų reikšti,
-kad dieninis aukso pelningumas itin nedidelis.
+Priėmus šią hipotezę, galime teigti, kad rinkos rizikos premijai nukritus 1\%, aukso rizikos premija nekinta arba priklauso nuo kitų faktorių.
+Laisvasis narys šįkart -0.011 ir p--reikšmė rodo, kad jis reikšmingas. Toks rezultatas kiek prieštarauja CAPM logikai -- rinkos akcijų vertėms nesikeičiant, aukso rizikos premija neigiama. Tai reiškia,
+kad dieninis aukso pelningumas mažesnis už iždo vekselio pelningumą.
 $ R^2 $= 0.0007 -- itin maža reikšmė, patvirtinanti, kad rinka beveik nepaaiškina aukso kainų pokyčių, taigi 
 visa aukso pelningumo rizika sisteminė -- priklauso nuo kitų charakteristikų. \\
 
 
-Aukso rizikos premija rodo atvirkštinę nestiprią priklausomybę nuo rinkos rizikos premijos - taigi į auksą palanku investuoti krizės laikotarpiu. Pagal modelio pateiktą koeficientą, rinkos rizikos premijai nukritus 1\%, aukso rizikos premija išauga 0,02. Vis dėlto koeficiento $\beta$ p-reikšmė rodo, jog koeficientas nereikšmingas, tad galime sušvelninti sąlygą ir teigti, kad rinkos rizikos premijai nukritus 1\%, aukso rizikos premija nekinta arba priklauso nuo kitų faktorių. Į auksą investavus \$100, galima gauti \$0,07 per dieną.
+Aukso rizikos premija rodo atvirkštinę nestiprią priklausomybę nuo rinkos rizikos premijos - taigi į auksą palanku investuoti krizės laikotarpiu. Į auksą investavus \$100, galima gauti \$0,07 per dieną.
 
 
 
@@ -935,7 +935,7 @@ Kadangi atmetėme hipotezę apie liekanų normalumą, patikrinsime, ar visų mod
 \end{table}
 
 
-10 lentelėje \ast simboliu pažymėti reikšmingi koeficientų įvertiniai, kiekvieno modelio koeficientų suma
+10 lentelėje $\ast$ simboliu pažymėti reikšmingi koeficientų įvertiniai, kiekvieno modelio koeficientų suma
 $ \alpha_0 + \alpha_1 + \alpha_2 $ neviršija 1. Jarque--Bera testo p-reikšmės mažesnės už 0.05, taigi atmetame hipotezę apie GARCH(1,1) proceso liekanų normalumą. Box--Ljung'o testo $H_0$ hipoteze tikrinama, ar liekanos yra nepriklausomai pasiskirsčiusios (nekoreliuotos). Visų modelių Box--Ljung'o testo p-reikšmės didesnės už 0.05, tad nėra pagrindo atmesti $H_0$ hipotezę. Taigi, visų aktyvų modelių liekanos sudaro GARCH(1,1) procesą. Atliktos analizės \textbf{R} kodas pateiktas \ref{B 1} priede.
 
 
@@ -1217,7 +1217,7 @@ Portfelis-4 = 7.764768 \% Apple Inc. + 23.19523 \% Microsoft Corp. + 69.04 \% au
   \hline
  &   \alpha & \beta &  $R^2$ \\ 
   \hline
-Modelis 1  & -0.0005723 & 0.1747229* & 0.05161 &  \\
+Modelis 1  & -0.0005723* & 0.1747229* & 0.05161 &  \\
 \hline
  Modelis 2  & 0.0004989* & 1.0097165* & 0.5831 &  \\
    \hline
@@ -1251,8 +1251,8 @@ mrp[-891] & 0.1747 & 0.0150 & 11.66 & 0.0000 \\
 \end{table}
 
 Pirmojo modelio koeficientas $\beta=0.17$, tai reiškia, kad portfelio aktyvų svyravimai mažai priklauso nuo rinkos
-akcijų kainų svyravimų, taigi portfelis gana patikimas. Laisvasis narys nereikšmingas, todėl galime jį prilyginti nuliui,
-kaip ir ankstesnėse interpretacijose, tai reiškia, kad portfelio rizikos premija lygi nuliui, jei rinkos rizikos premija
+akcijų kainų svyravimų, taigi portfelis gana patikimas. Laisvasis narys reikšmingas, bet labai mažas, todėl galime jį prilyginti nuliui,
+kaip ir ankstesnėse interpretacijose, tai reiškia, kad investuotojas negaus portfelio rizikos premijos, jei rinkos rizikos premija
 nekinta. Mažas $R^2$ rodo, jog tik 5\% rinkos duomenų paaiškina portfelio akcijų kainų pokyčius, taigi portfelis
 turi didelį procentą nesisteminės rizikos.
 
